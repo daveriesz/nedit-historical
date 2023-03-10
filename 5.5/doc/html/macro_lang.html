@@ -1,0 +1,464 @@
+<HTML>
+<HEAD>
+<TITLE> Macro/Shell Extensions </TITLE>
+</HEAD>
+<BODY>
+<A NAME="Macro_Language"></A>
+<H2> Macro Language </H2>
+<P>
+Macros can be called from Macro menu commands, window background menu
+commands, within the smart-indent framework, from the autoload macro file and
+from the command line.
+Macro menu and window background menu commands are defined under Preferences
+-&#62; Default Settings -&#62; Customize Menus.  Help on creating items in these
+menus can be found in the section, Help -&#62; Customizing -&#62; Preferences.
+</P><P>
+The autoload macro file is a file of macro commands and definitions which
+NEdit will automatically execute when it is first started.  Its location is
+dependent on your environment:
+</P><P>
+<UL>
+    <li>The default place for the file is '$HOME/.nedit/autoload.nm',</li>
+    <li>if the variable $NEDIT_HOME is set in your environment it is located at '$NEDIT_HOME/autoload.nm',</li>
+    <li>if you are using old-style run control files (i.e. $HOME/.nedit is a regular file) it is located in '$HOME/.neditmacro'.</li>
+</UL>
+</P><P>
+(For VMS, the file is in '$NEDIT_HOME/autoload.nm' if $NEDIT_HOME is set, in
+'SYS$LOGIN:.neditmacro' otherwise.)
+</P><P>
+NEdit's macro language is a simple interpreter with integer arithmetic,
+dynamic strings, and C-style looping constructs (very similar to the
+procedural portion of the Unix awk program).  From the macro language, you
+can call the same action routines which are bound to keyboard keys and menu
+items, as well additional subroutines for accessing and manipulating editor
+data, which are specific to the macro language (these are listed in the
+sections titled "<A HREF="macro_subrs.html#Macro_Subroutines">Macro Subroutines</A>", and "<A HREF="actions.html#Action_Routines">Action Routines</A>").
+</P><P>
+<H3>Syntax</H3>
+</P><P>
+An NEdit macro language program consists of a list of statements, each
+terminated by a newline.  Groups of statements which are executed together
+conditionally, such as the body of a loop, are surrounded by curly braces
+"{}".
+</P><P>
+Blank lines and comments are also allowed.  Comments begin with a "#" and end
+with a newline, and can appear either on a line by themselves, or at the end
+of a statement.
+</P><P>
+Statements which are too long to fit on a single line may be split across
+several lines, by placing a backslash "\" character at the end of each line
+to be continued.
+</P><P>
+<H3>Data Types</H3>
+</P><P>
+The NEdit macro language recognizes only three data types, dynamic character
+strings, integer values and associative arrays. In general strings and
+integers can be used interchangeably. If a string represents an integer
+value, it can be used as an integer. Integers can be compared and
+concatenated with strings. Arrays may contain integers, strings, or arrays.
+Arrays are stored key/value pairs. Keys are always stored as strings.
+</P><P>
+<H4>Integer Constants</H4>
+</P><P>
+Integers are non-fractional numbers in the range of -2147483647 to
+2147483647.  Integer constants must be in decimal.  For example:
+</P><P>
+<PRE>
+    a = -1
+    b = 1000
+</PRE>
+</P><P>
+<H4>Character String Constants</H4>
+</P><P>
+Character string constants are enclosed in double quotes.  For example:
+</P><P>
+<PRE>
+     a = "a string"
+     dialog("Hi there!", "OK")
+</PRE>
+</P><P>
+Strings may also include C-language style escape sequences:
+</P><P>
+<PRE>
+     \\ Backslash     \t Tab              \f Form feed
+     \" Double quote  \b Backspace        \a Alert
+     \n Newline       \r Carriage return  \v Vertical tab
+</PRE>
+</P><P>
+For example, to send output to the terminal from which NEdit was started, a
+newline character is necessary because, like printf, t_print requires
+explicit newlines, and also buffers its output on a per-line basis:
+</P><P>
+<PRE>
+     t_print("a = " a "\n")
+</PRE>
+</P><P>
+<H3>Variables</H3>
+</P><P>
+Variable names must begin either with a letter (local variables), or a $
+(global variables).  Beyond the first character, variables may also contain
+numbers and underscores `_'.  Variables are called in to existence just by
+setting them (no explicit declarations are necessary).
+</P><P>
+Local variables are limited in scope to the subroutine (or menu item
+definition) in which they appear.  Global variables are accessible from all
+routines, and their values persist beyond the call which created them, until
+reset.
+</P><P>
+<H4>Built-in Variables</H4>
+</P><P>
+NEdit has a number of permanently defined variables, which are used to access
+global editor information and information about the the window in which the
+macro is executing.  These are listed along with the built in functions in
+the section titled "<A HREF="macro_subrs.html#Macro_Subroutines">Macro Subroutines</A>".
+</P><P>
+<H3>Functions and Subroutines</H3>
+</P><P>
+The syntax of a function or subroutine call is:
+</P><P>
+<PRE>
+     function_name(arg1, arg2, ...)
+</PRE>
+</P><P>
+where arg1, arg2, etc. represent the argument values which are passed to
+the routine being called.  A function or subroutine call can be on a line by
+itself, as above, or if it returns a value, can be invoked within a character
+or numeric expression:
+</P><P>
+<PRE>
+     a = fn1(b, c) + fn2(d)
+     dialog("fn3 says: " fn3())
+</PRE>
+</P><P>
+Arguments are passed by value.  This means that you can not return values via
+the argument list, only through the function value or indirectly through
+agreed-upon global variables.
+</P><P>
+<H4>Built-in Functions</H4>
+</P><P>
+NEdit has a wide range of built in functions which can be called from the
+macro language.  These routines are divided into two classes, macro-language
+functions, and editor action routines.  Editor action routines are more
+flexible, in that they may be called either from the macro language, or bound
+directly to keys via translation tables.  They are also limited, however, in
+that they can not return values.  Macro language routines can return values,
+but can not be bound to keys in translation tables.
+</P><P>
+Nearly all of the built-in subroutines operate on an implied window, which is
+initially the window from which the macro was started.  To manipulate the
+contents of other windows, use the focus_window subroutine to change the
+focus to the ones you wish to modify.  focus_window can also be used to
+iterate over all of the currently open windows, using the special keyword
+names, "last" and "next".
+</P><P>
+For backwards compatibility, hyphenated action routine names are allowed, and
+most of the existing action routines names which contain underscores have an
+equivalent version containing hyphens ('-') instead of underscores.  Use of
+these names is discouraged.  The macro parser resolves the ambiguity between
+'-' as the subtraction/negation operator, and - as part of an action routine
+name by assuming subtraction unless the symbol specifically matches an action
+routine name.
+</P><P>
+<H4>User Defined Functions</H4>
+</P><P>
+Users can define their own macro subroutines, using the define keyword:
+</P><P>
+<PRE>
+     define subroutine_name {
+        &#60; body of subroutine &#62;
+     }
+</PRE>
+</P><P>
+Macro definitions can not appear within other definitions, or within macro
+menu item definitions (usually they are found in the autoload macro file).
+</P><P>
+The arguments with which a user-defined subroutine or function was invoked,
+are presented as $1, $2, ... , $9 or $args[expr], where expr can be evaluated
+to an integer from 1 to the number of arguments.  The number of arguments can
+be read from $n_args or $args[]. The array $args[expr] is the only way to
+access arguments beyond the first 9.
+</P><P>
+To return a value from a subroutine, and/or to exit from the subroutine
+before the end of the subroutine body, use the return statement:
+</P><P>
+<PRE>
+     return &#60;value to return&#62;
+</PRE>
+</P><P>
+<H3>Operators and Expressions</H3>
+</P><P>
+Operators have the same meaning and precedence that they do in C, except for
+^, which raises a number to a power (y^x means y to the x power), rather than
+bitwise exclusive OR.  The table below lists operators in decreasing order of
+precedence.
+</P><P>
+<PRE>
+     Operators                Associativity
+     ()
+     ^                        right to left
+     - ! ++ --                (unary)
+     * / %                    left to right
+     + -                      left to right
+     &#62; &#62;= &#60; &#60;= == !=          left to right
+     &#38;                        left to right
+     |                        left to right
+     &#38;&#38;                       left to right
+     ||                       left to right
+     (concatenation)          left to right
+     = += -= *= /= %=, &#38;= |=  right to left
+</PRE>
+</P><P>
+The order in which operands are evaluated in an expression is undefined,
+except for &#38;&#38; and ||, which like C, evaluate operands left to right, but stop
+when further evaluation would no longer change the result.
+</P><P>
+<H4>Numerical Operators</H4>
+</P><P>
+The numeric operators supported by the NEdit macro language are listed below:
+</P><P>
+<PRE>
+     + addition
+     - subtraction or negation
+     * multiplication
+     / division
+     % modulo
+     ^ power
+     &#38; bitwise and
+     | bitwise or
+</PRE>
+</P><P>
+Increment (++) and decrement (--) operators can also be appended or prepended
+to variables within an expression.  Prepended increment/decrement operators
+act before the variable is evaluated.  Appended increment/decrement operators
+act after the variable is evaluated.
+</P><P>
+<H4>Logical and Comparison Operators</H4>
+</P><P>
+Logical operations produce a result of 0 (for false) or 1 (for true).  In a
+logical operation, any non-zero value is recognized to mean true.  The
+logical and comparison operators allowed in the NEdit macro language are
+listed below:
+</P><P>
+<PRE>
+     &#38;&#38; logical and
+     || logical or
+     !  not
+     &#62;  greater
+     &#60;  less
+     &#62;= greater or equal
+     &#60;= less or equal
+     == equal (integers and/or strings)
+     != not equal (integers and/or strings)
+</PRE>
+</P><P>
+<H4>Character String Operators</H4>
+</P><P>
+The "operator" for concatenating two strings is the absence of an operator. 
+Adjoining character strings with no operator in between means concatenation:
+</P><P>
+<PRE>
+     d = a b "string" c
+     t_print("the value of a is: " a)
+</PRE>
+</P><P>
+Comparison between character strings is done with the == and != operators,
+(as with integers).  There are a number of useful built-in routines for
+working with character strings, which are listed in the section called 
+"<A HREF="macro_subrs.html#Macro_Subroutines">Macro Subroutines</A>".
+</P><P>
+<H4>Arrays and Array Operators</H4>
+</P><P>
+Arrays may contain either strings, integers, or other arrays. Arrays are 
+associative, which means that they relate two pieces of information, the key
+and  the value. The key is always a string; if you use an integer it is
+converted to a string.
+</P><P>
+To determine if a given key is in an array, use the 'in' keyword.
+</P><P>
+<PRE>
+      if ("6" in x)
+          &#60;body&#62;
+</PRE>
+</P><P>
+If the left side of the in keyword is an array, the result is true if every
+key in the left array is in the right array. Array values are not compared.
+</P><P>
+To iterate through all the keys of an array use the 'for' looping construct.
+Keys are not guaranteed in any particular order:
+</P><P>
+<PRE>
+      for (aKey in x)
+          &#60;body&#62;
+</PRE>
+</P><P>
+Elements can be removed from an array using the delete command:
+</P><P>
+<PRE>
+      delete x[3] # deletes element with key 3
+      delete x[]  # deletes all elements
+</PRE>
+</P><P>
+The number of elements in an array can be determined by referencing the
+array with no indices:
+</P><P>
+<PRE>
+      dialog("array x has " x[] " elements", "OK")
+</PRE>
+</P><P>
+Arrays can be combined with some operators. All the following operators only 
+compare the keys of the arrays.
+</P><P>
+<PRE>
+      result = x + y   (Merge arrays)
+</PRE>
+</P><P>
+The 'result' is a new array containing keys from both x and y. If
+duplicates are present values from y are used.
+</P><P>
+<PRE>
+      result = x - y   (Remove keys)
+</PRE>
+</P><P>
+The 'result' is a new array containing all keys from x that are not in y.
+</P><P>
+<PRE>
+      result = x &#38; y   (Common keys)
+</PRE>
+</P><P>
+The 'result' is a new array containing all keys which are in both x and y.
+The values from y are used.
+</P><P>
+<PRE>
+      result = x | y   (Unique keys)
+</PRE>
+</P><P>
+The 'result' is a new array containing keys which exist in either x or y, 
+but not both.
+</P><P>
+When duplicate keys are encountered using the + and &#38; operators, the values 
+from the array on the right side of the operators are used for the result.
+All  of the above operators are array only, meaning both the left and right
+sides of the operator must be arrays. The results are also arrays.
+</P><P>
+Array keys can also contain multiple dimensions:
+</P><P>
+<PRE>
+      x[1, 1, 1] = "string"
+</PRE>
+</P><P>
+These are used in the expected way, e.g.:
+</P><P>
+<PRE>
+      for (i = 1; i &#60; 3; i++)
+      {
+          for (j = 1; j &#60; 3; j++)
+          {
+              x[i, j] = k++
+          }
+      }
+</PRE>
+</P><P>
+gives the following array:
+</P><P>
+<PRE>
+      x[1, 1] = 0
+      x[1, 2] = 1
+      x[2, 1] = 2
+      x[2, 2] = 3
+</PRE>
+</P><P>
+Internally all indices are part of one string, separated by the string 
+$sub_sep (ASCII 0x1c, 'FS'). The first key in the above example is in
+fact:
+</P><P>
+<PRE>
+      ["1" $sub_sep "1"]
+</PRE>
+</P><P>
+If you need to extract one of the keys, you can use split(), using 
+$sub_sep as the separator.
+</P><P>
+You can also check for the existence of multi-dimensional array by 
+looking for $sub_sep in the key.
+</P><P>
+Last, you need $sub_sep if you want to use the 'in' keyword.
+</P><P>
+<PRE>
+      if ((1,2) in myArray)
+      {..}
+</PRE>
+</P><P>
+doesn't work, but
+</P><P>
+<PRE>
+      if (("1" $sub_sep "2") in myArray)
+      {..}
+</PRE>
+</P><P>
+does work.
+</P><P>
+<H3>Looping and Conditionals</H3>
+</P><P>
+NEdit supports looping constructs: for and while, and conditional statements:
+if and else, with essentially the same syntax as C:
+</P><P>
+<PRE>
+     for (&#60;init&#62;, ...; &#60;condition&#62;; &#60;increment&#62;, ...) &#60;body&#62;
+</PRE>
+</P><P>
+<PRE>
+     while (&#60;condition&#62;) &#60;body&#62;
+</PRE>
+</P><P>
+<PRE>
+     if (&#60;condition&#62;) &#60;body&#62;
+</PRE>
+</P><P>
+<PRE>
+     if (&#60;condition&#62;) &#60;body&#62; else &#60;body&#62;
+</PRE>
+</P><P>
+&#60;body&#62;, as in C, can be a single statement, or a list of statements enclosed
+in curly braces ({}).  &#60;condition&#62; is an expression which must evaluate to
+true for the statements in &#60;body&#62; to be executed.  for loops may also contain
+initialization statements, &#60;init&#62;, executed once at the beginning of the
+loop, and increment/decrement statements (or any arbitrary statement), which
+are executed at the end of the loop, before the condition is evaluated again.
+</P><P>
+Examples:
+</P><P>
+<PRE>
+    for (i=0; i&#60;100; i++)
+       j = i * 2
+</PRE>
+</P><P>
+<PRE>
+    for (i=0, j=20; i&#60;20; i++, j--) {
+       k = i * j
+       t_print(i, j, k)
+    }
+</PRE>
+</P><P>
+<PRE>
+    while (k &#62; 0)
+    {
+       k = k - 1
+       t_print(k)
+    }
+</PRE>
+</P><P>
+<PRE>
+    for (;;) {
+       if (i-- &#60; 1)
+           break
+    }
+</PRE>
+</P><P>
+Loops may contain break and continue statements.  A break statement causes an
+exit from the innermost loop, a continue statement transfers control to the
+end of the loop.
+<P><HR>
+</P><P>
+</P>
+</BODY>
+</HTML>

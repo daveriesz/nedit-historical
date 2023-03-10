@@ -1,0 +1,803 @@
+<HTML>
+<HEAD>
+<TITLE> Macro/Shell Extensions </TITLE>
+</HEAD>
+<BODY>
+<A NAME="Action_Routines"></A>
+<H2> Action Routines </H2>
+<P>
+All of the editing capabilities of NEdit are represented as a special type of
+subroutine, called an action routine, which can be invoked from both macros
+and translation table entries (see "<A HREF="binding.html#Key_Binding">Key Binding</A>" in the
+Customizing section of the Help menu).
+</P><P>
+<H3>Actions Representing Menu Commands</H3>
+</P><P>
+<PRE>
+    File Menu                 Search Menu
+    -----------------------   -------------------------
+    new()                     find()
+    open()                    find_dialog()
+    open_dialog()             find_again()
+    open_selected()           find_selection()
+    close()                   replace()
+    save()                    replace_dialog()
+    save_as()                 replace_all()
+    save_as_dialog()          replace_in_selection()
+    revert_to_saved()         replace_again()
+    include_file()            goto_line_number()
+    include_file_dialog()     goto_line_number_dialog()
+    load_macro_file()         goto_selected()
+    load_macro_file_dialog()  mark()
+    load_tags_file()          mark_dialog()
+    load_tags_file_dialog()   goto_mark()
+    unload_tags_file()        goto_mark_dialog()
+    load_tips_file()          goto_matching()
+    load_tips_file_dialog()   select_to_matching()
+    unload_tips_file()        find_definition()
+    print()                   show_tip()
+    print_selection()         
+    exit()                    Shell Menu
+                              -------------------------
+    Edit Menu                 filter_selection_dialog()
+    -----------------------   filter_selection()
+    undo()                    execute_command()
+    redo()                    execute_command_dialog()
+    delete()                  execute_command_line()
+    select_all()              shell_menu_command()
+    shift_left()              
+    shift_left_by_tab()       Macro Menu
+    shift_right()             -------------------------
+    shift_right_by_tab()      macro_menu_command()
+    uppercase()               repeat_macro()
+    lowercase()               repeat_dialog()
+    fill_paragraph()          
+    control_code_dialog()     Windows Menu
+                              -------------------------
+                              split_pane()
+                              close_pane()
+                              detach_document()
+                              move_document_dialog()
+</PRE>
+</P><P>
+An action representing a menu command is usually named the same as its
+corresponding menu item except that all punctuation is removed, all letters
+are changed to lower case, and spaces are replaced with underscores.  To
+present a dialog to ask the user for input, use the actions with the
+`_dialog` suffix. Actions without the `_dialog` suffix take the information
+from the routine's arguments (see below).  
+</P><P>
+<H3>Menu Action Routine Arguments</H3>
+</P><P>
+Arguments are text strings enclosed in quotes. Below are the menu action
+routines which take arguments.  Optional arguments are enclosed in [].
+</P><P>
+<PRE>
+    <B>new</B>( ["tab" | "window" | "prefs" | "opposite"] )
+</PRE>
+</P><P>
+<PRE>
+    <B>close</B>( ["prompt" | "save" | "nosave"] )
+</PRE>
+</P><P>
+<PRE>
+    <B>execute_command</B>( shell-command )
+</PRE>
+</P><P>
+<PRE>
+    <B>filter_selection</B>( shell-command )
+</PRE>
+</P><P>
+<PRE>
+    <B>find</B>( search-string [, <I>search-direction</I>] [, <I>search-type</I>] 
+       [, <I>search-wrap</I>] )
+</PRE>
+</P><P>
+<PRE>
+    <B>find_again</B>( [<I>search-direction</I>] [, <I>search-wrap</I>] )
+</PRE>
+</P><P>
+<PRE>
+    <B>find_definition</B>( [tag-name] )
+</PRE>
+</P><P>
+<PRE>
+    <B>find_dialog</B>( [<I>search-direction</I>] [, <I>search-type</I>] 
+       [, <I>keep-dialog</I>] )
+</PRE>
+</P><P>
+<PRE>
+    <B>find_selection</B>( [<I>search-direction</I>] [, <I>search-wrap</I>] 
+       [, <I>non-regex-search-type</I>] )
+</PRE>
+</P><P>
+<PRE>
+    <B>goto_line_number</B>( [<I>line-number</I>] [, <I>column-number</I>] )
+</PRE>
+</P><P>
+<PRE>
+    <B>goto_mark</B>( <I>mark-letter</I> )
+</PRE>
+</P><P>
+<PRE>
+    <B>include_file</B>( <I>filename</I> )
+</PRE>
+</P><P>
+<PRE>
+    <B>load_tags_file</B>( <I>filename</I> )
+</PRE>
+</P><P>
+<PRE>
+    <B>macro_menu_command</B>( <I>macro-menu-item-name</I> )
+</PRE>
+</P><P>
+<PRE>
+    <B>mark</B>( <I>mark-letter</I> )
+</PRE>
+</P><P>
+<PRE>
+    <B>open</B>( <I>filename</I> )
+</PRE>
+</P><P>
+<PRE>
+    <B>replace</B>( search-string, replace-string, 
+       [, <I>search-direction</I>] [, <I>search-type</I>] [, <I>search-wrap</I>] )
+</PRE>
+</P><P>
+<PRE>
+    <B>replace_again</B>( [<I>search-direction</I>] [, <I>search-wrap</I>] )
+</PRE>
+</P><P>
+<PRE>
+    <B>replace_all</B>( search-string, replace-string [, <I>search-type</I>] )
+</PRE>
+</P><P>
+<PRE>
+    <B>replace_dialog</B>( [<I>search-direction</I>] [, <I>search-type</I>]
+       [, <I>keep-dialog</I>] )
+</PRE>
+</P><P>
+<PRE>
+    <B>replace_in_selection</B>( search-string, 
+       replace-string [, <I>search-type</I>] )
+</PRE>
+</P><P>
+<PRE>
+    <B>save_as</B>( <I>filename</I> )
+</PRE>
+</P><P>
+<PRE>
+    <B>shell_menu_command</B>( <I>shell-menu-item-name</I> )
+</PRE>
+</P><P>
+<PRE>
+    <B>unload_tags_file</B>( <I>filename</I> )
+</PRE>
+</P><P>
+<PRE>
+    <B>----------- Some notes on argument types above -----------</B>
+</PRE>
+</P><P>
+<PRE>
+    <I>Arguments to new()</I>
+                   "tab":      Open a new tab
+                   "window":   Open a new window
+                   "prefs":    Follow the user's tab/window 
+                               preference
+                   "opposite": Opposite of user's tab/window 
+                               preference
+                   Default behaviour is "prefs".
+</PRE>
+</P><P>
+<PRE>
+    <I>filename</I>       Path names are relative to the directory from
+                   which NEdit was started. Shell interpreted 
+                   wildcards and `~' are not expanded.
+</PRE>
+</P><P>
+<PRE>
+    <I>keep-dialog</I>    Either "keep" or "nokeep".
+</PRE>
+</P><P>
+<PRE>
+    <I>mark-letter</I>    The mark command limits users to single 
+                   letters. Inside of macros, numeric marks are
+                   allowed, which won't interfere with marks set
+                   by the user.
+</PRE>
+</P><P>
+<PRE>
+    <I>macro-menu-item-name</I>
+                   Name of the command exactly as specified in 
+                   the Macro Menu dialogs.
+</PRE>
+</P><P>
+<PRE>
+    <I>non-regex-search-type</I> 
+                   Either "literal", "case", "word", or 
+                   "caseWord".
+</PRE>
+</P><P>
+<PRE>
+    <I>search-direction</I>
+                   Either "forward" or "backward".
+</PRE>
+</P><P>
+<PRE>
+    <I>search-type</I>    Either "literal", "case", "word", 
+                   "caseWord", "regex", or "regexNoCase".
+</PRE>
+</P><P>
+<PRE>
+    <I>search-wrap</I>    Either "wrap" or "nowrap".
+</PRE>
+</P><P>
+<PRE>
+    <I>shell-menu-item-name</I>
+                   Name of the command exactly as specified in 
+                   the Shell Menu dialogs.
+</PRE>
+</P><P>
+<H3>Window Preferences Actions</H3>
+</P><P>
+<PRE>
+<B>set_auto_indent( "off" | "on" | "smart" )</B>
+</PRE>
+Set auto indent mode for the current window.
+</P><P>
+<PRE>
+<B>set_em_tab_dist( em-tab-distance )</B>
+</PRE>
+Set the emulated tab size. An em-tab-distance value of 
+0 or -1 translates to no emulated tabs. Em-tab-distance must 
+be smaller than 1000.
+</P><P>
+<PRE>
+<B>set_fonts( font-name, italic-font-name, bold-font-name, bold-italic-font-name )</B>
+</PRE>
+Set all the fonts used for the current window.
+</P><P>
+<PRE>
+<B>set_highlight_syntax( [0 | 1] )</B>
+</PRE>
+Set syntax highlighting mode for the current window. 
+A value of 0 turns it off and a value of 1 turns it on. 
+If no parameters are supplied the option is toggled.
+</P><P>
+<PRE>
+<B>set_incremental_backup( [0 | 1] )</B>
+</PRE>
+Set incremental backup mode for the current window. 
+A value of 0 turns it off and a value of 1 turns it on. 
+If no parameters are supplied the option is toggled.
+</P><P>
+<PRE>
+<B>set_incremental_search_line( [0 | 1] )</B>
+</PRE>
+Show or hide the incremental search line for the current window. 
+A value of 0 turns it off and a value of 1 turns it on. 
+If no parameters are supplied the option is toggled.
+</P><P>
+<PRE>
+<B>set_language_mode( language-mode )</B>
+</PRE>
+Set the language mode for the current window. If the language mode is 
+"" or unrecognized, it will be set to Plain.
+</P><P>
+<PRE>
+<B>set_locked( [0 | 1] )</B>
+</PRE>
+This only affects the locked status of a file, not it's read-only 
+status. Permissions are NOT changed. 
+A value of 0 turns it off and a value of 1 turns it on. 
+If no parameters are supplied the option is toggled.
+</P><P>
+<PRE>
+<B>set_make_backup_copy( [0 | 1] )</B>
+</PRE>
+Set whether backup copies are made during saves for the current window. 
+A value of 0 turns it off and a value of 1 turns it on. 
+If no parameters are supplied the option is toggled.
+</P><P>
+<PRE>
+<B>set_overtype_mode( [0 | 1] )</B>
+</PRE>
+Set overtype mode for the current window. 
+A value of 0 turns it off and a value of 1 turns it on. 
+If no parameters are supplied the option is toggled.
+</P><P>
+<PRE>
+<B>set_show_line_numbers( [0 | 1] )</B>
+</PRE>
+Show or hide line numbers for the current window. 
+A value of 0 turns it off and a value of 1 turns it on. 
+If no parameters are supplied the option is toggled.
+</P><P>
+<PRE>
+<B>set_show_matching( "off" | "delimiter" | "range" )</B>
+</PRE>
+Set show matching (...) mode for the current window.
+</P><P>
+<PRE>
+<B>set_match_syntax_based( [0 | 1] )</B>
+</PRE>
+Set whether matching should be syntax based for the current window.
+</P><P>
+<PRE>
+<B>set_statistics_line( [0 | 1] )</B>
+</PRE>
+Show or hide the statistics line for the current window. 
+A value of 0 turns it off and a value of 1 turns it on. 
+If no parameters are supplied the option is toggled.
+</P><P>
+<PRE>
+<B>set_tab_dist( tab-distance )</B>
+</PRE>
+Set the size of hardware tab spacing. Tab-distance must 
+must be a value greater than 0 and no greater than 20.
+</P><P>
+<PRE>
+<B>set_use_tabs( [0 | 1] )</B>
+</PRE>
+Set whether tabs are used for the current window. 
+A value of 0 turns it off and a value of 1 turns it on. 
+If no parameters are supplied the option is toggled.
+</P><P>
+<PRE>
+<B>set_wrap_margin( wrap-width )</B>
+</PRE>
+Set the wrap width for text wrapping of the current window. A value
+of 0 means to wrap at window width.
+</P><P>
+<PRE>
+<B>set_wrap_text( "none" | "auto" | "continuous" )</B>
+</PRE>
+Set wrap text mode for the current window.
+</P><P>
+<H3>Keyboard-Only Actions</H3>
+</P><P>
+In addition to the arguments listed in the call descriptions below, any
+routine involving cursor movement can take the argument "extend", meaning,
+adjust the primary selection to the new cursor position. Routines which take
+the "extend" argument as well as mouse dragging operations for both primary
+and secondary selections can take the optional keyword "rect", meaning, make
+the selection rectangular. Any routine that accepts the "scrollbar" argument
+will move the display but not the cursor or selection. Routines that accept
+the "nobell" argument will fail silently without beeping, when that argument
+is supplied.
+</P><P>
+<PRE>
+<B>backward_character( ["nobell"] )</B>
+</PRE>
+Moves the cursor one character to the left.
+</P><P>
+<PRE>
+<B>backward_paragraph(["nobell"] )</B>
+</PRE>
+Moves the cursor to the beginning of the paragraph, or
+if the cursor is already at the beginning of a paragraph, moves the cursor to
+the beginning of the previous paragraph.  Paragraphs are defined as regions
+of text delimited by one or more blank lines.
+</P><P>
+<PRE>
+<B>backward_word( ["nobell"] )</B>
+</PRE>
+Moves the cursor to the beginning of a word, or, if the
+cursor is already at the beginning of a word, moves the cursor to the
+beginning of the previous word.  Word delimiters are user-settable, and
+defined by the X resource wordDelimiters.
+</P><P>
+<PRE>
+<B>beginning_of_file( ["scrollbar"] )</B>
+</PRE>
+Moves the cursor to the beginning of the file.
+</P><P>
+<PRE>
+<B>beginning_of_line( ["absolute"] )</B> 
+</PRE>
+Moves the cursor to the beginning of the line. If
+"absolute" is given, always moves to the absolute beginning of line,
+regardless of the text wrapping mode.
+</P><P>
+<PRE>
+<B>beginning_of_selection()</B>
+</PRE>
+Moves the cursor to the beginning of the selection
+without disturbing the selection.
+</P><P>
+<PRE>
+<B>copy_clipboard()</B>
+</PRE>
+Copies the current selection to the clipboard.
+</P><P>
+<PRE>
+<B>copy_primary()</B>
+</PRE>
+Copies the primary selection to the cursor.
+</P><P>
+<PRE>
+<B>copy_to()</B>
+</PRE>
+If a secondary selection exists, copies the secondary selection to
+the cursor.  If no secondary selection exists, copies the primary selection
+to the pointer location.
+</P><P>
+<PRE>
+<B>copy_to_or_end_drag()</B>
+</PRE>
+Completes either a secondary selection operation, or a
+primary drag.  If the user is dragging the mouse to adjust a secondary
+selection, the selection is copied and either inserted at the cursor
+location, or, if pending-delete is on and a primary selection exists in the
+window, replaces the primary selection.  If the user is dragging a block of
+text (primary selection), completes the drag operation and leaves the text at
+it's current location.
+</P><P>
+<PRE>
+<B>cut_clipboard()</B>
+</PRE>
+Deletes the text in the primary selection and places it in
+the clipboard.
+</P><P>
+<PRE>
+<B>cut_primary()</B>
+</PRE>
+Copies the primary selection to the cursor and deletes it at
+its original location.
+</P><P>
+<PRE>
+<B>delete_selection()</B>
+</PRE>
+Deletes the contents of the primary selection.
+</P><P>
+<PRE>
+<B>delete_next_character( ["nobell"] )</B>
+</PRE>
+If a primary selection exists, deletes its contents. 
+Otherwise, deletes the character following the cursor.
+</P><P>
+<PRE>
+<B>delete_previous_character( ["nobell"] )</B>
+</PRE>
+If a primary selection exists, deletes its
+contents.  Otherwise, deletes the character before the cursor.
+</P><P>
+<PRE>
+<B>delete_next_word( ["nobell"] )</B>
+</PRE>
+If a primary selection exists, deletes its contents. 
+Otherwise, deletes the word following the cursor.
+</P><P>
+<PRE>
+<B>delete_previous_word( ["nobell"] )</B>
+</PRE>
+If a primary selection exists, deletes its contents. 
+Otherwise, deletes the word before the cursor.
+</P><P>
+<PRE>
+<B>delete_to_start_of_line( ["nobell", "wrap"] )</B>
+</PRE>
+If a primary selection exists, deletes its contents.  Otherwise, deletes the
+characters between the cursor and the start of the line. If "wrap" is
+given, deletes to the previous wrap point or beginning of line, whichever 
+is closest.
+</P><P>
+<PRE>
+<B>delete_to_end_of_line( ["nobell", "absolute"] )</B>
+</PRE>
+If a primary selection exists, deletes its contents. 
+Otherwise, deletes the characters between the cursor and the end of the line.
+If "absolute" is given, always deletes to the absolute end of line, regardless
+of the text wrapping mode.
+</P><P>
+<PRE>
+<B>deselect_all()</B>
+</PRE>
+De-selects the primary selection.
+</P><P>
+<PRE>
+<B>end_of_file( ["scrollbar"] )</B>
+</PRE>
+Moves the cursor to the end of the file.
+</P><P>
+<PRE>
+<B>end_of_line( ["absolute"] )</B> 
+</PRE>
+Moves the cursor to the end of the line.  If
+"absolute" is given, always moves to the absolute end of line, regardless
+of the text wrapping mode.
+</P><P>
+<PRE>
+<B>end_of_selection()</B>
+</PRE>
+Moves the cursor to the end of the selection without
+disturbing the selection.
+</P><P>
+<PRE>
+<B>exchange( ["nobell"] )</B>
+</PRE>
+Exchange the primary and secondary selections.
+</P><P>
+<PRE>
+<B>extend_adjust()</B>
+</PRE>
+Attached mouse-movement events to begin a selection between
+the cursor and the mouse, or extend the primary selection to the mouse
+position.
+</P><P>
+<PRE>
+<B>extend_end()</B>
+</PRE>
+Completes a primary drag-selection operation.
+</P><P>
+<PRE>
+<B>extend_start()</B>
+</PRE>
+Begins a selection between the cursor and the mouse.  A
+drag-selection operation can be started with either extend_start or
+grab_focus.
+</P><P>
+<PRE>
+<B>focus_pane( [relative-pane] | [positive-index] | [negative-index] )</B>
+</PRE>
+Move the focus to the requested pane.
+Arguments can be specified in the form of a relative-pane 
+("first", "last", "next", "previous"), a positive-index 
+(numbers greater than 0, 1 is the same as "first") or a
+negative-index (numbers less than 0, -1 is the same as "last").
+</P><P>
+<PRE>
+<B>forward_character()</B>
+</PRE>
+Moves the cursor one character to the right.
+</P><P>
+<PRE>
+<B>forward_paragraph( ["nobell"] )</B>
+</PRE>
+Moves the cursor to the beginning of the next paragraph. 
+Paragraphs are defined as regions of text delimited by one or more blank
+lines.
+</P><P>
+<PRE>
+<B>forward_word( ["tail"] ["nobell"] )</B>
+</PRE>
+Moves the cursor to the beginning of the next word.  Word
+delimiters are user-settable, and defined by the X resource wordDelimiters.
+If the "tail" argument is supplied the cursor will be moved to 
+the end of the current word or the end of the next word, if the 
+cursor is between words.
+</P><P>
+<PRE>
+<B>grab_focus()</B>
+</PRE>
+Moves the cursor to the mouse pointer location, and prepares for
+a possible drag-selection operation (bound to extend_adjust), or multi-click
+operation (a further grab_focus action).  If a second invocation of grab
+focus follows immediately, it selects a whole word, or a third, a whole line.
+</P><P>
+<PRE>
+<B>insert_string( "string" )</B>
+</PRE>
+If pending delete is on and the cursor is inside the
+selection, replaces the selection with "string".  Otherwise, inserts "string"
+at the cursor location.
+</P><P>
+<PRE>
+<B>key_select( "direction" [,"nobell"] )</B>
+</PRE>
+Moves the cursor one character in "direction"
+("left", "right", "up", or "down") and extends the selection.  Same as
+forward/backward-character("extend"), or process-up/down("extend"), for
+compatibility with previous versions.
+</P><P>
+<PRE>
+<B>move-destination()</B>
+</PRE>
+Moves the cursor to the pointer location without
+disturbing the selection.  (This is an unusual way of working.  We left it in
+for compatibility with previous versions, but if you actually use this
+capability, please send us some mail, otherwise it is likely to disappear in
+the future.
+</P><P>
+<PRE>
+<B>move_to()</B>
+</PRE>
+If a secondary selection exists, deletes the contents of the
+secondary selection and inserts it at the cursor, or if pending-delete is on
+and there is a primary selection, replaces the primary selection.  If no
+secondary selection exists, moves the primary selection to the pointer
+location, deleting it from its original position.
+</P><P>
+<PRE>
+<B>move_to_or_end_drag()</B>
+</PRE>
+Completes either a secondary selection operation, or a
+primary drag.  If the user is dragging the mouse to adjust a secondary
+selection, the selection is deleted and either inserted at the cursor
+location, or, if pending-delete is on and a primary selection exists in the
+window, replaces the primary selection.  If the user is dragging a block of
+text (primary selection), completes the drag operation and deletes the text
+from it's current location.
+</P><P>
+<PRE>
+<B>newline()</B>
+</PRE>
+Inserts a newline character.  If Auto Indent is on, lines up the
+indentation of the cursor with the current line.
+</P><P>
+<PRE>
+<B>newline_and_indent()</B>
+</PRE>
+Inserts a newline character and lines up the indentation
+of the cursor with the current line, regardless of the setting of Auto
+Indent.
+</P><P>
+<PRE>
+<B>newline_no_indent()</B>
+</PRE>
+Inserts a newline character, without automatic
+indentation, regardless of the setting of Auto Indent.
+</P><P>
+<PRE>
+<B>next_page( ["stutter"] ["column"] ["scrollbar"] ["nobell"] )</B>
+</PRE>
+Moves the cursor and scroll forward one page.
+The parameter "stutter" moves the cursor to the bottom of the display,
+unless it is already there, otherwise it will page down.
+The parameter "column" will maintain the preferred column while
+moving the cursor.
+</P><P>
+<PRE>
+<B>page_left( ["scrollbar"] ["nobell"] )</B>
+</PRE>
+Move the cursor and scroll left one page.
+</P><P>
+<PRE>
+<B>page_right( ["scrollbar"] ["nobell"] )</B>
+</PRE>
+Move the cursor and scroll right one page.
+</P><P>
+<PRE>
+<B>paste_clipboard()</B>
+</PRE>
+Insert the contents of the clipboard at the cursor, or if
+pending delete is on, replace the primary selection with the contents of the
+clipboard.
+</P><P>
+<PRE>
+<B>previous_page( ["stutter"] ["column"] ["scrollbar"] ["nobell"] )</B>
+</PRE>
+Moves the cursor and scroll backward one page.
+The parameter "stutter" moves the cursor to the top of the display,
+unless it is already there, otherwise it will page up.
+The parameter "column" will maintain the preferred column while
+moving the cursor.
+</P><P>
+<PRE>
+<B>process_bdrag()</B>
+</PRE>
+Same as secondary_or_drag_start for compatibility with previous versions.
+</P><P>
+<PRE>
+<B>process_cancel()</B>
+</PRE>
+Cancels the current extend_adjust, secondary_adjust, or
+secondary_or_drag_adjust in progress.
+</P><P>
+<PRE>
+<B>process_down( ["nobell", "absolute"] )</B>
+</PRE>
+Moves the cursor down one line.  If "absolute" is given, always moves to the 
+next line in the text buffer, regardless of wrapping.
+</P><P>
+<PRE>
+<B>process_return()</B>
+</PRE>
+Same as newline for compatibility with previous versions.
+</P><P>
+<PRE>
+<B>process_shift_down( ["nobell", "absolute"] )</B>
+</PRE>
+Same as process_down("extend") for compatibility with previous versions.
+</P><P>
+<PRE>
+<B>process_shift_up( ["nobell", "absolute"] )</B>
+</PRE>
+Same as process_up("extend") for compatibility with previous versions.
+</P><P>
+<PRE>
+<B>process_tab()</B>
+</PRE>
+If tab emulation is turned on, inserts an emulated tab,
+otherwise inserts a tab character.
+</P><P>
+<PRE>
+<B>process_up( ["nobell", "absolute"] )</B>
+</PRE>
+Moves the cursor up one line.  If "absolute" is given, always moves to the 
+previous line in the text buffer, regardless of wrapping.
+</P><P>
+<PRE>
+<B>raise_window([relative-window] | [positive-index] | [negative-index])</B>
+</PRE>
+Raise the current focused window to the front if no argument is supplied.
+Arguments can be specified in the form of a relative-window 
+("first", "last", "next", "previous"), a positive-index 
+(numbers greater than 0, 1 is the same as "last") or a
+negative-index (numbers less than 0, -1 is the same as "first").
+</P><P>
+<PRE>
+<B>scroll_down( nUnits, ["lines" | "pages"] )</B>
+</PRE>
+Scroll the display down (towards the end of the file) by a given
+number of units, units being lines or pages. Default units are lines.
+</P><P>
+<PRE>
+<B>scroll_left( nPixels )</B>
+</PRE>
+Scroll the display left by nPixels.
+</P><P>
+<PRE>
+<B>scroll_right( nPixels )</B>
+</PRE>
+Scroll the display right by nPixels.
+</P><P>
+<PRE>
+<B>scroll_up( nUnits, ["lines" | "pages"] )</B>
+</PRE>
+Scroll the display up (towards the beginning of the file) by a given
+number of units, units being lines or pages. Default units are lines.
+</P><P>
+<PRE>
+<B>scroll_to_line( lineNum )</B>
+</PRE>
+Scroll to position line number lineNum at the top of
+the pane.  The first line of a file is line 1.
+</P><P>
+<PRE>
+<B>secondary_adjust()</B>
+</PRE>
+Attached mouse-movement events to extend the secondary
+selection to the mouse position.
+</P><P>
+<PRE>
+<B>secondary_or_drag_adjust()</B>
+</PRE>
+Attached mouse-movement events to extend the
+secondary selection, or reposition the primary text being dragged.  Takes two
+optional arguments, "copy", and "overlay".  "copy" leaves a copy of the
+dragged text at the site at which the drag began.  "overlay" does the drag in
+overlay mode, meaning the dragged text is laid on top of the existing text,
+obscuring and ultimately deleting it when the drag is complete.
+</P><P>
+<PRE>
+<B>secondary_or_drag_start()</B>
+</PRE>
+To be attached to a mouse down event.  Begins drag
+selecting a secondary selection, or dragging the contents of the primary
+selection, depending on whether the mouse is pressed inside of an existing
+primary selection.
+</P><P>
+<PRE>
+<B>secondary_start()</B>
+</PRE>
+To be attached to a mouse down event.  Begin drag selecting
+a secondary selection.
+</P><P>
+<PRE>
+<B>select_all()</B>
+</PRE>
+Select the entire file.
+</P><P>
+<PRE>
+<B>self_insert()</B>
+</PRE>
+To be attached to a key-press event, inserts the character
+equivalent of the key pressed.
+</P><P>
+<P><HR>
+</P><P>
+</P><P>
+</P>
+</BODY>
+</HTML>

@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+<TITLE> Getting Started </TITLE>
+</HEAD>
+<BODY>
+<A NAME="Getting_Started"></A>
+<H2> Getting Started </H2>
+<P>
+Welcome to NEdit!
+</P><P>
+NEdit is a standard GUI (Graphical User Interface) style text editor for
+programs and plain-text files.  Users of Macintosh and MS Windows based text
+editors should find NEdit a familiar and comfortable environment.  NEdit
+provides all of the standard menu, dialog, editing, and mouse support, as
+well as all of the standard shortcuts to which the users of modern GUI based
+environments are accustomed.  For users of older style Unix editors, welcome
+to the world of mouse-based editing!
+</P><P>
+Help sections of interest to new users are listed under the "Basic Operation"
+heading in the top-level Help menu:
+</P><P>
+<PRE>
+      <A HREF="select.html#Selecting_Text">Selecting Text</A>
+      <A HREF="search.html#Finding_and_Replacing_Text">Finding and Replacing Text</A>
+      <A HREF="clipboard.html#Cut_and_Paste">Cut and Paste</A>
+      <A HREF="mouse.html#Using_the_Mouse">Using the Mouse</A>
+      <A HREF="keyboard.html#Keyboard_Shortcuts">Keyboard Shortcuts</A>
+      <A HREF="fill.html#Shifting_and_Filling">Shifting and Filling</A>
+</PRE>
+</P><P>
+Programmers should also read the introductory section under the "Features for
+Programming" section:
+</P><P>
+<PRE>
+      <A HREF="programmer.html#Programming_with_NEdit">Programming with NEdit</A>
+</PRE>
+</P><P>
+If you get into trouble, the Undo command in the Edit menu can reverse any
+modifications that you make.  NEdit does not change the file you are editing
+until you tell it to Save.
+</P><P>
+<H3>Editing an Existing File</H3>
+</P><P>
+To open an existing file, choose Open... from the file menu. Select the file
+that you want to open in the pop-up dialog that appears and click on OK.  You
+may open any number of files at the same time.  Depending on your settings
+(cf. "<A HREF="interface.html#Tabbed_Editing">Tabbed Editing</A>") each file can appear in its own editor window, or it
+can appear under a tab in the same editor window.  Using Open... rather than
+re-typing the NEdit command and running additional copies of NEdit, will give
+you quick access to all of the files you have open via the Windows menu, and
+ensure that you don't accidentally open the same file twice.  NEdit has no
+"main" window.  It remains running as long as at least one editor window is
+open.
+</P><P>
+<H3>Creating a New File</H3>
+</P><P>
+If you already have an empty (Untitled) window displayed, just begin typing
+in the window.  To create a new Untitled window, choose New Window or New Tab
+from the File menu.   To give the file a name and save its contents to the
+disk, choose Save or Save As... from the File menu.
+</P><P>
+<H3>Backup Files</H3>
+</P><P>
+NEdit maintains periodic backups of the file you are editing so that you can
+recover the file in the event of a problem such as a system crash, network
+failure, or X server crash.  These files are saved under the name `~filename`
+(on Unix) or `_filename` (on VMS), where filename is the name of the file you
+were editing.  If an NEdit process is killed, some of these backup files may
+remain in your directory.  (To remove one of these files on Unix, you may
+have to prefix the `~' (tilde) character with a (backslash) to prevent the
+shell from interpreting it as a special character.)
+</P><P>
+<H3>Shortcuts</H3>
+</P><P>
+As you become more familiar with NEdit, substitute the control and function
+keys shown on the right side of the menus for pulling down menus with the
+mouse.
+</P><P>
+Dialogs are also streamlined so you can enter information quickly and without
+using the mouse*.  To move the keyboard focus around a dialog, use the tab
+and arrow keys.  One of the buttons in a dialog is usually drawn with a
+thick, indented, outline.  This button can be activated by pressing Return or
+Enter.  The Cancel or Dismiss button can be activated by pressing escape. 
+For example, to replace the string "thing" with "things" type:
+</P><P>
+<PRE>
+      &#60;ctrl-r&#62;thing&#60;tab&#62;things&#60;return&#62;
+</PRE>
+</P><P>
+To open a file named "whole_earth.c", type:
+</P><P>
+<PRE>
+      &#60;ctrl-o&#62;who&#60;return&#62;
+</PRE>
+</P><P>
+(how much of the filename you need to type depends on the other files in the
+directory).  See the section called "<A HREF="keyboard.html#Keyboard_Shortcuts">Keyboard Shortcuts</A>" for more details.
+</P><P>
+* Users who have set their keyboard focus mode to "pointer" should set
+"Popups Under Pointer" in the Default Settings menu to avoid the additional
+step of moving the mouse into the dialog.
+<P><HR>
+</P><P>
+</P><P>
+</P>
+</BODY>
+</HTML>

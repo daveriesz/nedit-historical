@@ -1,0 +1,484 @@
+<HTML>
+<HEAD>
+<TITLE> Customizing </TITLE>
+</HEAD>
+<BODY>
+<A NAME="X_Resources"></A>
+<H2> X Resources </H2>
+<P>
+NEdit has additional options to those provided in the Preferences menu which
+are set using X resources.  Like most other X programs, NEdit can be
+customized to vastly unnecessary proportions, from initial window positions
+down to the font and shadow colors of each individual button (A complete
+discussion of how to do this is left to books on the X Window System).  Key
+binding (see "<A HREF="binding.html#Key_Binding">Key Binding</A>" is one of the most useful of these resource
+settable options.
+</P><P>
+X resources are usually specified in a file called .Xdefaults or .Xresources
+in your home directory (on VMS this is sys$login:decw$xdefaults.dat).  On
+some systems, this file is read and its information attached to the X server
+(your screen) when you start X.  On other systems, the .Xdefaults file is
+read each time you run an X program.  When X resource values are attached to
+the X server, changes to the resource file are not available to application
+programs until you either run the xrdb program with the appropriate file as
+input, or re-start the X server.
+</P><P>
+<H3>Selected X Resource Names</H3>
+</P><P>
+The following are selected NEdit resource names and default values for NEdit
+options not settable via the Preferences menu (for preference resource names,
+see your NEdit preference file):
+</P><P>
+<PRE>
+<B>nedit.tagFile</B>: (not defined) 
+</PRE>
+</P><P>
+This can be the name of a file, or multiple files separated by a colon (:)
+character, of the type produced by Exuberant Ctags or the Unix ctags
+command, which NEdit will load at startup time (see <A HREF="#ctags">ctag support</A> ). The tag
+file provides a database from which NEdit can automatically open files
+containing the definition of a particular subroutine or data type.
+</P><P>
+<PRE>
+<B>nedit.alwaysCheckRelativeTagsSpecs: True</B>
+</PRE>
+</P><P>
+When this resource is set to True, and there are tag files specified (with
+the nedit.tagFile resource, see above) as relative paths, NEdit will evaluate
+these tag value paths whenever a file is opened. All accessible tag files
+will be loaded at this time. When this resource value is False, relative path
+tag specifications will only be evaluated at NEdit startup time.
+</P><P>
+<PRE>
+<B>nedit.shell</B>: /bin/csh 
+</PRE>
+</P><P>
+(Unix systems only) The Unix shell (command interpreter) to use for executing
+commands from the Shell menu
+</P><P>
+<PRE>
+<B>nedit.wordDelimiters</B>: .,/\\`'!@#%^&#38;*()-=+{}[]":;&#60;&#62;?
+</PRE>
+</P><P>
+The characters, in addition to blanks and tabs, which mark the boundaries
+between words for the move-by-word (Ctrl+Arrow) and select-word (double
+click) commands.  Note that this default value may be overridden by the
+setting in Preferences -&#62; Default Settings -&#62; Language Modes....
+</P><P>
+<PRE>
+<B>nedit.remapDeleteKey</B>: False
+</PRE>
+</P><P>
+Setting this resource to True forcibly maps the delete key to backspace. This
+can be helpful on systems where the bindings have become tangled, and in
+environments which mix systems with PC style keyboards and systems with DEC
+and Macintosh keyboards.  Theoretically, these bindings should be made using
+the standard X/Motif mechanisms, outside of NEdit.  In practice, some
+environments where users access several different systems remotely, can be
+very hard to configure. If you've given up and are using a backspace key
+halfway off the keyboard because you can't figure out the bindings, set this
+to True.
+</P><P>
+<PRE>
+<B>nedit.typingHidesPointer</B>: False
+</PRE>
+</P><P>
+Setting this resource to True causes the mouse pointer to be hidden when you
+type in the text area. As soon as the mouse pointer is moved, it will 
+reappear.  This is useful to stop the mouse pointer from obscuring text.
+</P><P>
+<PRE>
+<B>nedit.overrideDefaultVirtualKeyBindings</B>: Auto
+</PRE>
+</P><P>
+Motif uses a virtual key binding mechanism that shares the bindings between
+different Motif applications. When a first Motif application is started, it
+installs some default virtual key bindings and any other Motif application 
+that runs afterwards, simply reuses them. Obviously, if the first
+application installs an invalid set, all others applications may have 
+problems.
+</P><P>
+In the past, NEdit has been the victim of invalid bindings installed by other 
+applications several times. Through this resource, NEdit can be instructed
+to ignore the bindings installed by other applications, and use its own
+private bindings. By default, NEdit tries to detect invalid bindings
+and ignore them automatically (Auto). Optionally, NEdit can be told to
+always keep the installed bindings (Never), or to always override them
+(Always).
+</P><P>
+<PRE>
+<B>nedit.stdOpenDialog</B>: False
+</PRE>
+</P><P>
+Setting this resource to True restores the standard Motif style of Open
+dialog.  NEdit file open dialogs are missing a text field at the bottom of
+the dialog, where the file name can be entered as a string.  The field is
+removed in NEdit to encourage users to type file names in the list, a
+non-standard, but much faster method for finding files.
+</P><P>
+<PRE>
+<B>nedit.bgMenuButton</B>: ~Shift~Ctrl~Meta~Alt&#60;Btn3Down&#62;
+</PRE>
+</P><P>
+Specification for mouse button / key combination to post the background menu
+(in the form of an X translation table event specification).  The event
+specification should be as specific as possible, since it will override less
+specific translation table entries.
+</P><P>
+<PRE>
+<B>nedit.maxPrevOpenFiles</B>: 30
+</PRE>
+</P><P>
+Number of files listed in the Open Previous sub-menu of the File menu.
+Setting this to zero disables the Open Previous menu item and maintenance of
+the NEdit file history file.
+</P><P>
+<PRE>
+<B>nedit.printCommand</B>: (system specific)
+</PRE>
+</P><P>
+Command used by the print dialog to print a file, such as, lp, lpr, etc..
+The command must be capable of accepting input via stdin (standard input).
+</P><P>
+<PRE>
+<B>nedit.printCopiesOption</B>: (system specific)
+</PRE>
+</P><P>
+Option name used to specify multiple copies to the print command.  If the
+option should be separated from its argument by a space, leave a trailing
+space. If blank, no "Number of Copies" item will appear in the print dialog.
+</P><P>
+<PRE>
+<B>nedit.printQueueOption</B>: (system specific)
+</PRE>
+</P><P>
+Option name used to specify a print queue to the print command.  If the
+option should be separated from its argument by a space, leave a trailing
+space. If blank, no "Queue" item will appear in the print dialog.
+</P><P>
+<PRE>
+<B>nedit.printNameOption</B>: (system specific)
+</PRE>
+</P><P>
+Option name used to specify a job name to the print command.  If the option
+should be separated from its argument by a space, leave a trailing space. If
+blank, no job or file name will be attached to the print job or banner page.
+</P><P>
+<PRE>
+<B>nedit.printHostOption</B>: (system specific)
+</PRE>
+</P><P>
+Option name used to specify a host name to the print command.  If the option
+should be separated from its argument by a space, leave a trailing space. If
+blank, no "Host" item will appear in the print dialog.
+</P><P>
+<PRE>
+<B>nedit.printDefaultQueue</B>: (system specific)
+</PRE>
+</P><P>
+The name of the default print queue.  Used only to display in the print
+dialog, and has no effect on printing.
+</P><P>
+<PRE>
+<B>nedit.printDefaultHost</B>: (system specific)
+</PRE>
+</P><P>
+The node name of the default print host.  Used only to display in the print
+dialog, and has no effect on printing.
+</P><P>
+<PRE>
+<B>nedit.visualID</B>: Best
+</PRE>
+</P><P>
+If your screen supports multiple visuals (color mapping models), this
+resource allows you to manually choose among them.  The default value of
+"Best" chooses the deepest (most colors) visual available. Since NEdit does
+not depend on the specific characteristics of any given color model, Best
+probably IS the best choice for everyone, and the only reason for setting
+this resource would be to patch around some kind of X server problem. The
+resource may also be set to "Default", which chooses the screen's default
+visual (often a color-mapped, PseudoColor, visual for compatibility with
+older X applications).  It may also be set to a numeric visual-id value (use
+xdpyinfo to see the list of visuals supported by your display), or a visual
+class name: PseudoColor, DirectColor, TrueColor, etc..
+</P><P>
+If you are running under a themed environment (like KDE or CDE) that places
+its colors in a shallow visual, and you'd rather have that color scheme
+instead of more colors available, then you may need set the visual to
+"Default" so that NEdit doesn't choose one with more colors.  (The reason
+for this is: if the "best" visual is not the server's default, then NEdit
+cannot use the colors provided by your environment.  NEdit will fall back to
+its own default color scheme.)
+</P><P>
+<PRE>
+<B>nedit.installColormap</B>: False
+</PRE>
+</P><P>
+Force the installation of a private colormap.  If you have a humble 8-bit
+color display, and netscape is hogging all of the color cells, you may want
+to try turning this on.  On most systems, this will result in colors flashing
+wildly when you switch between NEdit and other applications.  But a few
+systems (SGI) have hardware support for multiple simultaneous colormaps, and
+applications with installed colormaps are well behaved.
+</P><P>
+<PRE>
+<B>nedit.findReplaceUsesSelection</B>: False
+</PRE>
+</P><P>
+Controls if the Find and Replace dialogs are automatically loaded with the
+contents of the primary selection.
+</P><P>
+<PRE>
+<B>nedit.stickyCaseSenseButton</B>: True
+</PRE>
+</P><P>
+Controls if the "Case Sensitive" buttons in the Find and Replace dialogs and
+the incremental search bar maintain a separate state for literal and regular
+expression searches. Moreover, when set to True, by default literal searches
+are case insensitive and regular expression searches are case sensitive. When
+set to False, the "Case Sensitive" buttons are independent of the "Regular
+Expression" toggle.
+</P><P>
+<PRE>
+<B>nedit.multiClickTime</B>: (system specific)
+</PRE>
+</P><P>
+Maximum time in milliseconds allowed between mouse clicks within double and
+triple click actions.
+</P><P>
+<PRE>
+<B>nedit.undoModifiesSelection</B>: True
+</PRE>
+</P><P>
+By default, NEdit selects any text inserted or changed through a undo/redo
+action.  Set this resource to False if you don't want your selection to be
+touched.
+</P><P>
+<PRE>
+<B>nedit*scrollBarPlacement</B>: BOTTOM_RIGHT
+</PRE>
+</P><P>
+How scroll bars are placed in NEdit windows, as well as various lists and
+text fields in the program. Other choices are: BOTTOM_LEFT, TOP_LEFT, or
+TOP_RIGHT.
+</P><P>
+<PRE>
+<B>nedit*text.autoWrapPastedText</B>: False
+</PRE>
+</P><P>
+When Auto Newline Wrap is turned on, apply automatic wrapping (which
+normally only applies to typed text) to pasted text as well.
+</P><P>
+<PRE>
+<B>nedit*text.heavyCursor</B>: False
+</PRE>
+</P><P>
+For monitors with poor resolution or users who have difficulty seeing the
+cursor, makes the cursor in the text editing area of the window heavier and
+darker.
+</P><P>
+<PRE>
+<B>nedit.autoScrollVPadding</B>: 4
+</PRE>
+</P><P>
+Number of lines to keep the cursor away from the top or bottom line of the 
+window when the "Auto-Scroll Near Window Top/Bottom" feature is enabled.
+Keyboard operations that would cause the cursor to get closer than
+this distance cause the window to scroll up or down instead, except at the 
+beginning of the file.  Mouse operations are not affected.
+</P><P>
+<PRE>
+<B>nedit*text.blinkRate</B>: 500
+</PRE>
+</P><P>
+Blink rate of the text insertion cursor in milliseconds.  Set to zero to stop
+blinking.
+</P><P>
+<PRE>
+<B>nedit*text.Translations</B>:
+</PRE>
+</P><P>
+Modifies key bindings (see "<A HREF="binding.html#Key_Binding">Key Binding</A>").
+</P><P>
+<PRE>
+<B>nedit*foreground</B>: black
+</PRE>
+</P><P>
+Default foreground color for menus, dialogs, scroll bars, etc..
+</P><P>
+<PRE>
+<B>nedit*background</B>: #b3b3b3
+</PRE>
+</P><P>
+Default background color for menus, dialogs, scroll bars, etc..
+</P><P>
+<PRE>
+<B>nedit*calltipForeground</B>: black
+</PRE>
+</P><P>
+Foreground color for calltips
+</P><P>
+<PRE>
+<B>nedit*calltipBackground</B>: LemonChiffon1
+</PRE>
+</P><P>
+Background color for calltips
+</P><P>
+<PRE>
+<B>nedit*XmLFolder.inactiveForeground</B>: #666
+</PRE>
+</P><P>
+Foreground color for inactive tabs.
+</P><P>
+<PRE>
+<B>nedit*fontList</B>: helvetica medium 12 points
+</PRE>
+</P><P>
+Default font for menus, dialogs, scroll bars, etc..
+</P><P>
+<PRE>
+<B>nedit.helpFont</B>: helvetica medium 12 points
+</PRE>
+</P><P>
+Font used for displaying online help.
+</P><P>
+<PRE>
+<B>nedit.boldHelpFont</B>: helvetica bold 12 points
+</PRE>
+</P><P>
+Bold font for online help.
+</P><P>
+<PRE>
+<B>nedit.italicHelpFont</B>: helvetica italic 12 points
+</PRE>
+</P><P>
+Italic font for online help.
+</P><P>
+<PRE>
+<B>nedit.fixedHelpFont</B>: courier medium 12 points
+</PRE>
+</P><P>
+Fixed font for online help.
+</P><P>
+<PRE>
+<B>nedit.boldFixedHelpFont</B>: courier bold 12 points
+</PRE>
+</P><P>
+Fixed bold for online help.
+</P><P>
+<PRE>
+<B>nedit.italicFixedHelpFont</B>: courier italic 12 points
+</PRE>
+</P><P>
+Fixed italic font for online help.
+</P><P>
+<PRE>
+<B>nedit.h1HelpFont</B>: helvetica bold 14 points
+</PRE>
+</P><P>
+Font for level-1 titles in help text.
+</P><P>
+<PRE>
+<B>nedit.h2HelpFont</B>: helvetica bold italic 12 points
+</PRE>
+</P><P>
+Font for level-2 titles in help text.
+</P><P>
+<PRE>
+<B>nedit.h3HelpFont</B>: courier bold 12 points
+</PRE>
+</P><P>
+Font for level-3 titles in help text.
+</P><P>
+<PRE>
+<B>nedit.helpLinkFont</B>: helvetica medium 12 points
+</PRE>
+</P><P>
+Font for hyperlinks in the help text
+</P><P>
+<PRE>
+<B>nedit.helpLinkColor</B>: #009900
+</PRE>
+</P><P>
+Color for hyperlinks in the help text
+</P><P>
+<PRE>
+<B>nedit.backlightCharTypes</B>:  0-8,10-31,127:red;9:#dedede;32,160-255:#f0f0f0;128-159:orange
+</PRE>
+</P><P>
+<B>NOTE: backlighting is <I>experimental</I></B> (see "<A HREF="programmer.html#Programming_with_NEdit">Programming with NEdit</A>").
+</P><P>
+A string specifying character classes as ranges of ASCII values followed by
+the color to be used as their background colors.  The format is:
+</P><P>
+low[-high]{,low[-high]}:color{;low-high{,low[-high]}:color}
+</P><P>
+where low and high are ASCII values.
+</P><P>
+For example:
+<PRE>
+    32-255:#f0f0f0;1-31,127:red;128-159:orange;9-13:#e5e5e5
+</PRE>
+</P><P>
+<PRE>
+<B>nc.autoStart</B>: True 
+</PRE>
+</P><P>
+Whether the nc program should automatically start an NEdit server (without
+prompting the user) if an appropriate server is not found.
+</P><P>
+<PRE>
+<B>nc.serverCommand</B>: nedit -server
+</PRE>
+</P><P>
+Command used by the nc program to start an NEdit server.
+</P><P>
+<PRE>
+<B>nc.timeOut</B>: 10
+</PRE>
+</P><P>
+Basic time-out period used in communication with an NEdit server (seconds).
+</P><P>
+<P><HR>
+<I>The following are Selected widget names (to which you may append</I>
+<I>.background, .foreground, .fontList, etc., to change colors, fonts</I>
+<I> and other characteristics):</I>
+</P><P>
+<PRE>
+<B>nedit*statsAreaForm</B>
+</PRE>
+</P><P>
+Statistics line and incremental search bar.  To get consistent results across
+the entire stats line and the incremental search bar, use '*' rather than '.'
+to separate the resource name.  For example, to set the foreground color of
+both components use:  
+<PRE>
+    nedit*statsAreaForm*foreground
+</PRE>
+instead of:
+<PRE>
+    nedit*statsAreaForm.foreground
+</PRE>
+</P><P>
+<PRE>
+<B>nedit*menuBar</B>
+</PRE>
+</P><P>
+Top-of-window menu-bar.
+</P><P>
+<PRE>
+<B>nedit*textHorScrollBar</B>
+</PRE>
+</P><P>
+Horizontal scroll bar.
+</P><P>
+<PRE>
+<B>nedit*textVertScrollBar</B>
+</PRE>
+</P><P>
+Vertical scroll bar.
+<P><HR>
+</P><P>
+</P>
+</BODY>
+</HTML>

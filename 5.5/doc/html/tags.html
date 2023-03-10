@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+<TITLE> Features for Programming </TITLE>
+</HEAD>
+<BODY>
+<A NAME="Finding_Declarations_(ctags)"></A>
+<H2> Finding Declarations (ctags) </H2>
+<P>
+<A NAME="ctags"></A>
+NEdit can process tags files generated using the Unix ctags command or the
+Exuberant Ctags program.  Ctags creates index files correlating names of
+functions and declarations with their locations in C, Fortran, or Pascal source
+code files. (See the ctags manual page for more information).  Ctags produces a
+file called "tags" which can be loaded by NEdit.  NEdit can manage any number
+of tags files simultaneously.  Tag collisions are handled with a popup menu to
+let the user decide which tag to use.  In 'Smart' mode NEdit will automatically
+choose the desired tag based on the scope of the file or module. Once loaded,
+the information in the tags file enables NEdit to go directly to the
+declaration of a highlighted function or data structure name with a single
+command.  To load a tags file, select "Load Tags File" from the File menu and
+choose a tags file to load, or specify the name of the tags file on the NEdit
+command line:
+</P><P>
+<PRE>
+      nedit -tags tags
+</PRE>
+</P><P>
+NEdit can also be set to load a tags file automatically when it starts up. 
+Setting the X resource nedit.tagFile to the name of a tag file tells NEdit to
+look for that file at startup time (see "<A HREF="customize.html#Customizing_NEdit">Customizing NEdit</A>").  The file name
+can be either a complete path name, in which case NEdit will always load the
+same tags file, or a file name without a path or with a relative path, in
+which case NEdit will load it starting from the current directory.  The
+second option allows you to have different tags files for different projects,
+each automatically loaded depending on the directory you're in when you start
+NEdit.  Setting the name to "tags" is an obvious choice since this is the
+name that ctags uses. NEdit normally evaluates relative path tag file
+specifications every time a file is opened. All accessible tag files are
+loaded at this time. To disable the automatic loading of tag files specified
+as relative paths, set the X resource nedit.alwaysCheckRelativeTagsSpecs to
+False.
+</P><P>
+To unload a tags file, select "Un-load Tags File" from the File menu and
+choose from the list of tags files.  NEdit will keep track of tags file updates
+by checking the timestamp on the files, and automatically update the tags
+cache. 
+</P><P>
+To find the definition of a function or data structure once a tags file is
+loaded, select the name anywhere it appears in your program (see 
+"<A HREF="select.html#Selecting_Text">Selecting Text</A>") and choose "Find Definition" from the Search menu.
+<P><HR>
+</P><P>
+</P>
+</BODY>
+</HTML>

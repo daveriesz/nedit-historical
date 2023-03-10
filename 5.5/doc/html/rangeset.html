@@ -1,0 +1,225 @@
+<HTML>
+<HEAD>
+<TITLE> Macro/Shell Extensions </TITLE>
+</HEAD>
+<BODY>
+<A NAME="Range_Sets"></A>
+<H2> Range Sets </H2>
+<P>
+A rangeset is a set of ranges. A range is a contiguous range of characters
+defined by its start and end position in the document.  The user can
+create rangesets, identified by arbitrary integers (chosen by the editor when
+the rangesets are created), and each range within a rangeset is identified by
+a numeric index, counting from 1, in the order of appearance in the text
+buffer.  The ranges are adjusted when modifications are made to the text 
+buffer: they shuffle around when characters are added or deleted.  However,
+ranges within a set will coalesce if the characters between them are removed,
+or a new range is added to the set which bridges or overlaps others.
+</P><P>
+Using rangesets allows non-contiguous bits of the text to be identified as a
+group.
+</P><P>
+Rangesets can be assigned a background color: characters within a range of a
+rangeset will have the background color of the rangeset. If more than one
+rangeset includes a given character, its background color will be that of the
+most recently created rangeset which has a color defined.
+</P><P>
+Rangesets must be created using the rangeset_create() function, which 
+will return an identifier for the newly-created rangeset.  This identifier
+is then passed to the other rangeset functions to manipulate the rangeset.
+</P><P>
+There is a limit to the number of rangesets which can exist at any time -
+currently up to 63 in each document.  Care should be taken to destroy
+any rangesets which are no longer needed, by using the rangeset_destroy()
+function, if this limit is attained.
+</P><P>
+Rangesets can be named: this is useful for macros which need a fixed
+identification for rangesets which are used for the same purpose in
+different documents.  Although a new rangeset's number is arbitrary, its
+name can be fixed.  This is done using the rangeset_set_name() function. 
+Note that rangeset names within a particular document may not be unique.
+For this reason, the rangeset_get_by_name() function returns an array of
+identifiers, which will be empty if the name has not been associated with
+a rangeset.
+</P><P>
+<H4>How rangesets change with modifications</H4>
+</P><P>
+When changes are made to the document text, ranges within each set are altered
+with it, according to their behavioral mode.  If changes are made outside of
+the ranges in a rangeset, each range simply maintains its size and adjusts its
+position to match the changes.  When text within a range is deleted, the
+range's length is reduced by the same amount. When changes involving new text
+are made within a range of the set, or to one of the extremities of a range,
+different behaviours may be desirable. The rangeset_set_mode() function allows
+these modes to be chosen.
+</P><P>
+Note that the precise behaviour of these modes may change in future versions
+of NEdit.
+</P><P>
+The available modes are:
+</P><P>
+<B>maintain</B> or <B>ins_del</B> -
+Both these modes have the same behaviour.  New text added at the front of a
+range in a set is not added to the range; new text added within the range or
+at the end extends the range.  Replacement overlapping an extremity of the
+set acts as if the new text were added first, then the old text deleted. 
+This causes curtailment at the front of the range, extension at the end. 
+Replacement of the full text of the range removes the range from the set.
+The default behaviour for a newly created rangeset is <B>maintain</B>.
+</P><P>
+<B>del_ins</B> -
+New text added at the front or end of a range in a set is not added to the
+range; new text added within the range extends the range.  Replacement
+overlapping an extremity of the set acts as if the old text were deleted
+first, then the new text added. This causes curtailment at either end.
+Replacement of the full text of the range removes the range from the set.
+</P><P>
+<B>include</B> -
+New text added at the front or end of a range in a set extends the range, as
+does new text added within the range.  Replacement overlapping an extremity
+of the set acts as if the new text were added first, then the old text
+deleted.  This causes curtailment at the front of the range, extension at
+the end.  Replacement of the full text of the range adds the new text to the
+range if the start position of the replacement is at the range's start
+point.
+</P><P>
+<B>exclude</B> -
+New text added at the front or end of a range in a set does not extend the
+range; new text added within the range extends the range.  Replacement
+overlapping an extremity causes curtailment of the range.  Replacement of
+the full text of the range removes the range from the set.
+</P><P>
+<B>break</B> -
+New text added at the front or end of a range in a set does not extend the
+range; new text added within the range will split the range.  Replacement
+overlapping an extremity causes curtailment of the range.  Replacement of
+the full text of the range removes the range from the set.
+</P><P>
+<H4>Notes</H4>
+</P><P>
+A rangeset is manipulated <I>only</I> through macro routines. Rangesets
+can easily become very large, and may exceed the capacity of the running
+process.  Coloring relies on proper color names or specifications (such as
+the "#rrggbb" hexadecimal digit strings), and appropriate hardware support. If
+an invalid color name is given, the default background color is used instead. 
+Behaviours set using rangeset_set_mode() are subject to change in future
+versions.
+</P><P>
+<H3>Rangeset read-only variables</H3>
+</P><P>
+<PRE>
+<B>$rangeset_list</B>
+</PRE>
+array of active rangeset identifiers, with integer keys starting at 0,
+in the order the rangesets were defined.
+</P><P>
+<H3>Rangeset functions</H3>
+</P><P>
+<PRE>
+<B>rangeset_create()</B>
+<B>rangeset_create( n )</B>
+</PRE>
+Creates one or more new rangesets. The first form creates a single range
+set and returns its identifier; if there are no rangesets available it 
+returns 0. The second form creates n new rangesets, and returns an array 
+of the rangeset identifiers with keys beginning at 0. If the requested 
+number of rangesets is not available it returns an empty array.
+</P><P>
+<PRE>
+<B>rangeset_destroy( r )</B>
+<B>rangeset_destroy( array )</B>
+</PRE>
+Deletes all information about a rangeset or a number of rangesets. The
+first form destroys the rangeset identified by r. The second form should 
+be passed an array of rangeset identifiers with keys beginning at 0 (i.e.
+the same form of array returned by rangeset_create(n); it destroys all the
+rangesets appearing in the array. If any of the rangesets do not exist,
+the function continues without errors. Does not return a value.
+</P><P>
+<PRE>
+<B>rangeset_add( r, [start, end] )</B>
+<B>rangeset_add( r, r0 )</B>
+</PRE>
+Adds to the rangeset r. The first form adds the range identified by the
+current primary selection to the rangeset, unless start and end are defined,
+in which case the range they define is added. Returns the index of the 
+newly-added range within the rangeset. The second form adds all ranges in 
+the rangeset r0 to the rangeset r, and returns 0.
+</P><P>
+<PRE>
+<B>rangeset_subtract( r, [start, end] )</B>
+<B>rangeset_subtract( r, r0 )</B>
+</PRE>
+Removes from the rangeset r. The first form removes the range identified by
+the current primary selection from the rangeset, unless start and end are
+defined, in which case the range they define is removed. The second form
+removes all ranges in the rangeset r0 from the rangeset r. Does not return
+a value.
+</P><P>
+<PRE>
+<B>rangeset_invert( r )</B>
+</PRE>
+Changes the rangeset r so that it contains all ranges not in r. Does not
+return a value.
+</P><P>
+<PRE>
+<B>rangeset_get_by_name( name )</B>
+</PRE>
+Returns an array of active rangeset identifiers, with integer keys starting at 0,
+whose name matches name.
+</P><P>
+<PRE>
+<B>rangeset_info( r )</B>
+</PRE>
+Returns an array containing information about the rangeset r. The array
+has the following keys: <B>defined</B> (whether a rangeset with identifier
+r is defined), <B>count</B> (the number of ranges in the rangeset), <B>color</B>
+(the current background color of the rangeset, an empty string if the
+rangeset has no color), <B>name</B> (the user supplied name of the rangeset,
+an empty string if the rangeset has no name), and <B>mode</B> (the name of the
+modify-response mode of the rangeset).
+</P><P>
+<PRE>
+<B>rangeset_range( r, [index] )</B>
+</PRE>
+Returns details of a specific range in the rangeset r.  The range is 
+specified by index, which should be between 1 and n (inclusive), where
+n is the number of ranges in the rangeset.  The return value is an array
+containing the keys <B>start</B> (the start position of the range) and <B>end</B>
+(the end position of the range).  If index is not supplied, the region
+returned is the span of the entire rangeset (the region starting at the 
+start of the first range and ending at the end of the last).  If index
+is outside the correct range of values, the function returns an empty array.
+</P><P>
+<PRE>
+<B>rangeset_includes( r, pos )</B>
+</PRE>
+Returns the index of the range in rangeset r which includes pos; returns
+0 if pos is not contained in any of the ranges of r.  This can also be used
+as a simple true/false function which returns true if pos is contained in
+the rangeset.
+</P><P>
+<PRE>
+<B>rangeset_set_color( r, color )</B>
+</PRE>
+Attempts to apply the color as a background color to the ranges of r. If
+color is at empty string, removes the coloring of r.  No check is made 
+regarding the validity of color: if the color is invalid (a bad name,
+or not supported by the hardware) this has unpredictable effects.
+</P><P>
+<PRE>
+<B>rangeset_set_name( r, name )</B>
+</PRE>
+Apply the name to the rangeset r.
+</P><P>
+<PRE>
+<B>rangeset_set_mode( r, type )</B>
+</PRE>
+Changes the behaviour of the rangeset r when modifications to the text
+buffer occur.  type can be one of the following: "maintain" (the default),
+"break", "include", "exclude", "ins_del" or "del_ins". (These modes are
+described above.)
+</P><P>
+</P>
+</BODY>
+</HTML>

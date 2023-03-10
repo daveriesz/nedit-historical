@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<TITLE> Macro/Shell Extensions </TITLE>
+</HEAD>
+<BODY>
+<A NAME="Highlighting_Information"></A>
+<H2> Highlighting Information </H2>
+<P>
+The user can interrogate the current window to determine the color
+highlighting used on a particular piece of text. The following functions
+provide information on the highlighting pattern against which text at a
+particular position has been matched, its style, color and font attributes
+(whether the font is supposed to be bold and/or italic).
+</P><P>
+These macro functions permit macro writers to generate formatted output which
+allows NEdit highlighting to be reproduced. This is suitable for the
+generation of HTML or Postscript output, for example.
+</P><P>
+Note that if any of the functions is used while in Plain mode or while syntax
+highlighting is off, the behaviour is undefined.
+</P><P>
+<PRE>
+<B>get_pattern_by_name( pattern_name )</B>
+</PRE>
+Returns an array containing the pattern attributes for pattern 'pattern_name'.
+The elements in this array are:
+</P><P>
+<UL>
+    <li><B>style</B> -- Highlight style name</li>
+</UL>
+</P><P>
+If 'pattern_name' is invalid, an empty array is returned.
+</P><P>
+<PRE>
+<B>get_pattern_at_pos( pos )</B>
+</PRE>
+Returns an array containing the pattern attributes of the character at
+position 'pos'. The elements in this array are:
+</P><P>
+<UL>
+    <li><B>pattern</B> -- Highlight pattern name</li>
+    <li><B>style</B> -- Highlight style name</li>
+    <li><B>extent</B> -- The length in the text which uses the same highlighting pattern</li>
+</UL>
+</P><P>
+The 'extent' value is measured from position 'pos' going right/down (forward
+in the file) only.
+</P><P>
+If 'pos' is invalid, an empty array is returned.
+</P><P>
+<PRE>
+<B>get_style_by_name( style_name )</B>
+</PRE>
+Returns an array containing the style attributes for style 'style_name'.
+The elements in this array are:
+</P><P>
+<UL>
+    <li><B>bold</B> -- '1' if style is bold, '0' otherwise</li>
+    <li><B>italic</B> -- '1' if style is italic, '0' otherwise</li>
+    <li><B>color</B> -- Name of the style's color</li>
+    <li><B>background</B> -- Name of the background color, if any</li>
+</UL>
+</P><P>
+The colors use the names specified in the color definitions for the style.
+These will either be names matching those the X server recognises, or RGB
+(red/green/blue) specifications.
+</P><P>
+If 'style_name' is invalid, an empty array is returned.
+</P><P>
+<PRE>
+<B>get_style_at_pos( pos )</B>
+</PRE>
+Returns an array containing the style attributes of the character at
+position 'pos'. The elements in this array are:
+</P><P>
+<UL>
+    <li><B>style</B> -- Name of the highlight style</li>
+    <li><B>bold</B> -- '1' if style is bold, '0' otherwise</li>
+    <li><B>italic</B> -- '1' if style is italic, '0' otherwise</li>
+    <li><B>color</B> -- Name of the style's color</li>
+    <li><B>rgb</B> -- Color's RGB values ('#rrggbb')</li>
+    <li><B>background</B> -- Name of the background color, if any</li>
+    <li><B>back_rgb</B> -- Background color's RGB values ('#rrggbb')</li>
+    <li><B>extent</B> -- The length in the text which uses the same highlight style</li>
+</UL>
+</P><P>
+The colors use the names specified in the color definitions for the style.
+These will either be names matching those the X server recognises, or RGB
+specifications. The values for 'rgb' and 'back_rgb' contain the actual color
+values allocated by the X server for the window. If the X server cannot
+allocate the specified (named) color exactly, the RGB values in these
+entries may not match the specified ones.
+</P><P>
+The 'extent' value is measured from position 'pos' going right/down (forward
+in the file) only.
+</P><P>
+If 'pos' is invalid, an empty array is returned.
+</P><P>
+<P><HR>
+</P><P>
+</P>
+</BODY>
+</HTML>
