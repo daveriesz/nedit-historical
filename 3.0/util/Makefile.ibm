@@ -1,0 +1,15 @@
+CC=cc
+AR=ar
+CFLAGS=-O -DIBM -DUSE_DIRENT -DIBM_PROTO_BUG -DIBM_DESTROY_BUG
+#
+# With Motif 1.2 use:
+#
+#	CFLAGS=-O -DIBM -DUSE_DIRENT -DMOTIF12
+#
+# PowerPC:
+#
+#	CFLAGS=-O -DIBM -DUSE_DIRENT -DMOTIF12 -U__STR__
+#
+LIBS= -lm -lXm -lXt -lX11 -lPW
+
+include Makefile.common

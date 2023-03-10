@@ -1,0 +1,8 @@
+CC=/opt/SUNWspro/bin/cc
+AR=ar
+CFLAGS=-O -I/usr/openwin/include -I/opt/SUNWmotif/include -DUSE_DIRENT \
+        -DMOTIF12
+LIBS= -L/usr/openwin/lib -L/opt/SUNWmotif/lib -lm -Bstatic -lXm \
+	-Bdynamic -lXt -lX11 -lgen -R /usr/openwin/lib
+
+include Makefile.common

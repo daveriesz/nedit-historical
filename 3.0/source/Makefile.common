@@ -1,0 +1,17 @@
+# SCCS ID: Makefile.common 1.9 8/10/93
+#
+# Platform independent part of make procedure for Nirvana NEdit directory, 
+# included by machine specific makefiles.
+#
+
+OBJS =	nedit.o file.o menu.o window.o clipboard.o search.o undo.o shift.o \
+	help.o preferences.o tags.o shell.o regularExp.o
+
+all: nedit
+
+nedit: $(OBJS) ../util/libNUtil.a
+	$(CC) $(CFLAGS) $(OBJS) ../util/libNUtil.a $(LIBS) -o $@
+
+help.o: help.c
+	$(CC) $(CFLAGS) $(BIGGER_STRINGS) -c help.c -o $@
+
