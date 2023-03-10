@@ -1,0 +1,107 @@
+                              NEdit Version 4.0.3
+
+NEdit is a GUI style plain text editor for workstations with X Windows and
+Motif.  It is widely considered to be among the best GUI based editors
+available for Unix systems.
+
+Pre-built executables are available for most major Unix and VMS systems, so
+check ftp.fnal.gov in the /pub/nedit directory, and the contributed software
+directory, /pub/nedit/v4_0/contrib, first.
+
+
+Building NEdit
+
+The two directories called source and util contain the sources for NEdit.  Util
+should be built first, followed by source.  The makefile in this directory can
+be used to build both in sequence if your system is one of the supported
+machines and no modifications are necessary to the makefiles.  To build NEdit
+from this directory, issue the command: "make <machine-type>_nedit"; where
+<machine-type> is one of the supported machine types: sgi, ultrix, sunos,
+solaris, hp, dec, or ibm.  For example, to build the Silicon Graphics version,
+type:
+
+	make sgi_nedit
+
+If everything works properly, this will produce an executable called nedit in
+the directory called source.
+
+
+The Source Directories
+
+Since executables are already available for the supported systems, you are
+probably not just rebuilding an existing configuration, and need to know more
+about how the directories are organized.
+
+The util directory builds a library file called libNUtil.a, which is later
+linked with the code in the source directory to create the nedit executable.
+
+The makefiles in both source directories consist of two parts, a machine
+dependent part and a machine independent part.  The machine dependent makefiles
+contain machine specific header information and invoke a common machine
+independent part called Makefile.common.  To compile the files in either of
+these directories, issue the command: "make -f Makefile.<machine-type>"; where
+<machine type> is one of the supported machine types.  For example, on a
+Silicon Graphics machine, you would type:
+
+	make -f Makefile.sgi
+
+To add a new machine type or configuration, copy one of the existing machine
+dependent makefiles and give it the name of the new system, for example:
+Makefile.sony.  Then, make any required changes in the new makefile.
+
+ 
+Building NEdit on VMS Systems
+
+Command files are provided for compiling and linking files in the source
+and util directories.  comutil.com compiles the files in the util directory
+and produces two library files, vmsutils.olb and libutil.olb.  comnedit.com
+compiles and links the files in the source directory to produce the nedit.exe
+executable.
+
+
+Installation
+
+NEdit consists of a single, stand-alone executable file which does not require
+any special installation.  To install NEdit on Unix systems, simply put the
+nedit executable in your path.  On VMS systems, nedit must be defined as a
+foreign command so that it can process command line arguments.  For example,
+if nedit.exe were in the directory mydir on the disk called mydev, adding the
+following line to your login.com file would define the nedit command:
+
+	$ ned*it :== $mydev:[mydir]nedit.exe
+
+To use NEdit in client/server mode, you also need the nedit client program, nc,
+which, again, needs no special installation, except in the VMS case, as above.
+
+
+Running NEdit
+
+If you are accessing a host Unix system from a remote workstation or X terminal,
+you need to set the Unix environment variable for your display:
+
+	% setenv DISPLAY devicename:0
+	
+where devicename is the network node name of the workstation or X terminal
+where you are typing.  On VMS systems, the equivalent command is:
+
+	$ set display/create/node=devicename
+
+To run NEdit, simply type "nedit", optionally followed by the name of a file or
+files to edit.  On-line help is available from the pulldown menu on the far
+right of the menu bar.  For more information on the syntax of the nedit command
+line, look under the heading of "NEdit Command Line."
+
+
+Problems, Questions, or Comments:
+
+If you have problems, questions, or comments, send mail to:
+nedit_support@fnal.gov.
+
+Before reporting a problem, please check the Problems/Bugs section of the
+on-line help to make sure the problem is not already known.
+
+Mark Edel
+edel@fnal.gov
+Fermi National Accelerator Laboratory
+P.O. Box 500
+Batavia, IL 60148
