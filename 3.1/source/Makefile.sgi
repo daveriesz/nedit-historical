@@ -1,0 +1,8 @@
+CC=cc
+AR=ar
+# For editres, add -DEDITRES to CFLAGS and -lXmu to LIBS
+CFLAGS=-O -DSGI
+BIGGER_STRINGS= -Wf,-XNl10000
+LIBS= -lm -lXm -lXt -lX11 -lPW
+
+include Makefile.common
