@@ -1,0 +1,11 @@
+# $Header: /cvsroot/nedit/nedit/util/Makefile.dependencies,v 1.4 2001/07/25 07:39:12 amai Exp $
+DialogF.o: DialogF.c misc.h DialogF.h
+fileUtils.o: fileUtils.c fileUtils.h ../util/utils.h
+fontsel.o: fontsel.c DialogF.h misc.h fontsel.h
+getfiles.o: getfiles.c fileUtils.h misc.h getfiles.h
+managedList.o: managedList.c misc.h managedList.h
+misc.o: misc.c DialogF.h misc.h
+prefFile.o: prefFile.c prefFile.h ../util/utils.h
+printUtils.o: printUtils.c DialogF.h misc.h prefFile.h printUtils.h
+utils.o: utils.c utils.h
+vmsUtils.o: vmsUtils.c
