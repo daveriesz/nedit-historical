@@ -1,0 +1,3384 @@
+2002-05-02 00:01  slobasso
+
+	* source/shell.c (BETA-5-3.3): Added code to allow substituted
+	command strings to be arbitrarily long.
+
+2002-05-01 06:36  n8gray
+
+	* source/: nedit.h (1.24), window.c (1.52): Committed separate
+	line/col patch.
+	
+	Commit Haiku:	  Line and Col on Right     Not Customizable Yet   
+	 Hope There Are No Bugs
+
+2002-04-29 17:16  slobasso
+
+	* doc/.cvsignore (1.2): added .version
+
+2002-04-29 08:39  edg
+
+	* util/comutil.com (BETA-5-3.1): VMS "makefile" enhancements (Jack
+	Patteeuw).
+
+2002-04-29 00:35  amai
+
+	* .cvsignore (1.1), doc/.cvsignore (1.1), source/.cvsignore (1.3),
+	util/.cvsignore (1.1): Add/enhance .cvsignore .cvsignore files
+
+2002-04-29 00:28  amai
+
+	* source/window.c (1.51): Drop an unused #include
+
+2002-04-26 16:10  slobasso
+
+	* source/tags.c (1.37): Removed unused variables and double free.
+
+2002-04-26 16:06  slobasso
+
+	* source/tags.c (1.36): Cleanup FindDefinition and how globals are
+	used. Changes were actually in previous revision, but I
+	accidentally committed without comment.
+
+2002-04-26 16:04  slobasso
+
+	* source/tags.c (1.35): [no log message]
+
+2002-04-24 20:40  edg
+
+	* source/: comnedit.com, lnknedit.com (BETA-5-3.[1,1]): VMS
+	compilation and linking fixes (Jack Patteeuw).
+
+2002-04-23 19:52  edg
+
+	* source/nc.c, source/preferences.c, source/window.c,
+	source/windowTitle.c, util/fileUtils.c (BETA-5-3.[2,4,4,9,1]):
+	Various VMS compilation & linking fixes. 5.3 now compiles and runs
+	at least on Alpha OpenVMS V7.2-1 (confirmed by Jack Patteeuw, who
+	also reported the problems).
+
+2002-04-22 16:37  slobasso
+
+	* source/text.c (1.27): fix compiler warning.
+
+2002-04-22 15:24  amai
+
+	* ChangeLog (1.24): Update
+
+2002-04-22 15:22  amai
+
+	* makefiles/Makefile.macosx (BETA-5-3.2): Fix line endings from
+	"\\" to "\".  Correct linking order in alternative set of flags
+	using XFree86 with LessTif
+
+2002-04-19 21:40  slobasso
+
+	* doc/help.etx (1.11): Added new feature to hide mouse pointer
+	while typing.
+
+2002-04-19 16:22  slobasso
+
+	* source/: help_data.h (1.10), menu.c (1.56), menu.h (1.6),
+	preferences.c (1.52), preferences.h (1.21), text.c (1.26), text.h
+	(1.6), textDisp.c (1.22), textDisp.h (1.9): Added new feature to
+	hide mouse pointer while typing.
+
+2002-04-16 17:29  edg
+
+	* source/nc.c, source/server.c, source/windowTitle.c, util/utils.c,
+	util/utils.h (BETA-5-3.[1,1,8,1,1]): Renamed GetHostName() to
+	GetNameOfHost() to avoid linking problems on VMS (the VMS linker is
+	case-insensitive; GetHostName() conflicts with standard
+	gethostname()).
+
+2002-04-15 10:46  edg
+
+	* source/: file.c, preferences.c, preferences.h (BETA-5-3.[1,3,1]):
+	Fix for linking problem on VMS: function
+	GetPrefAlwaysCheckRelativeTagsSpecs had more than 31 characters.
+	Replaced it by GetPrefAlwaysCheckRelTagsSpecs.
+
+2002-04-13 20:24  edg
+
+	* source/window.c (BETA-5-3.3): Minor fix: MakeSelectionVisible()
+	did not take into account line numbers.  (SF #543178: Line numbers
+	hide CTRL-M matches).
+
+2002-04-12 18:12  edg
+
+	* doc/help.etx, doc/nedit.doc, doc/nedit.html, source/help_data.h
+	(BETA-5-3.[1,3,3,3]): Documentation fixes (X-resource section).
+
+2002-04-12 18:09  edg
+
+	* source/help.c (BETA-5-3.7): Backed out previous change because
+	affects default width of help windows.	Will consult developers
+	first.
+
+2002-04-12 17:50  edg
+
+	* source/help.c (BETA-5-3.6): Small fix: nedit.helpFont was ignored
+	when determining initial size of help windows (instead, the value
+	of the now obsolete nedit*helpText.font resource was used
+	implicitly).
+
+2002-04-10 09:41  edg
+
+	* source/highlight.c (BETA-5-3.4): Crash fix for syntax
+	highlighting pattern sets containing only pass-2 patterns.
+
+2002-03-28 14:21  edg
+
+	* util/printUtils.c (tags: BETA-5-3-RC1) (BETA-5-3.1): Applied
+	patch submitted with SF bug #536168: printing to KDE print
+	framework.
+
+2002-03-26 22:32  amai
+
+	* makefiles/Makefile.macosx (tags: BETA-5-3-RC1) (BETA-5-3.1): Add
+	sample linker command using LessTif as posted on discuss@
+
+2002-03-26 13:43  edg
+
+	* util/fontsel.c (tags: BETA-5-3-RC1) (BETA-5-3.1): Prevent
+	possible crash when the Font dialog is destroyed while a modal Font
+	Selection dialog is up.
+
+2002-03-25 10:02  edg
+
+	* source/highlight.c (tags: BETA-5-3-RC1) (BETA-5-3.3): Prevent
+	buffer overflow in DialogF when reporting a RE compilation error
+	for a very large RE.
+
+2002-03-23 17:04  edg
+
+	* source/shell.c (tags: BETA-5-3-RC1) (BETA-5-3.2): The line
+	counting algorithm for shell command output dialog is still not
+	fullproof (it would require emulating word wrapping). Now a
+	scrollbar is created when there is a risk of underestimating the
+	number of lines, to make sure that no line ever gets obscured.
+
+2002-03-22 15:54  edg
+
+	* source/shell.c (BETA-5-3.1): Fix for shell command output dialog
+	obscuring final lines under certain conditions (reported at discuss
+	list).
+
+2002-03-21 08:41  edg
+
+	* source/: window.c, tags.c (BETA-5-3.[2,2]) (utags: BETA-5-3-RC1):
+	Got rid of strdup() call (+related comment in disabled code in
+	tags.c).
+
+2002-03-21 00:19  amai
+
+	* source/highlightData.c (tags: BETA-5-3-RC1) (BETA-5-3.4): SF
+	Patch [ 531549 ] TCL highlight patterns updated.
+
+2002-03-21 00:15  amai
+
+	* makefiles/Makefile.os2 (tags: BETA-5-3-RC1) (BETA-5-3.2): Correct
+	linker flags for omf/debuggable build
+
+2002-03-20 18:30  edg
+
+	* source/highlightData.c (BETA-5-3.3): Double bug fix in X
+	Resources pattern: context distance violation and missing escapes
+	and continuation highlights.
+
+2002-03-19 21:39  edg
+
+	* source/help.c (tags: BETA-5-3-RC1) (BETA-5-3.5): Replaced
+	(non-ANSI) snprintf() call by equivalent code.
+
+2002-03-19 18:29  edg
+
+	* source/windowTitle.c (tags: BETA-5-3-RC1) (BETA-5-3.7): The
+	background color copying code for the preview didn't work with all
+	Motif versions (it even crashed). Now copied the color from the
+	form iso. a label.  This should work also for Motif 1.2.
+
+2002-03-19 17:42  edg
+
+	* Makefile (tags: BETA-5-3-RC1) (BETA-5-3.2): Include nedit.html in
+	binary distributions.
+
+2002-03-19 17:39  edg
+
+	* ChangeLog, doc/nedit.doc, doc/nedit.html, source/help_data.h,
+	source/help_topic.h (BETA-5-3.[1,2,2,2,2]) (utags: BETA-5-3-RC1):
+	Final update for 5.3RC1 (hopefully).
+
+2002-03-19 08:51  edg
+
+	* source/windowTitle.c (BETA-5-3.6): Changed the preview field's
+	background color to make it clear that it is read-only.
+
+2002-03-18 23:41  edg
+
+	* source/highlight.c (BETA-5-3.2): Fix for SF #531577: Balance
+	fails before text viewed.  Unparsed parens are parsed with pass-2
+	patterns when necessary.
+
+2002-03-18 23:15  edg
+
+	* source/: help.c, nedit.c (tags: BETA-5-3-RC1) (BETA-5-3.[4,2]):
+	Committed Markus' latest enhancements (focus related).
+
+2002-03-17 11:21  yooden
+
+	* source/windowTitle.c, util/prefFile.c (tags: BETA-5-3-RC1)
+	(BETA-5-3.[5,1]): Makes the cursor in the Window Title Dialog's
+	preview field invisible.
+
+2002-03-16 20:40  edg
+
+	* source/window.c (BETA-5-3.1): Changed 2 free() calls into XFree
+	calls().
+
+2002-03-15 14:36  amai
+
+	* source/: Makefile.dependencies (tags: BETA-5-3-RC1) (BETA-5-3.1),
+	Makefile.dependencies (1.16): Update
+
+2002-03-15 08:51  edg
+
+	* source/: help.c, help.h (tags: BETA-5-3-RC1), nedit.c
+	(BETA-5-3.[3,1,1]): Applied patch 526967: single window help with
+	history (with a minor modification in the mnemonics: P for Previous
+	iso. Print).
+
+2002-03-14 17:41  amai
+
+	* source/textDisp.c (1.21), source/textDrag.c (1.7),
+	source/textSel.c (1.9), source/undo.c (1.10), source/userCmds.c
+	(1.25), source/window.c (1.50), source/windowTitle.c (1.6),
+	util/DialogF.c (1.22), util/clearcase.c (1.3), util/fileUtils.c
+	(1.23), util/fontsel.c (1.16), util/getfiles.c (1.20),
+	util/managedList.c (1.9), util/misc.c (1.38), util/prefFile.c
+	(1.14), util/printUtils.c (1.17), util/utils.c (1.12): Attempt to
+	complete last commit (add trailing optional #include)
+
+2002-03-14 17:18  amai
+
+	* source/: rbTree.c (1.6), regexConvert.c (1.7), regularExp.c
+	(1.14), search.c (1.45), selection.c (1.20), server.c (1.15),
+	shell.c (1.20), shift.c (1.12), smartIndent.c (1.15), tags.c
+	(1.34), text.c (1.25), textBuf.c (1.20): Add an optional #include
+	at the end of all #includes in each .c source file. Document that
+	stuff in Makefile.generic
+
+2002-03-14 17:15  amai
+
+	* makefiles/Makefile.generic (1.8), source/file.c (1.44),
+	source/help.c (1.78), source/highlight.c (1.27),
+	source/highlightData.c (1.29), source/interpret.c (1.24),
+	source/linkdate.c (1.3), source/macro.c (1.40), source/menu.c
+	(1.55), source/nc.c (1.23), source/nedit.c (1.31),
+	source/preferences.c (1.51): Add an optional #include at the end of
+	all #includes in each .c source file. Document that stuff in
+	Makefile.generic
+
+2002-03-14 15:33  edg
+
+	* source/windowTitle.c (BETA-5-3.4): Removed some toggle button
+	margin height overrides that caused the mnemonic underscores to
+	disappear with certain Motif versions.
+
+2002-03-14 01:25  amai
+
+	* source/file.c (1.43), source/help.c (1.77), source/highlight.c
+	(1.26), source/highlightData.c (1.28), source/interpret.c (1.23),
+	source/linkdate.c (1.2), source/macro.c (1.39), source/menu.c
+	(1.54), source/nc.c (1.22), source/preferences.c (1.50),
+	source/rbTree.c (1.5), source/regexConvert.c (1.6),
+	source/regularExp.c (1.13), source/search.c (1.44),
+	source/selection.c (1.19), source/server.c (1.14), source/shell.c
+	(1.19), source/shift.c (1.11), source/smartIndent.c (1.14),
+	source/tags.c (1.33), source/text.c (1.24), source/textBuf.c
+	(1.19), source/textDisp.c (1.20), source/textDrag.c (1.6),
+	source/textSel.c (1.8), source/undo.c (1.9), source/userCmds.c
+	(1.24), source/window.c (1.49), source/windowTitle.c (1.5),
+	util/DialogF.c (1.21), util/clearcase.c (1.2), util/fileUtils.c
+	(1.22), util/fontsel.c (1.15), util/getfiles.c (1.19),
+	util/managedList.c (1.8), util/misc.c (1.37), util/prefFile.c
+	(1.13), util/printUtils.c (1.16), util/utils.c (1.11): Optionally
+	#include "../config.h" anywhere at first place in all(?) .c files
+
+2002-03-13 17:15  edg
+
+	* source/help.c (BETA-5-3.2): Leak fix: style buffers were leaked
+	when help windows were closed or dismissed.
+
+2002-03-13 13:19  edg
+
+	* source/highlightData.c (BETA-5-3.2): Minor fix in Tcl patterns:
+	newlines are allowed in double quoted strings.
+
+2002-03-13 12:05  edg
+
+	* source/preferences.c, util/DialogF.c, util/misc.c
+	(BETA-5-3.[2,1,1]) (utags: BETA-5-3-RC1): Various minor leak fixes.
+
+2002-03-13 12:04  edg
+
+	* source/windowTitle.c (BETA-5-3.3): Made the preview field use a
+	variable width font to avoid obscuring it too easily.
+
+2002-03-12 20:22  edg
+
+	* source/preferences.c (BETA-5-3.1): Small leak fix in language
+	mode detection.
+
+2002-03-12 20:20  edg
+
+	* source/: highlight.c, highlightData.c, highlightData.h (tags:
+	BETA-5-3-RC1) (BETA-5-3.[1,1,1]): Revised syntax-based paren
+	matching algorithm: relaxes constraints on highlight patterns.
+	Valid matches should no longer be missed.
+
+2002-03-12 16:59  edg
+
+	* source/help.c (BETA-5-3.1): Leak fix: text was leaked when
+	printed.
+
+2002-03-12 16:22  edg
+
+	* source/windowTitle.c (BETA-5-3.2): Removed an XmStringFree() call
+	that was left behind (and caused a crash).
+
+2002-03-12 16:16  amai
+
+	* makefiles/Makefile.os2 (BETA-5-3.1): Reduce stack size of
+	binaries.
+
+2002-03-12 14:52  edg
+
+	* Makefile, README (tags: BETA-5-3-RC1), ReleaseNotes (tags:
+	BETA-5-3-RC1), doc/nedit.doc, doc/nedit.html, source/help_data.h,
+	source/help_topic.h (BETA-5-3.[1,2,2,1,1,1,1]): Set version to
+	5.3RC1.
+
+2002-03-12 09:04  edg
+
+	* ReleaseNotes, source/tags.c (BETA-5-3.[1,1]): Applied patch
+	#520941: FindDefinition function incorrectly reads the X selection
+	even when an argument has been provided for the find_definition()
+	action routine.
+
+2002-03-12 00:46  amai
+
+	* README (BETA-5-3.1): Small updates on LessTif info
+
+2002-03-11 23:09  tringali
+
+	* source/windowTitle.c (BETA-5-3.1): Fix UI so dialog doesn't jump
+	around.  Also prevent overflow bug in text field.
+
+2002-03-11 22:41  amai
+
+	* source/windowTitle.c (1.4): Fix compiler warning
+
+2002-03-11 22:40  amai
+
+	* README (1.28): Small updates on LessTif info
+
+2002-03-11 22:18  edg
+
+	* doc/nedit.doc (1.12), doc/nedit.html (1.6), source/help_data.h
+	(1.9), source/help_topic.h (1.6), README (1.27), ReleaseNotes
+	(1.15): Last update before 5.3 branch.
+
+2002-03-11 22:05  edg
+
+	* doc/help.etx (1.10, BETA-5-3-RC1), source/highlight.c (1.25),
+	source/highlight.h (1.5, BETA-5-3-RC1), source/menu.c (1.53,
+	BETA-5-3-RC1), source/nedit.h (1.23, BETA-5-3-RC1),
+	source/preferences.c (1.49), source/preferences.h (1.20,
+	BETA-5-3-RC1), source/search.c (1.43, BETA-5-3-RC1),
+	source/window.c (1.48): Applied SF patch #513976: Syntax-based
+	parenthesis matching.
+
+2002-03-11 18:17  edg
+
+	* ChangeLog (1.23), README (1.26), ReleaseNotes (1.14): Update for
+	5.3.
+
+2002-03-08 10:40  edg
+
+	* source/window.c (1.47): Fix for #527319: segfault in
+	virtKeyBindingsAreInvalid().
+
+2002-03-08 08:43  edg
+
+	* source/tags.c (1.32): Fix for #527222: malloc bugs in tags.c
+	(Nathan Gray).
+
+2002-03-07 20:49  edg
+
+	* doc/nedit.doc (1.11), doc/nedit.html (1.5), source/help_data.h
+	(1.8), source/help_topic.h (1.5): Regenerated.
+
+2002-03-07 20:36  edg
+
+	* doc/help.etx (1.9), source/windowTitle.c (1.3): Applied patch
+	#519092: Customizable window title UI redesign
+
+2002-03-07 17:40  edg
+
+	* source/menu.c (1.52): Removed some (unnecessary) statements that
+	could cause the X server to freeze when the background menu was
+	popped up while any of the lock keys were on.
+
+2002-03-07 16:42  tringali
+
+	* makefiles/Makefile.linux (1.8, BETA-5-3-RC1): Add -lXp.
+
+2002-03-06 22:04  edg
+
+	* doc/help.etx (1.8), source/nedit.h (1.22), source/preferences.c
+	(1.48), source/preferences.h (1.19), source/window.c (1.46): Added
+	patch #525903: Workaround for invalid virtual key bindings attached
+	to the root window: invalid bindings are detected and ignored
+	(behavior can be controlled with a new X-resource).
+
+2002-03-06 14:42  tringali
+
+	* makefiles/Makefile.linux (1.7): Force Motif to be pulled in
+	statically by default.	Linux users tend to upgrade frequently or
+	move binaries across systems, causing library version skew.
+
+2002-03-04 20:10  amai
+
+	* source/tags.c (1.31): Remove unused statements/code lines as
+	pointed out on develop@
+
+2002-03-02 17:02  yooden
+
+	* doc/help.etx (1.7), source/file.c (1.42, BETA-5-3-RC1),
+	source/menu.c (1.51), source/nedit.h (1.21), source/preferences.c
+	(1.47), source/preferences.h (1.18): Makes the line feed NEdit
+	appends on save optional. (SF Bug #495009)
+
+2002-03-01 22:44  slobasso
+
+	* source/interpret.c (1.22, BETA-5-3-RC1): properly round pow()
+	results
+
+2002-03-01 17:13  amai
+
+	* ChangeLog (1.22), README (1.25): Update timestamp and ChangeLog
+
+2002-03-01 17:12  amai
+
+	* util/fileUtils.c (1.21, BETA-5-3-RC1): Add a UNICOS-specific call
+	to readlink()
+
+2002-03-01 17:04  amai
+
+	* util/fontsel.c (1.14): Replace rint(x) by floor(x+0.5)
+
+2002-03-01 16:04  amai
+
+	* makefiles/Makefile.unicos (1.5, BETA-5-3-RC1): Patch from Paolo
+	Palazzi to compile on UNICOS 10.0.1.0
+
+2002-02-27 14:44  edg
+
+	* source/window.c (1.45): Setfont: fixed a bug with the window
+	getting the wrong width when changing the font size under fvwm (or
+	any other ICCCM2 compliant window manager). Fix provided by Dominik
+	Vogt of fvwm.
+
+2002-02-27 11:26  edg
+
+	* source/text.c (1.23, BETA-5-3-RC1): Replaced the "None" modifiers
+	by "~Alt ~Shift ~Ctrl ~Meta", because "None" also excludes lock
+	keys and prevents PageUp/PageDown from responding when, for
+	instance, the NumLock key is on (so I didn't mix up my binaries
+	after all :-).
+
+2002-02-25 17:28  edg
+
+	* source/text.c (1.22): Reverted the last change. I've probably
+	mixed up my NEdit binaries.
+
+2002-02-25 14:29  edg
+
+	* source/text.c (1.21): Removed the recently introduced None
+	modifiers in default key bindings.  They don't seem to be
+	recognized by all Motif versions, causing the PageUp/PageDown keys
+	to stop working.
+
+2002-02-25 10:32  edg
+
+	* source/textDisp.c (1.19, BETA-5-3-RC1): Fix for SF #522263:
+	segfault fix (Nathaniel Gray).
+
+2002-02-24 21:16  edg
+
+	* source/: textBuf.c (1.18), textBuf.h (1.8) (utags: BETA-5-3-RC1):
+	Fix for #522038: Internal error when splitting window.	Allowed
+	more than one pre-delete callback per window (I originally thought
+	that only one was necessary).
+
+2002-02-23 20:01  edg
+
+	* source/window.c (1.44): Avoid temporarily invalid WM size hints.
+	They seem to amplify the effects of a bug in fvwm2 (SF #496526:
+	Very wide nedit window with fvwm).
+
+2002-02-21 18:53  tringali
+
+	* source/text.c (1.20): Fix broken PageUp and PageDown keys on
+	systems that bind osfPageLeft to Ctrl-PageUp.
+
+2002-02-20 13:03  amai
+
+	* source/help.c (1.76): Make getBuildInfo() to return a static
+	string.
+
+2002-02-16 14:39  edg
+
+	* source/help_data.h (1.7): Regenerated with fixed setext (fixes
+	some style problems).
+
+2002-02-16 14:37  edg
+
+	* doc/setext (1.7, BETA-5-3-RC1): Style transition fixes by Steven
+	Haehn.
+
+2002-02-15 09:41  edg
+
+	* doc/nedit.html (1.4), source/help_data.h (1.6),
+	source/help_topic.h (1.4): Regenerated with fixed setext.
+
+2002-02-15 09:37  edg
+
+	* doc/setext (1.6): Applied bug fixes in help and html generation
+	(provided by Steven Haehn).
+
+2002-02-14 21:08  edg
+
+	* source/preferences.c (1.46): Bumped .nedit file version to 5.3.
+
+2002-02-14 21:04  edg
+
+	* README (1.24): Synchronized author list with help.etx.
+
+2002-02-14 20:24  amai
+
+	* README (1.23), ReleaseNotes (1.13): Re-arrange some text
+
+2002-02-14 14:28  tringali
+
+	* source/preferences.c (1.45): Oops, helvetica fonts aren't italic,
+	they're oblique.
+
+2002-02-13 23:10  edg
+
+	* README (1.22), ReleaseNotes (1.12): Preparation of 5.3 release.
+
+2002-02-13 23:07  edg
+
+	* source/nc.c (1.21, BETA-5-3-RC1): Preparation of 5.3 release.
+
+2002-02-13 20:47  tringali
+
+	* source/preferences.c (1.44): Change help fonts to be like the
+	defaults we have in nedit.c to reduce the likelihood of them being
+	missing or defective.
+
+2002-02-13 20:00  tringali
+
+	* util/misc.c (1.36): Fix for [ #478234 ] nedit crash with Xwindows
+	on 2nd screen
+
+2002-02-13 18:03  edg
+
+	* ChangeLog (1.21): Update.
+
+2002-02-13 14:14  edg
+
+	* source/textDisp.c (1.18): Fix for SF bug #516920: line numbering
+	in continuous wrap mode.
+
+2002-02-13 12:30  edg
+
+	* doc/nedit.doc (1.10), doc/nedit.html (1.3), source/help_data.h
+	(1.5), source/help_topic.h (1.3): Regenerated documentation.
+
+2002-02-13 12:27  edg
+
+	* doc/setext-info.txt (1.1, BETA-5-3-RC1): Added setext format
+	documentation provided by Steven Haehn.
+
+2002-02-13 12:12  edg
+
+	* doc/help.etx (1.6): Minor fixes.
+
+2002-02-11 21:23  arnef
+
+	* source/windowTitle.c (1.2): Fixed reason for crash when window is
+	destroyed.  Removing leading dashes and spaces Checking for array
+	out of bounds when creating title.
+
+2002-02-11 10:45  edg
+
+	* source/highlightData.c (1.27): Upgraded X Resources highlight
+	patterns to improve highlighting performance.  SF bug #481290;
+	patterns provided by Markus Schwarzenberg.
+
+2002-02-08 23:26  tringali
+
+	* source/nedit.c (1.30): Yet another attempted fix for 434383:
+	menus showing up as blocks.
+
+2002-02-07 10:23  edg
+
+	* doc/help.etx (1.5): Updates for SF bug #489601: misprint in
+	help.c.
+
+2002-02-07 10:00  edg
+
+	* doc/help.etx (1.4): Fix for SF bug #432203: Error in regex help
+	for \l and \L.
+
+2002-02-07 09:28  edg
+
+	* doc/setext (1.5): Comment on #! interpreter line is not allowed
+	for every shell.
+
+2002-02-05 22:01  edg
+
+	* source/highlight.c (1.24): Fix for SF bug #512961: NEdit LOCKS
+	UP, and also for a similar bug reported at the discuss mailing list
+	(Philippe Poilbarbe: Infinite Loop).  Yet another char/unsigned
+	char mixup problem.
+
+2002-02-05 20:55  edg
+
+	* source/regularExp.c (1.12, BETA-5-3-RC1): Fixed a char/unsigned
+	char comparison problem that caused crashes when patterns contained
+	characters with ASCII code >= 128.
+
+2002-02-05 18:16  edg
+
+	* source/: textBuf.c (1.17), textDisp.c (1.17), textDisp.h (1.8,
+	BETA-5-3-RC1), window.c (1.43): Bug fix for SF bug #510631: 5.2
+	segmentation fault on Linux/i386.  Modifying tab distance in
+	continous wrap mode brought the text display widget in an illegal
+	state.
+
+2002-02-05 13:15  edg
+
+	* source/highlight.c (1.23): Bugfix in color allocation (Thomas
+	Schuetzkowski).
+
+2002-02-03 16:41  edg
+
+	* source/: textBuf.c (1.16), textBuf.h (1.7), textDisp.c (1.16),
+	textDisp.h (1.7): Patches for SF bug #485415: Continuous wrap
+	updating bugs.	Continuous wrap mode combined with variable font
+	sizes resulted in wrong text display calculations.
+
+2002-02-01 15:03  edg
+
+	* source/textDisp.c (1.15): Patch for SF bug #510765: Help>Version
+	scrollbar can get corrupted.  The text display widget used wrong
+	style information for wrapping calculations when using variable
+	width fonts.
+
+2002-01-28 10:43  amai
+
+	* ChangeLog (1.20), source/help.c (1.75), source/nedit.c (1.29),
+	source/server.c (1.13, BETA-5-3-RC1), source/tags.c (1.30),
+	source/textDisp.c (1.14), source/textDrag.c (1.5, BETA-5-3-RC1),
+	source/undo.c (1.8, BETA-5-3-RC1): Add some explicit #include
+	<string.h>
+
+2002-01-23 16:54  tringali
+
+	* source/help.c (1.74): Change parenthesis style to match the rest
+	of nedit source code.
+
+2002-01-23 16:53  tringali
+
+	* source/textSel.c (1.7, BETA-5-3-RC1): Accept COMPOUND_TEXT
+	selection requests for compatability with recent versions of
+	gnome-terminal.
+
+2002-01-17 01:34  amai
+
+	* makefiles/Makefile.os2 (1.11): Some small fixes/enhancements
+
+2002-01-15 17:05  tringali
+
+	* source/: menu.c (1.50), window.c (1.42): Lower case, Upper case,
+	and Find Def do not require an NEdit selection.  LC/UC can operate
+	on the cursor, and Find Def can use an external selection.
+
+2002-01-13 16:01  yooden
+
+	* source/: menu.c (1.49), window.c (1.41): Removed four
+	XtSetSensitive calls that prevent use of 'Open Selected' and 'Find
+	Selection' on selections that are not NEdit's.
+
+2002-01-12 00:59  amai
+
+	* makefiles/Makefile.os2 (1.10), source/nc.c (1.20): Makefile.os2:
+	update/correct some linker options nc.c: I think I previously
+	messed up the commandline for EMX&VMS case.  Perhaps not a good
+	idea to mess around in code which I can't test...
+
+2002-01-11 18:21  amai
+
+	* source/nc.c (1.19): Fix for server startup command line on OS/2:
+	missing flag for START command and fix memory leak.
+
+2002-01-11 13:10  amai
+
+	* doc/setext (1.4), source/help_data.h (1.4): Patch from Steven
+	Haehn to add some static/const to setext output
+
+2002-01-10 12:49  amai
+
+	* source/help.c (1.73): Make some funcs/vars static
+
+2002-01-08 16:06  amai
+
+	* README (1.21): New timestamp ...  (a test whether the commit
+	messages get a different subject now)
+
+2002-01-08 14:33  amai
+
+	* ChangeLog (1.19), source/menu.c (1.48), source/nedit.h (1.20),
+	source/window.c (1.40): Make more menu Items sensitive WRT an
+	existing selection: Cut, Upper, Lower
+
+2002-01-07 10:15  amai
+
+	* source/tags.c (1.29): Jump to tags only referenced by line
+	number.  Fix by M. Schwarzenberg.
+
+2002-01-05 16:52  amai
+
+	* source/search.c (1.42): Only set *again menu Items on the first
+	search ever (not on each)
+
+2002-01-05 16:45  amai
+
+	* source/: Makefile.dependencies (1.15), menu.c (1.47), nedit.h
+	(1.19), search.c (1.41), search.h (1.15, BETA-5-3-RC1), window.c
+	(1.39): Toggle Menu Item sensitivity, including those from SF Bug [
+	#486072 ] Selection commands sensitivity incorrect
+
+2002-01-05 02:19  edel
+
+	* source/: help_data.h (1.3), help_topic.h (1.2): Regenerated
+	help_topic.h and help_data.h for change in help.ext
+
+2002-01-05 02:09  edel
+
+	* makefiles/Makefile.solaris (1.7, BETA-5-3-RC1): Reverting to 1.5
+	(I accidentally committed my private mods, sorry).
+
+2002-01-05 01:48  edel
+
+	* doc/help.etx (1.3), doc/setext (1.3), makefiles/Makefile.solaris
+	(1.6), source/help.c (1.72), source/preferences.c (1.43),
+	source/preferences.h (1.17): Help updates from Steve.  Remove
+	unused title font resources, add back some missing help text.
+
+2002-01-04 16:39  amai
+
+	* ChangeLog (1.18), source/textDisp.c (1.13): Fix ("wrong")
+	compiler (gcc) warning about two uninitialized variables
+
+2001-12-31 14:34  amai
+
+	* source/nc.c (1.18): Fix a problem with calling nedit from nc on
+	OS/2 which I introduced recently.  Enlarge Preferences.serverCmd
+	array.
+
+2001-12-24 11:50  amai
+
+	* source/macro.c (1.38, BETA-5-3-RC1): Fix by Gilles J. Seguin for
+	SF Bug [ #480966 ] Composed characters in learned sequence
+
+2001-12-24 09:46  amai
+
+	* source/file.c (1.41), source/highlight.c (1.22), source/menu.c
+	(1.46), util/getfiles.c (1.18, BETA-5-3-RC1): Fix for SF Bug [
+	#480960 ] No titles in some dialog boxes as sent to develop@ from
+	T. Haude
+
+2001-12-24 09:26  amai
+
+	* ChangeLog (1.17), source/parse_noyacc.c (1.2, BETA-5-3-RC1),
+	source/window.c (1.38): Update ChangeLog, parse_noyacc.c. Typo in
+	window.c
+
+2001-12-24 09:18  amai
+
+	* source/: interpret.c (1.21), interpret.h (1.7, BETA-5-3-RC1),
+	parse.y (1.18, BETA-5-3-RC1): Apply SF Patch [ #496413 ]
+	preliminary patch for #495293 from A. Hood which in turn fixes SF
+	Bug [ #495293 ] continue outside of loop causes segfault
+
+2001-12-20 15:38  amai
+
+	* source/: comnedit.com (1.7, BETA-5-3-RC1), parse.c_noyacc (1.8),
+	parse_noyacc.c (1.1): Rename our fallback version of the parse.c
+	code to have a reasonable file extension. Update VMS command file
+	accordingly
+
+2001-12-19 17:08  tringali
+
+	* source/help.c (1.71): Fix incorrect array size that crashes on
+	platforms where sizeof(char*) != sizeof(int)
+
+2001-12-19 14:51  tringali
+
+	* source/: window.c (1.37), nedit.c (1.28): Back out frame around
+	text patch; doesn't work well with LessTif
+
+2001-12-18 18:53  tringali
+
+	* source/: nedit.c (1.27), window.c (1.36): Put frame around text
+	widget, for consistent look with XmScrolledText Patch courtesy of
+	C. Rasmussen (If you don't like it, disable it with
+	*pane*XmFrame.shadowThickness: 0)
+
+2001-12-17 16:28  amai
+
+	* source/selection.c (1.18, BETA-5-3-RC1): Fix compilation problem
+
+2001-12-16 04:31  ajhood
+
+	* source/selection.c (1.17):  Modified Files:
+		selection.c
+	replacing sprintf lost the path name when opening files
+
+2001-12-14 14:35  edel
+
+	* source/help_topic.h (1.1): Separated auto-generated part of
+	help.h into different file, help_topic.h.
+
+2001-12-14 05:14  edel
+
+	* doc/: Makefile (1.2, BETA-5-3-RC1), help.etx (1.2), nedit.doc
+	(1.9), nedit.html (1.2), setext (1.2): Rearranged styles to put
+	fixed fonts first, for sizing help text widget.
+
+2001-12-14 05:12  edel
+
+	* source/: Makefile.dependencies (1.14), help.c (1.70), help.h
+	(1.8), help_data.h (1.2): Rearanged help fonts so window is sized
+	to match fixed-width formatting.  Fixed underlined fonts not
+	working.
+
+2001-12-13 15:44  amai
+
+	* source/tags.c (1.28): Drop // comments from last check-in
+
+2001-12-13 13:31  amai
+
+	* ChangeLog (1.16), source/help.h (1.7): Add prototype to help.h to
+	fix build warning
+
+2001-12-13 13:27  amai
+
+	* source/tags.c (1.27), source/tags.h (1.10, BETA-5-3-RC1),
+	util/fileUtils.c (1.20), util/utils.c (1.10, BETA-5-3-RC1),
+	util/utils.h (1.5, BETA-5-3-RC1): Apply SF Patch [ #491109 ]
+	recognize etags TAGS files added from M. Schwarzenberg
+
+2001-12-13 13:14  amai
+
+	* source/interpret.c (1.20), source/macro.c (1.37), source/menu.c
+	(1.45), source/parse.y (1.17), source/preferences.c (1.42),
+	source/search.c (1.40), source/selection.c (1.16), source/tags.c
+	(1.26), source/userCmds.c (1.23, BETA-5-3-RC1), util/printUtils.c
+	(1.15): Fix for SF Bug [ #491943 ] missing (unsigned char) casts
+	from M. Schwarzenberg
+
+2001-12-12 17:07  edel
+
+	* source/help.c (1.69): Fixed hyperlink after search crash, search
+	memory leak, cleaned up code, added more comments.
+
+2001-12-10 05:11  edel
+
+	* source/help_data.h (1.1): Help data generated from
+	../doc/help.etx
+
+2001-12-10 05:07  edel
+
+	* doc/nedit.html (1.1): Copy of html documentation generated by new
+	help system
+
+2001-12-10 05:03  edel
+
+	* doc/: Makefile (1.1), help.etx (1.1), nedit.doc (1.8), setext
+	(1.1): New help system!
+
+2001-12-10 04:57  edel
+
+	* source/: Makefile.dependencies (1.13), help.c (1.68), help.h
+	(1.6), highlight.c (1.21), highlight.h (1.4), menu.c (1.44),
+	preferences.c (1.41), preferences.h (1.16), textDisp.c (1.12): New
+	help system!
+
+2001-12-07 10:50  amai
+
+	* source/file.c (1.40): Close file handle upon various error
+	conditions to leave the routine w/o success. Also reject block
+	devices in addition to directories.
+
+2001-12-05 10:16  amai
+
+	* source/: nc.c (1.17), nedit.c (1.26): nc: don't use XtWarning
+	when report invalid commanline argument.  nedit: react properly if
+	file name on commandline is too long. Now starts up GUI.
+
+2001-12-04 18:03  amai
+
+	* ChangeLog (1.15), source/server.c (1.12), util/getfiles.c (1.17):
+	More checks for ParseFilename()'s return value
+
+2001-12-04 17:50  amai
+
+	* source/file.c (1.39), source/menu.c (1.43), source/nc.c (1.16),
+	source/nedit.c (1.25), source/selection.c (1.15), source/tags.c
+	(1.25), util/DialogF.c (1.20), util/fileUtils.c (1.19):
+	ParseFilename() often gets called w/o the caller to ensure that the
+	arguments are proper.  Let it do some checks and have an useful
+	return value.
+
+2001-12-04 11:14  amai
+
+	* makefiles/Makefile.macosx (1.1): Add Makefile for MacOS X, as
+	found on our website
+
+2001-12-03 22:21  amai
+
+	* source/: help.c (1.67), nedit.c (1.24): Update source timestamp
+	and add -V to commandline help
+
+2001-12-03 22:18  amai
+
+	* source/nc.c (1.15): Resolve a mess of #ifdefs in handling
+	commandline args.  Implement -V|-version for nc
+
+2001-12-03 16:46  tringali
+
+	* source/: Makefile.common (1.10, BETA-5-3-RC1), help.c (1.66),
+	linkdate.c (1.1, BETA-5-3-RC1): Make build date more accurate by
+	updating on actual link, not when help.c was last compiled.
+
+2001-12-02 17:58  edg
+
+	* source/: textBuf.c (1.15), textSel.c (1.6): Applied SF patch
+	#487945: Fix for rectangular overstrike paste.
+
+2001-11-30 15:41  tringali
+
+	* source/: nedit.c (1.23), window.c (1.35): [487153] Let user
+	override font of statistics line
+
+2001-11-27 22:53  edg
+
+	* source/search.c (1.39): Enhancement to the (multi-file)
+	replacement dialog: all files are first checked for changes to set
+	correct sensitivity for the multi-file button and to generate an
+	up-to-date list of writable files in the multi-file dialog.
+
+2001-11-27 10:47  amai
+
+	* source/: help.c (1.65), menu.c (1.42), shell.c (1.18): Patch from
+	A. Riese SF Patch [ #434451 ] line numbers in shell commands
+
+2001-11-27 09:09  amai
+
+	* source/file.c (1.38), source/menu.c (1.41), util/prefFile.c
+	(1.12), util/utils.c (1.9), util/utils.h (1.4): Introduce
+	PrependHome() to create all paths of type $HOME/file without
+	overflow.  Fixes some leaks, other remain ...
+
+2001-11-26 21:40  amai
+
+	* util/: fileUtils.c (1.18), utils.c (1.8): Quit if a "safe"
+	getpw*() call fails. GetUserName() returns a safe, cached result
+
+2001-11-26 17:17  amai
+
+	* ChangeLog (1.14), README (1.20), source/help.c (1.64),
+	source/nc.c (1.14), source/nedit.c (1.22): Apply Patch from M.
+	Schwarzenberg: SF Patch [ #485610 ] -- open filenames starting with
+	a dash
+
+2001-11-26 14:54  amai
+
+	* util/fileUtils.c (1.17): Try to fix a potential memory
+	(security?!?) leak in ExpandTile()
+
+2001-11-26 14:17  amai
+
+	* util/utils.c (1.7): Cache return value of GetHomeDir() and return
+	a private reference.  Earlier we did return a string that could be
+	invalided before it was used!?
+
+2001-11-25 23:03  edg
+
+	* source/file.c (1.37): Crash fix: avoid closing windows twice when
+	user destroys the window of a file that could not be opened instead
+	of closing the error dialog.
+
+2001-11-25 22:05  edg
+
+	* source/textBuf.c (1.14): Small fix: tighter buffer boundary check
+	when accessing characters.
+
+2001-11-24 11:57  amai
+
+	* source/file.c (1.36): Patch from Thorsten Haude for SF Bug [
+	#484870 ] Double Mnemonic
+
+2001-11-24 11:41  amai
+
+	* makefiles/Makefile.qnx (1.1, BETA-5-3-RC1): Add Makefile for QNX
+	as posted on develop@ mailinglist
+
+2001-11-22 21:01  amai
+
+	* source/interpret.c (1.19), source/preferences.c (1.40),
+	source/textBuf.c (1.13), source/textBuf.h (1.6), util/printUtils.c
+	(1.14), util/printUtils.h (1.5, BETA-5-3-RC1): Another small const
+	patch
+
+2001-11-21 16:36  amai
+
+	* util/misc.c (1.35): Patch SF [#483505 ] Fix warning on DEC Not
+	literally, I extended the comment a bit.
+
+2001-11-20 15:53  amai
+
+	* README (1.19): Sorry, another "dummy" commit, to check for the
+	commit messages :-)
+
+2001-11-20 15:36  amai
+
+	* ReleaseNotes (1.11): Switch to "5.2+" ...
+
+2001-11-20 15:31  amai
+
+	* README (1.18): Start list of 5.2+ features/changes
+
+2001-11-20 13:25  amai
+
+	* source/selection.c (1.14), util/system.h (1.9, BETA-5-3-RC1): Add
+	Intel's icc/ecc to our list of known compilers (and fix a compiler
+	warning)
+
+2001-11-18 19:53  amai
+
+	* ChangeLog (1.13): Update
+
+2001-11-18 19:02  arnef
+
+	* source/Makefile.common (1.9), source/Makefile.dependencies
+	(1.12), source/help.c (1.63), source/help.h (1.5), source/menu.c
+	(1.40), source/nc.c (1.13), source/preferences.c (1.39),
+	source/preferences.h (1.15), source/server.c (1.11),
+	source/window.c (1.34), source/window.h (1.8, BETA-5-3-RC1),
+	source/windowTitle.c (1.1), source/windowTitle.h (1.1,
+	BETA-5-3-RC1), util/Makefile.common (1.6, BETA-5-3-RC1),
+	util/Makefile.dependencies (1.5, BETA-5-3-RC1), util/clearcase.c
+	(1.1, BETA-5-3-RC1), util/clearcase.h (1.1, BETA-5-3-RC1),
+	util/fileUtils.c (1.16), util/fileUtils.h (1.7, BETA-5-3-RC1),
+	util/utils.c (1.6), util/utils.h (1.3): Added Customise Window
+	Title patch Ref.
+	http://sourceforge.net/tracker/?func=detail&atid=311005&aid=477875&
+	group_id=11005
+
+2001-11-16 16:06  tringali
+
+	* util/misc.c (1.34): 482504: Bad CapsLock grab on certain keyboard
+	configurations
+
+2001-11-16 12:47  amai
+
+	* source/userCmds.c (1.22): "const patch"
+
+2001-11-16 11:13  amai
+
+	* source/: selection.c (1.13), shift.c (1.10, BETA-5-3-RC1): Add
+	two missing #includes
+
+2001-11-16 11:02  amai
+
+	* source/: help.c (1.62), shell.c (1.17), userCmds.c (1.21): Apply
+	patch SF [ #434451 ] line numbers in shell commands from Axel
+	Riese.
+
+2001-11-16 10:06  amai
+
+	* source/: help.c (1.61), menu.c (1.39), selection.c (1.12),
+	selection.h (1.4, BETA-5-3-RC1), text.c (1.19), text.h (1.5,
+	BETA-5-3-RC1), textDisp.c (1.11), textDisp.h (1.6): Apply patch for
+	 SF [ #403435 ] Go to column in "Goto Line Number" dialog (added
+	some 'consts', missing #include, etc.)
+
+2001-11-16 09:39  amai
+
+	* source/: tags.c (1.24), tags.h (1.9), textBuf.c (1.12), textBuf.h
+	(1.5), userCmds.c (1.20): Another "const patch"
+
+2001-11-15 14:28  amai
+
+	* makefiles/Makefile.openbsd (1.1, BETA-5-3-RC1): In principle the
+	same as Makefile.netbsd, but I arbitrarily chose a Motif 2.1 setup
+	and added -lXp already
+
+2001-11-13 21:07  amai
+
+	* makefiles/Makefile.os2 (1.9): For now we don't have/use
+	readlink(2) on OS/2
+
+2001-11-13 11:10  amai
+
+	* source/: search.c (1.38), search.h (1.14): Add some more 'const's
+	to public search routines
+
+2001-11-12 14:04  amai
+
+	* util/: DialogF.c (1.19), DialogF.h (1.5, BETA-5-3-RC1), misc.c
+	(1.33), misc.h (1.11, BETA-5-3-RC1): Another small 'const patch'
+
+2001-11-12 13:46  amai
+
+	* makefiles/Makefile.generic (1.7, BETA-5-3-RC1), source/tags.c
+	(1.23), util/fileUtils.c (1.15), util/fileUtils.h (1.6): Revised
+	version of Patch from Markus Schwarzenberg: SF [ #479589 ] path for
+	tags files should be resolved I added a catch for systems without
+	links/readlink(2)
+
+2001-11-10 00:00  slobasso
+
+	* source/help.c (1.60): fixed bad eol in string
+
+2001-11-09 23:58  slobasso
+
+	* source/highlightData.c (1.26): added in to NEdit macro language
+	keywords
+
+2001-11-08 16:05  amai
+
+	* makefiles/Makefile.generic (1.6), makefiles/Makefile.os2 (1.8),
+	source/file.c (1.35): Drop WRITES_DOS_TEXT catch finally!
+
+2001-11-08 13:49  amai
+
+	* ChangeLog (1.12): Update
+
+2001-11-08 13:47  amai
+
+	* README (1.17), source/help.c (1.59): Add timestamp again to
+	version info. The build date is not necessarily an indicator for
+	the date of the underlying sources ...
+
+2001-11-08 12:55  edg
+
+	* source/search.c (1.37): Fixed a bug for replacements in
+	rectangular selections: false matches could hide valid ones.
+
+2001-11-07 22:54  edg
+
+	* source/preferences.c (1.38): Added a patch for the last remaining
+	issue of SF bug #230912 (Postscript language mode definition on
+	VMS), and added a post-5.2 preferences upgrading routine, to be
+	extended when other preferences are upgraded.
+
+2001-11-05 15:17  tringali
+
+	* source/highlightData.c (1.25): Update C/C++ preprocessor patterns
+	with specific keywords (#include, #define, etc.)
+
+2001-11-02 12:17  edg
+
+	* source/file.c (1.34): Changed misleading "Create" button label in
+	dialogs to "New File" (Thorsten Haude, SF bug #449765).
+
+2001-11-02 12:13  edg
+
+	* README (1.16), doc/nedit.doc (1.7), source/help.c (1.58): Minor
+	documentation updates (Thorsten Haude).
+
+2001-11-01 20:22  edg
+
+	* util/fontsel.c (1.13): Removed a debug print statement that was
+	left behind accidentally.
+
+2001-10-31 17:25  edg
+
+	* util/getfiles.c (1.16): Added a VMS-specific check for a Motif
+	2.x bug workaround (one was added earlier, but it should have been
+	done at two places).
+
+2001-10-31 16:36  edg
+
+	* source/: nedit.c (1.21), preferences.c (1.37): Changed default
+	font sizes from 12 pixels to 12 points. This should improve
+	portability.
+
+2001-10-30 21:47  tringali
+
+	* source/preferences.c (1.36): Merge post-RC1 changes to mainline
+
+2001-10-27 20:19  edg
+
+	* source/: menu.c (1.38), userCmds.c (1.19): Added extra checks to
+	prevent macro/background menu commands from being executed by the
+	user while another command is already running (to prevent a crash).
+	Also added beeps to notify the user in those cases that the
+	commands are rejected.
+
+2001-10-26 20:17  amai
+
+	* makefiles/: Makefile.generic (1.5), Makefile.os2 (1.7): Document
+	-DWRITES_DOS_TEXT - at least it's used on OS/2!
+
+2001-10-25 15:51  tringali
+
+	* source/preferences.c (tags: REL-5-2) (BETA-5-2.6): Compare file
+	versions as integers to avoid bad float comparisonsCompare file
+	versions as integers to avoid bad float comparisonsCompare file
+	versions as integers to avoid bad float comparisonsCompare file
+	versions as integers to avoid bad float comparisons
+
+2001-10-22 08:50  amai
+
+	* source/: tags.c (1.22), tags.h (1.8): Patch for SF [ #473602 ] no
+	mult. tags selection on 1st find def from Markus Schwarzenberg
+
+2001-10-21 15:13  tringali
+
+	* README (1.15), ReleaseNotes (1.10), doc/faq-txt.awk (1.2,
+	BETA-5-3-RC1), doc/faq-txt.dtd (1.2, BETA-5-3-RC1), doc/faq-txt.xsl
+	(1.2, BETA-5-3-RC1), doc/faq.dtd (1.2, BETA-5-3-RC1), doc/faq.xml
+	(1.3, BETA-5-3-RC1), doc/faq.xsl (1.2, BETA-5-3-RC1), doc/nc.man
+	(1.5, BETA-5-3-RC1), doc/nedit.doc (1.6), doc/nedit.man (1.6,
+	BETA-5-3-RC1), source/file.c (1.33), source/help.c (1.57),
+	source/highlight.c (1.20), source/highlightData.c (1.24),
+	source/nedit.c (1.20), source/preferences.c (1.35), source/search.c
+	(1.36), source/shell.c (1.16), util/fontsel.c (1.12),
+	util/fontsel.h (1.5, BETA-5-3-RC1), util/prefFile.c (1.11),
+	util/system.h (1.8): Merge post-5.2RC1 changes into mainline
+
+2001-10-21 15:09  tringali
+
+	* doc/NEdit.ad (1.2, BETA-5-3-RC1), doc/README.FAQ (1.2,
+	BETA-5-3-RC1), doc/faq-txt-pass2.xsl (1.2, BETA-5-3-RC1),
+	doc/faq.txt (1.2, BETA-5-3-RC1), makefiles/Makefile.depend (1.2,
+	BETA-5-3-RC1), makefiles/Makefile.linux (1.6),
+	makefiles/Makefile.os2 (1.6), makefiles/Makefile.solaris (1.5),
+	makefiles/Makefile.unixware (1.4, BETA-5-3-RC1): Merge post-5.2RC1
+	changes into mainline
+
+2001-10-16 14:41  edg
+
+	* ChangeLog (tags: REL-5-2) (BETA-5-2.6): Final update for 5.2
+	release.
+
+2001-10-15 20:10  amai
+
+	* source/tags.c (1.21): Latest patch for SF [ #466742 ] Tag not
+	found
+
+2001-10-15 17:33  slobasso
+
+	* source/nc.c (1.12): Patch to allow for multi-line macros to be
+	passed on nc command line when a nedit server is not already
+	running.
+
+2001-10-15 17:28  slobasso
+
+	* source/: file.c (1.32), file.h (1.9, BETA-5-3-RC1), nedit.c
+	(1.19), nedit.h (1.18), server.c (1.10): Changed -read behavior to
+	mimic the Read Only menu option.
+
+2001-10-15 17:24  slobasso
+
+	* source/text.c (1.18): Fixes problem where triple clicking to
+	select a word wrapped line was inconsistent with the subsequent
+	dragging to extend the selection. The behavior now matches.
+
+2001-10-12 19:34  tringali
+
+	* Makefile, source/help.c (BETA-5-2.[1,9]) (utags: REL-5-2): Prep
+	work for final 5.2 release
+
+2001-10-12 11:54  edg
+
+	* README (tags: REL-5-2) (BETA-5-2.5): Minor updates.
+
+2001-10-12 10:36  edg
+
+	* README, ReleaseNotes (tags: REL-5-2) (BETA-5-2.[4,2]): Updates in
+	preparation of the 5.2 release.
+
+2001-10-11 13:19  edg
+
+	* source/preferences.c (BETA-5-2.5): Fixed a bug in the 5.2
+	preferences upgrading routine: new language modes were added, but
+	the corresponding highlight patterns were not enabled.
+
+2001-10-10 18:32  edg
+
+	* source/shell.c (tags: REL-5-2) (BETA-5-2.1): Fixed a bug that
+	could cause NEdit to crash or garble a file when the user modifies
+	the buffer while the output of an external command is being
+	inserted.
+
+2001-10-08 07:29  amai
+
+	* ChangeLog (BETA-5-2.5), ChangeLog (1.11): Update
+
+2001-10-06 13:09  amai
+
+	* ReleaseNotes (BETA-5-2.1): Some very minor changes towards the
+	release
+
+2001-10-06 11:42  amai
+
+	* README, source/help.c (BETA-5-2.[3,8]): "lame attempt" to enfore
+	a release: drop "RC" and update timestamps!
+
+2001-10-04 11:02  amai
+
+	* makefiles/Makefile.solaris (tags: REL-5-2) (BETA-5-2.2): Use
+	CC=cc.	After all it's the most - since only - standard conforming
+	setting
+
+2001-10-04 10:16  amai
+
+	* source/tags.c (1.20): Patch for SF Bug [ #466742 ] Tag not found.
+	 This is tags-semicolon2.diff as submitted by Markus Schwarzenberg.
+
+2001-10-04 09:44  amai
+
+	* README (1.14), source/help.c (1.56): Update timestamps
+
+2001-10-02 17:06  amai
+
+	* source/help.c (BETA-5-2.7): Get PrintVersion() work again and
+	update timestamp
+
+2001-10-02 07:16  amai
+
+	* doc/README.FAQ (1.1): file README.FAQ was initially added on
+	branch BETA-5-2.
+
+2001-10-02 07:16  amai
+
+	* doc/faq-txt-pass2.xsl (1.1): file faq-txt-pass2.xsl was initially
+	added on branch BETA-5-2.
+
+2001-10-02 07:16  amai
+
+	* doc/: README.FAQ, faq-txt-pass2.xsl, faq.dtd, faq.txt, faq.xml
+	(BETA-5-2.[1,1,1,3,5]) (utags: REL-5-2): FAQ updates from Florian
+	Xhumari (20011001)
+
+2001-10-01 13:34  amai
+
+	* source/highlightData.c (tags: REL-5-2) (BETA-5-2.1): minor
+	pattern fix, bug 455877
+
+2001-10-01 12:42  edg
+
+	* source/preferences.c (BETA-5-2.4): Changed the order in which new
+	5.2 language modes were added to the list during upgrading (they
+	are now simply appended instead of inserted).
+
+2001-10-01 08:30  edg
+
+	* util/prefFile.c (tags: REL-5-2) (BETA-5-2.1): Fixed a bug in the
+	preferences restoration mechanism (prefFileRead is now properly
+	set, even if already present in the resource file).
+
+2001-09-30 19:49  edg
+
+	* source/preferences.c (BETA-5-2.3): Added a 5.1 to 5.2 preferences
+	upgrading routine (language modes and highlight styles).
+
+2001-09-27 12:41  edg
+
+	* source/file.c (tags: REL-5-2) (BETA-5-2.1): Added comment about
+	use of tmpnam (Thorsten Haude).
+
+2001-09-26 21:05  amai
+
+	* makefiles/Makefile.unixware (tags: REL-5-2) (BETA-5-2.1): Add
+	-lSM -lICE  to libs as reported on the list as for UnixWare 7.1.1
+
+2001-09-21 09:58  amai
+
+	* source/: tags.c (1.19), tags.h (1.7): 'const' patch + fix small
+	memory leak + protect against memory overflow in Add*TagFile
+
+2001-09-20 19:30  tringali
+
+	* doc/nedit.doc (tags: REL-5-2), source/help.c (BETA-5-2.[3,6]): -
+	Merge slobasso 5.2 doc fixes erronously applies to mainline here
+
+2001-09-20 14:24  tringali
+
+	* source/nedit.c (tags: REL-5-2) (BETA-5-2.1): Remove "iso8859" as
+	some servers do not have this encoding installed.
+
+2001-09-20 11:14  amai
+
+	* ChangeLog (1.10): Update
+
+2001-09-20 11:13  amai
+
+	* ChangeLog (BETA-5-2.4): Update. Remove info about recent main
+	trunk
+
+2001-09-19 12:11  amai
+
+	* makefiles/: Makefile.linux, Makefile.os2 (BETA-5-2.[1,1]) (utags:
+	REL-5-2): Document -lXp flag (required when linking against a Motif
+	2.1 compatible libXm)
+
+2001-09-17 14:06  amai
+
+	* source/file.c (1.31), source/regularExp.c (1.11), source/search.h
+	(1.13), util/printUtils.c (1.13): Still minor cleanup. Make
+	compiler/lint even more happy
+
+2001-09-14 15:59  edg
+
+	* source/highlight.c (tags: REL-5-2) (BETA-5-2.1): Fixes for SF
+	bugs #459965 and #460859 (they are related), including patch
+	#460229.
+
+2001-09-13 14:11  tringali
+
+	* source/preferences.c (BETA-5-2.2): #458807: Automatically add 5.2
+	styles if .nedit file is pre-5.2
+
+2001-09-12 20:14  amai
+
+	* doc/: faq-txt.awk (tags: REL-5-2), faq-txt.dtd (tags: REL-5-2),
+	faq-txt.xsl (tags: REL-5-2), faq.txt, faq.xml, faq.xsl (tags:
+	REL-5-2) (BETA-5-2.[1,1,1,2,4,1]): Update as sent from Florian
+	Xhumari
+
+2001-09-12 09:45  amai
+
+	* ChangeLog (BETA-5-2.3): I forgot to update this file in this beta
+	branch ...
+
+2001-09-12 09:18  amai
+
+	* makefiles/Makefile.depend (tags: REL-5-2) (BETA-5-2.1): Add CVS
+	info line to output. Makes life even more simple
+
+2001-09-11 11:24  amai
+
+	* doc/faq.xml (BETA-5-2.3): Add a non-visible CVS stamp and update
+	version/time stamp
+
+2001-09-11 10:17  edg
+
+	* source/search.c (tags: REL-5-2) (BETA-5-2.1): Fixed a minor
+	button sensitivity bug (Multiple Files... button was grayed out
+	after canceling multi-file replace dialog and modifying search
+	text).
+
+2001-09-10 15:28  amai
+
+	* util/system.h (tags: REL-5-2) (BETA-5-2.2): Update/add/fix
+	compiler info
+
+2001-09-10 13:42  amai
+
+	* source/help.c (BETA-5-2.5): Update timestamp
+
+2001-09-10 13:41  amai
+
+	* doc/faq.xml (BETA-5-2.2): Some updates WRT LessTif, mostly
+	cosmetics.
+
+2001-09-07 14:16  amai
+
+	* doc/NEdit.ad (1.1): file NEdit.ad was initially added on branch
+	BETA-5-2.
+
+2001-09-07 14:16  amai
+
+	* doc/NEdit.ad (tags: REL-5-2) (BETA-5-2.1): Add a 5.1 app defaults
+	file - needs to be updated probably.  This contains only
+	outcommented entries!
+
+2001-09-07 07:46  amai
+
+	* doc/nc.man (tags: REL-5-2), doc/nedit.doc, source/help.c
+	(BETA-5-2.[1,2,4]): Fix typos as reported on the list
+
+2001-09-07 07:39  amai
+
+	* source/help.c (BETA-5-2.3): Don't call XmRegisterConverters() for
+	Motif 2.1, add declaration for 2.0 and add a "helpful" comment on
+	all that
+
+2001-09-06 09:39  amai
+
+	* ChangeLog (1.9), source/help.c (1.55): ChangeLog update and a new
+	timestamp
+
+2001-09-06 09:37  amai
+
+	* source/: Makefile.dependencies (1.11), file.c (1.30), tags.c
+	(1.18), tags.h (1.6): Add missing #include and add some 'const'. 
+	Update dependencies
+
+2001-09-05 11:44  amai
+
+	* source/: file.c (1.29), help.c (1.54), preferences.c (1.34),
+	preferences.h (1.14), tags.c (1.17), tags.h (1.5): Patch for SF bug
+	[ #451997 ] bugs in tags.c/normalizePathname from Markus
+	Schwarzenberg
+
+2001-09-04 17:55  amai
+
+	* doc/nedit.doc, source/help.c (BETA-5-2.[1,2]): Fix typo reported
+	on the mailinglist
+
+2001-08-31 22:16  amai
+
+	* doc/: faq.txt, faq.xml (BETA-5-2.[1,1]): Update FAQ as sent from
+	Florian Xhumari.  Add plain text version of FAQ
+
+2001-08-31 22:16  amai
+
+	* doc/faq.txt (1.1): file faq.txt was initially added on branch
+	BETA-5-2.
+
+2001-08-30 21:04  tringali
+
+	* util/system.h (BETA-5-2.1): Fix for Solaris x86 "unknown"
+
+2001-08-30 20:19  amai
+
+	* ChangeLog (BETA-5-2.2): Update
+
+2001-08-30 20:17  amai
+
+	* source/preferences.c (BETA-5-2.1): /bin/csh doesn't make sense on
+	OS/2 - even as a default value only
+
+2001-08-29 15:56  slobasso
+
+	* source/help.c (1.53): fixed mispellings
+
+2001-08-29 13:56  amai
+
+	* source/regularExp.c (1.10): Fix lint warning: octal constants
+	shouldn't carry a suffix like 'L'!?
+
+2001-08-29 08:27  amai
+
+	* util/: misc.c (1.32), misc.h (1.10): Second attempt to fix a
+	specific compiler warning and a 'const' addition
+
+2001-08-29 00:01  slobasso
+
+	* source/file.c (1.28): moved braces so nedit goto matching works
+
+2001-08-28 23:18  slobasso
+
+	* doc/nedit.doc (1.5), source/help.c (1.52): documentation cleanup
+
+2001-08-28 22:24  slobasso
+
+	* source/help.c (1.51): Array documentation cleanup.
+
+2001-08-28 11:41  amai
+
+	* source/tags.c (1.16): 'const' patch
+
+2001-08-28 11:29  amai
+
+	* source/file.c (1.27), source/highlight.c (1.19),
+	source/interpret.c (1.18), source/macro.c (1.36), source/menu.c
+	(1.37), source/preferences.c (1.33), source/preferences.h (1.13),
+	source/tags.c (1.15), source/text.c (1.17), util/misc.c (1.31): Fix
+	some more lclint warnings: type casts, make some things static (no,
+	not all unused ones, 'some'), etc.
+
+2001-08-27 18:45  slobasso
+
+	* source/macro.c (1.35): fixed static linkage of actionToString to
+	match declaration
+
+2001-08-27 09:08  amai
+
+	* source/nc.c (1.11): startServer() changes: has a return type now;
+	re-shuffle some code Also make another global var static and
+	replace a printf() by puts()
+
+2001-08-26 02:28  slobasso
+
+	* source/macro.c (1.34): removed unused variable
+
+2001-08-25 15:58  amai
+
+	* source/: file.c (1.26), highlightData.c (1.23), highlightData.h
+	(1.6), preferences.c (1.32), preferences.h (1.12), regexConvert.c
+	(1.5, BETA-5-3-RC1), regexConvert.h (1.3, BETA-5-3-RC1), server.h
+	(1.3, BETA-5-3-RC1), shell.c (1.15), shell.h (1.4, BETA-5-3-RC1),
+	undo.c (1.7), undo.h (1.4, BETA-5-3-RC1): Another 'const' patch
+
+2001-08-25 15:24  amai
+
+	* source/: file.c (1.25), file.h (1.8), highlightData.c (1.22),
+	highlightData.h (1.5), macro.c (1.33), macro.h (1.3, BETA-5-3-RC1),
+	regularExp.c (1.9), regularExp.h (1.6, BETA-5-3-RC1), search.c
+	(1.35), search.h (1.12): Another 'const' patch
+
+2001-08-25 12:16  amai
+
+	* util/printUtils.c (1.12): The very last signed vs. unsigned
+	warning on my system ...
+
+2001-08-25 12:09  amai
+
+	* source/: highlightData.c (1.21), menu.c (1.36), preferences.c
+	(1.31), regularExp.c (1.8), shell.c (1.14), userCmds.c (1.18): Fix
+	a couple of "unsigned vs. int" compiler warnings. Using gcc on OS/2
+	this warning is now completly wiped out!
+
+2001-08-25 11:55  amai
+
+	* util/: DialogF.c (1.18), misc.c (1.30), prefFile.c (1.10): Fix
+	compiler warnings. Mostly unsigned vs. signed int issues
+
+2001-08-25 11:49  amai
+
+	* README (BETA-5-2.2): A couple of fixes, enhancements (see report
+	on mailinglist)
+
+2001-08-24 18:34  amai
+
+	* makefiles/Makefile.solaris (BETA-5-2.1): No debug build by
+	default. Patch from Thorsten Haude
+
+2001-08-24 08:33  amai
+
+	* util/: fontsel.c, fontsel.h, misc.c (BETA-5-2.[2,2,2]) (utags:
+	REL-5-2): Undo some changes which I erroneously checked in ...
+
+2001-08-24 08:28  amai
+
+	* ChangeLog, util/fontsel.c, util/fontsel.h, util/misc.c
+	(BETA-5-2.[1,1,1,1]): Updated Changelog.  Includes whole history,
+	including new beta branch.  New options of cvs2cl used, listing
+	contains now revision/branch info, timestamps are in GMT, etc.
+
+2001-08-24 08:19  amai
+
+	* source/macro.c (1.32): Fix warnings, add 'const's, make func
+	static
+
+2001-08-23 17:57  amai
+
+	* source/selection.c (1.11): Try to fix two lint/compiler warnings
+
+2001-08-23 17:42  amai
+
+	* source/search.c (1.34): Fix wrong return type in function (in a
+	"dead" branch)
+
+2001-08-23 14:59  amai
+
+	* source/: highlightData.c (1.20), interpret.c (1.17), shift.c
+	(1.9), smartIndent.c (1.13, BETA-5-3-RC1): Make some more functions
+	static
+
+2001-08-23 14:39  amai
+
+	* util/: misc.c (1.29), misc.h (1.9): Drop 'wrong' prototype for
+	standard function. Fix a function signature to avoid warnings
+
+2001-08-23 14:11  amai
+
+	* util/: fontsel.c (1.11), fontsel.h (1.4): Fix lint warning about
+	float to integer assignment and add some more 'const's
+
+2001-08-23 13:57  amai
+
+	* util/misc.c (1.28): Drop unused #include
+
+2001-08-22 15:41  amai
+
+	* README, source/help.c (BETA-5-2.[1,1]): First updates for "RC1"
+
+2001-08-22 15:39  amai
+
+	* doc/nedit.man (tags: REL-5-2) (BETA-5-2.1): Update from Joor
+	Loohuis.
+
+2001-08-21 14:29  tringali
+
+	* source/: userCmds.c (1.17), window.c (1.33) (utags: REL-5-2):
+	#449569: Ensure shell/macro accelerators also have accelerator fix
+
+2001-08-20 20:36  tringali
+
+	* source/window.c (1.32): #449569: Avoid startup failure when
+	window manager grabs the same key as an accelerator
+
+2001-08-18 12:35  amai
+
+	* source/Makefile.dependencies (1.10, REL-5-2): Update
+
+2001-08-18 12:24  amai
+
+	* source/: help.c (1.50), help.h (1.4, REL-5-2), nedit.c (1.18):
+	Add a PrintVersion() call to nedit.  Some more 'const' patches :-)
+
+2001-08-18 11:48  jlous
+
+	* README (1.13), doc/nedit.man (1.5), source/help.c (1.49): Moved
+	Thorsten Haude credits from pattern contributor to developer.
+
+2001-08-17 23:02  edg
+
+	* README (1.12), makefiles/Makefile.aix (1.5, BETA-5-3-RC1,
+	REL-5-2), makefiles/Makefile.bsdi (1.3, BETA-5-3-RC1, REL-5-2),
+	makefiles/Makefile.ccur (1.3, BETA-5-3-RC1, REL-5-2),
+	makefiles/Makefile.convex (1.3, BETA-5-3-RC1, REL-5-2),
+	makefiles/Makefile.cygwin (1.4, BETA-5-3-RC1, REL-5-2),
+	makefiles/Makefile.dcosx (1.3, BETA-5-3-RC1, REL-5-2),
+	makefiles/Makefile.dec (1.4, BETA-5-3-RC1, REL-5-2),
+	makefiles/Makefile.freebsd (1.3, BETA-5-3-RC1, REL-5-2),
+	makefiles/Makefile.generic (1.4, REL-5-2), makefiles/Makefile.hpux
+	(1.3, BETA-5-3-RC1, REL-5-2), makefiles/Makefile.linux (1.5),
+	makefiles/Makefile.lynx (1.3, BETA-5-3-RC1, REL-5-2),
+	makefiles/Makefile.m88k.svr4 (1.3, BETA-5-3-RC1, REL-5-2),
+	makefiles/Makefile.netbsd (1.3, BETA-5-3-RC1, REL-5-2),
+	makefiles/Makefile.os2 (1.5), makefiles/Makefile.osf (1.4,
+	BETA-5-3-RC1, REL-5-2), makefiles/Makefile.reliant (1.3,
+	BETA-5-3-RC1, REL-5-2), makefiles/Makefile.sco (1.3, BETA-5-3-RC1,
+	REL-5-2), makefiles/Makefile.sgi (1.3, BETA-5-3-RC1, REL-5-2),
+	makefiles/Makefile.solaris (1.4), makefiles/Makefile.sunos (1.3,
+	BETA-5-3-RC1, REL-5-2), makefiles/Makefile.superux (1.3,
+	BETA-5-3-RC1, REL-5-2), makefiles/Makefile.uhc (1.3, BETA-5-3-RC1,
+	REL-5-2), makefiles/Makefile.ultrix (1.3, BETA-5-3-RC1, REL-5-2),
+	makefiles/Makefile.unicos (1.4, REL-5-2),
+	makefiles/Makefile.unixware (1.3), source/help.c (1.48),
+	source/preferences.c (1.30): Made the REPLACE_SCOPE compilation
+	option more visible and changed the default replace scope selection
+	preference to "Smart".
+
+2001-08-17 21:54  edg
+
+	* source/highlight.c (1.18): Added a fix for SF bug #449828.
+
+2001-08-17 14:09  tringali
+
+	* source/tags.c (1.14, REL-5-2): Fix for crash in shared tag
+	allocation on Solaris (compiler bug?)
+
+2001-08-17 11:01  amai
+
+	* source/: window.c (1.31), window.h (1.7, REL-5-2): Another
+	'const' patch
+
+2001-08-17 10:56  amai
+
+	* util/: fileUtils.c (1.14), fileUtils.h (1.5) (utags: REL-5-2):
+	Export two more interfaces. Fix for CompressPathname() to avoid
+	multiple slashes in path. (Markus Schwarzenberg)
+
+2001-08-16 18:33  slobasso
+
+	* source/highlightData.c (1.19): Fixed NEdit macro language
+	patterns to contain previously added items.
+
+2001-08-16 17:24  amai
+
+	* source/highlight.c (1.17): Fix for [ nedit-Bugs-435384 ] circular
+	patterns reference hangs NEdit
+
+2001-08-16 09:49  amai
+
+	* source/highlightData.c (1.18): Patch [ #451485 ] updated Sh Ksh
+	Bash patterns submitted from Joor Loohuis
+
+2001-08-15 09:16  amai
+
+	* source/: Makefile.dependencies (1.9), regexConvert.c (1.4,
+	REL-5-2): Another source was missing to #include it's own header
+	for consistency checking!
+
+2001-08-15 09:08  amai
+
+	* ChangeLog (1.8): Update (ok, not even a week has passed, but it's
+	a nice overview ...)
+
+2001-08-15 09:00  amai
+
+	* source/preferences.h (1.11, REL-5-2), util/misc.c (1.27),
+	util/misc.h (1.8, REL-5-2): Have unique value for MAX_ACCEL_LEN
+
+2001-08-15 08:56  amai
+
+	* source/Makefile.dependencies (1.8): Update
+
+2001-08-15 08:56  amai
+
+	* source/: userCmds.c (1.16), userCmds.h (1.4, BETA-5-3-RC1,
+	REL-5-2): Source should include it's own headers for consistency
+	checking.  Add some const to signatures, drop an unused arg from a
+	static interface.
+
+2001-08-14 15:05  slobasso
+
+	* source/rbTree.c (1.4, BETA-5-3-RC1, REL-5-2): fixed comment
+	spacing
+
+2001-08-14 14:40  slobasso
+
+	* source/rbTree.c (1.3): added gnu license
+
+2001-08-14 08:50  jlous
+
+	* README (1.11): README credits updated to reflect version dialog
+
+2001-08-14 08:37  jlous
+
+	* source/file.c (1.24), source/help.c (1.47), source/highlight.c
+	(1.16), source/highlightData.c (1.17), source/interpret.c (1.16,
+	REL-5-2), source/macro.c (1.31, REL-5-2), source/menu.c (1.35,
+	REL-5-2), source/nc.c (1.10, REL-5-2), source/nedit.c (1.17),
+	source/preferences.c (1.29), source/search.c (1.33),
+	source/selection.c (1.10, REL-5-2), source/server.c (1.9, REL-5-2),
+	source/shell.c (1.13), source/shift.c (1.8, REL-5-2),
+	source/smartIndent.c (1.12, REL-5-2), source/tags.c (1.13),
+	source/text.c (1.16, REL-5-2), source/textBuf.c (1.11, REL-5-2),
+	source/textDisp.c (1.10, REL-5-2), source/textDrag.c (1.4,
+	REL-5-2), source/textSel.c (1.5, REL-5-2), source/undo.c (1.6,
+	REL-5-2), source/userCmds.c (1.15), source/window.c (1.30),
+	util/DialogF.c (1.17, REL-5-2), util/fileUtils.c (1.13),
+	util/fontsel.c (1.10), util/getfiles.c (1.15, REL-5-2),
+	util/managedList.c (1.7, BETA-5-3-RC1, REL-5-2), util/misc.c
+	(1.26), util/prefFile.c (1.9), util/printUtils.c (1.11, REL-5-2),
+	util/system.h (1.7), util/utils.c (1.5, REL-5-2), util/vmsUtils.c
+	(1.5, BETA-5-3-RC1, REL-5-2): Fixed license statements to pure GPL
+
+2001-08-13 13:48  tringali
+
+	* doc/: nc.man (1.4), nedit.man (1.4): manpage updates from Joor.
+
+2001-08-13 09:55  amai
+
+	* doc/nedit.doc (1.4), source/help.c (1.46): Doc patch from
+	Thorsten Haude posted on Fri Aug 10 2001
+
+2001-08-13 09:51  amai
+
+	* doc/nedit.doc (1.3), source/help.c (1.45): Patch from Thorsten
+	Haude: Document Arrays within nedit.doc and typo fix in help.c
+
+2001-08-12 15:45  amai
+
+	* makefiles/Makefile.generic (1.3), source/comnedit.com (1.6,
+	REL-5-2): Drop last references to NO_FCHMOD #define
+
+2001-08-11 19:51  edg
+
+	* source/search.c (1.32): Fixed SF bug #448006: three beeps; one to
+	many.
+
+2001-08-10 20:36  amai
+
+	* source/highlightData.c (1.16): TeX pattern patch from Joerg
+	Fischer <jf505@yahoo.de>
+
+2001-08-10 14:35  amai
+
+	* source/Makefile.dependencies (1.7): Update dependency list
+
+2001-08-09 20:58  tringali
+
+	* source/nedit.c (1.16): Fix for wrong menu font [#434383]
+
+2001-08-09 18:47  amai
+
+	* util/system.h (1.6): Correct a comment :-)
+
+2001-08-09 18:46  amai
+
+	* makefiles/Makefile.os2 (1.4): Drop -DNO_FCHMOD flag
+
+2001-08-09 18:41  slobasso
+
+	* source/Makefile.common (1.8, REL-5-2): added parse.c to cleaned
+	files for make clean
+
+2001-08-09 18:39  slobasso
+
+	* source/userCmds.c (1.14): removed attachment possibly causing
+	window manager loop
+
+2001-08-09 18:03  slobasso
+
+	* source/: smartIndent.c (1.11), smartIndent.h (1.4, BETA-5-3-RC1,
+	REL-5-2), macro.c (1.30): We now keep track if we are in smart
+	indent macros so garbage collection won't remove things from under
+	a macro.
+
+2001-08-09 13:34  amai
+
+	* source/highlight.c (1.15), source/highlightData.c (1.15),
+	source/interpret.c (1.15), source/search.c (1.31),
+	source/selection.c (1.9), source/shell.c (1.12),
+	source/smartIndent.c (1.10), source/textBuf.c (1.10),
+	source/textSel.c (1.4), source/userCmds.c (1.13), source/window.c
+	(1.29), util/managedList.c (1.6): Add lots of missing #include
+	<string.h>
+
+2001-08-09 08:37  amai
+
+	* source/help.c (1.44): Add hardcoded timestamp (month) again
+
+2001-08-09 07:37  amai
+
+	* source/.cvsignore (1.2, BETA-5-3-RC1, REL-5-2): Add entry
+
+2001-08-08 22:31  slobasso
+
+	* source/file.c (1.23): remove fchmod calls except when under VMS
+
+2001-08-08 18:29  amai
+
+	* makefiles/Makefile.os2 (1.3): Update from my private working copy
+
+2001-08-08 08:39  amai
+
+	* ChangeLog (1.7): Update (should be done weekly perhaps and could
+	even be done automatically?)
+
+2001-08-08 08:37  amai
+
+	* source/parse.c_noyacc (1.7, REL-5-2): Re-generate from parse.y. 
+	BTW, yacc from Digital Unix 4.0x is being used
+
+2001-08-08 08:34  amai
+
+	* source/parse.y (1.16, REL-5-2): Add an #include <string.h> (there
+	was no error/warning; somehow we already got this probably)
+
+2001-08-07 23:46  slobasso
+
+	* source/Makefile.common (1.7): changed highlightData.c to be
+	compiled with BIGGER_STRINGS
+
+2001-08-07 01:53  tringali
+
+	* ReleaseNotes (1.9), source/highlightData.c (1.14),
+	source/preferences.c (1.28): #448420: Pattern updates from Joor
+
+2001-08-07 01:12  tringali
+
+	* source/nedit.c (1.15): Fix for #448402: nedit quits if unable to
+	resolve X locale
+
+2001-08-06 21:24  amai
+
+	* README (1.10): correction to "Requirements" section
+
+2001-08-06 21:21  amai
+
+	* README (1.9): Add "Requirements for building NEdit" section
+
+2001-08-06 20:38  tringali
+
+	* doc/nedit.doc (1.2), source/help.c (1.43): Sync help with doc. 
+	(Updates from Thorsten Haude)
+
+2001-08-04 20:49  tringali
+
+	* source/file.c (1.22), source/menu.c (1.34), source/nc.c (1.9),
+	source/nedit.c (1.14), source/server.c (1.8), source/shell.c
+	(1.11), source/window.c (1.28), util/misc.c (1.25): Ensure exit
+	returns a meaningful (succes/fail) status to the user
+
+2001-08-04 20:23  tringali
+
+	* util/system.h (1.5): Add info for lots more compilers.
+
+2001-08-03 12:16  amai
+
+	* ReleaseNotes (1.8): Small updates
+
+2001-08-02 23:45  tringali
+
+	* util/system.h (1.4): Add definitions for MSVC, Sun Workshop, etc.
+
+2001-08-02 22:59  slobasso
+
+	* source/macro.c (1.29): Fixed problem where error message is
+	written if empty learned macro is executed. Also disallowed replay
+	from executing if a macro is already in progress. This caused a
+	crash by overflowing the interpreter stack.
+
+2001-08-02 22:54  slobasso
+
+	* source/file.c (1.21): added symlink security patch and added mode
+	parameter to open calls with O_CREAT
+
+2001-08-02 17:26  amai
+
+	* source/interpret.c (1.14): Avoid crash when calling
+	"self_insert()" from macro menu: fill in missing entries from our
+	fakes key event
+
+2001-08-01 07:41  amai
+
+	* ChangeLog (1.6): Update
+
+2001-08-01 07:40  amai
+
+	* source/help.c (1.42): Again hardcode a string about the
+	development version "August 2001".  Build time may be misleading
+	...
+
+2001-07-31 23:16  slobasso
+
+	* source/macro.c (1.28): fixed problem where closing window while
+	learning would make it impossible to finish or cancel learing.
+
+2001-07-31 11:58  amai
+
+	* source/text.c (1.15): Fix minor warnings
+
+2001-07-31 07:46  amai
+
+	* util/managedList.c (1.5): Don't name variables 'index', may be an
+	interface in BSD-like libc
+
+2001-07-31 07:43  amai
+
+	* util/getfiles.c (1.14): Fix lint warning: "getfiles.c", line 716:
+	warning: args redefinition hides earlier one
+
+2001-07-31 07:40  amai
+
+	* util/fontsel.c (1.9): Don't use 'index' as name for variable; may
+	be a call in a BSD-like libc
+
+2001-07-29 17:51  amai
+
+	* source/highlight.c (1.14): Experimental patch to fix "mismatched"
+	memory handling calls as indicated by "purify". Probably not
+	complete and should be checked again with purify _now_!
+
+2001-07-28 19:53  tringali
+
+	* Makefile (1.6): #442517: add explanatory text how to use make
+
+2001-07-25 18:37  tringali
+
+	* source/help.c (1.41): Add more detailed info about Motif (runtime
+	version number)
+
+2001-07-25 18:36  tringali
+
+	* util/system.h (1.3): Use "Digital/Tru64 Unix" in place of OSF/1
+
+2001-07-25 18:36  tringali
+
+	* doc/: nc.man (1.3), nedit.man (1.3): Update authors for 5.2
+
+2001-07-25 18:05  slobasso
+
+	* util/misc.c (1.24): made changes so that Num_Lock's mod mask is
+	found rather than assuming Mod3
+
+2001-07-25 14:36  amai
+
+	* source/textBuf.c (1.9): Attempt to fix memory leak reported by
+	Thorsten Haude
+
+2001-07-25 13:03  amai
+
+	* util/misc.c (1.23): Try to fix small memory leak reported by
+	Thorsten Haude
+
+2001-07-25 07:49  amai
+
+	* util/system.h (1.2): Add "EMX=OS/2"
+
+2001-07-25 07:39  amai
+
+	* source/Makefile.dependencies (1.6), util/Makefile.dependencies
+	(1.4, REL-5-2): Update dependency lists
+
+2001-07-24 21:55  tringali
+
+	* util/system.h (1.1): Add host compliation information to help
+
+2001-07-24 21:54  tringali
+
+	* source/: help.c (1.40), tags.c (1.12), tags.h (1.4, REL-5-2): -
+	Use shared strings for lower memory use with large tags files.	-
+	Add compilation host information to help, update authors
+
+2001-07-24 19:27  slobasso
+
+	* util/misc.c (1.22): Fix array size define to match actual array
+	size.  Incorrect size could result in infinite loop.
+
+2001-07-18 13:01  amai
+
+	* ChangeLog (1.5): Update
+
+2001-07-18 13:00  amai
+
+	* source/: search.c (1.30), search.h (1.11, REL-5-2), window.c
+	(1.27): Shrink two function names to 31 characters length and below
+	(seems to be a limit on some VMS systems)
+
+2001-07-17 08:19  amai
+
+	* doc/faq.xml (1.2): Updated version from  Florian Xhumari as of
+	http://galleries.free.fr/nedit-faq-01-07-16.tar.gz
+
+2001-07-17 07:31  amai
+
+	* source/preferences.c (1.27), util/getfiles.c (1.13),
+	util/vmsUtils.c (1.4): VMS patches from Blair Phillips
+	<blair.phillips@airservices.gov.au>:  avoid rint() re-definition,
+	fix for non-unix file root, case-insensitive match on filename
+	extensions.
+
+2001-07-16 20:41  amai
+
+	* source/lnknedit.com (1.5, BETA-5-3-RC1, REL-5-2): VMS patch from
+	mark.geary@qwest.com
+
+2001-07-16 14:48  amai
+
+	* doc/: nc.man (1.2), nedit.man (1.2): Man page updates from Joor
+	Loohuis
+
+2001-07-16 11:49  amai
+
+	* doc/: faq-txt.awk (1.1), faq-txt.dtd (1.1), faq-txt.xsl (1.1),
+	faq.dtd (1.1), faq.xml (1.1), faq.xsl (1.1): faq*: add FAQ files
+	found on our website
+
+2001-07-11 21:35  amai
+
+	* source/: parse.c_noyacc (1.6), parse.h (1.4, BETA-5-3-RC1,
+	REL-5-2), parse.y (1.15): Back out "const" patch for ParseMacro().
+	Was incomplete, therefore broken
+
+2001-07-11 15:21  amai
+
+	* source/: comnedit.com (1.5), file.c (1.20), lnknedit.com (1.4):
+	VMS patches from  <Mark.Geary@qwest.com> (not literally as for
+	file.c)
+
+2001-07-11 08:06  amai
+
+	* source/parse.c_noyacc (1.5): Update from current parse.y
+
+2001-07-11 08:04  amai
+
+	* source/: parse.h (1.3), parse.y (1.14): Add some 'const' to
+	ParseMacro() signature
+
+2001-07-11 07:55  amai
+
+	* util/: comutil.com (1.3, BETA-5-3-RC1, REL-5-2), utils.c (1.4):
+	VMS patches from Mark.Geary@qwest.com
+
+2001-07-07 09:55  amai
+
+	* ChangeLog (1.4): Update
+
+2001-07-07 09:54  amai
+
+	* COPYRIGHT (1.1, BETA-5-3-RC1, REL-5-2), README (1.8): Have an
+	external file for the license terms. README refers to it
+
+2001-07-07 09:48  amai
+
+	* nc.man (1.4), nedit.doc (1.6), nedit.man (1.4), doc/nc.man (1.1),
+	doc/nedit.doc (1.1), doc/nedit.man (1.1): Move doc files to
+	separate subdirectory
+
+2001-07-04 09:42  uid30962
+
+	* README (1.7): Update some references to LessTif
+
+2001-07-04 09:29  uid30962
+
+	* ReleaseNotes (1.7): ReleaseNotes: Upddate
+
+2001-07-03 12:53  amai
+
+	* source/Makefile.dependencies (1.5): Makefile.dependencies: update
+	depedency list
+
+2001-07-03 12:13  amai
+
+	* source/help.c (1.39): help.c: A new month has come ...
+
+2001-06-23 09:31  amai
+
+	* ChangeLog (1.3): ChangeLog: update
+
+2001-06-22 18:27  tringali
+
+	* source/: nedit.c (1.13), window.c (1.26): Allow stats line
+	background color to be set by user [#431891]
+
+2001-06-22 18:25  tringali
+
+	* source/macro.c (1.27): Incremental reading from files via J. Lous
+	[Patch #434465]
+
+2001-06-22 14:32  amai
+
+	* source/file.c (1.19): file.c: fail when trying to read in a
+	directory as a file
+
+2001-06-21 14:54  edel
+
+	* source/shell.c (1.10): Fixed shell dialog BadMatch crash on
+	Solaris 2.5
+
+2001-06-20 15:48  amai
+
+	* source/macro.c (1.26): macro.c: replace snprintf() by sprintf(). 
+	 Add #include <string.h>
+
+2001-06-20 08:24  amai
+
+	* ChangeLog (1.2): ChangeLog: update
+
+2001-06-19 20:00  slobasso
+
+	* source/macro.c (1.25): Added Thorsten's code to put correct key
+	codes in status bar during recording and macro running.
+
+2001-06-09 18:48  amai
+
+	* makefiles/: Makefile.dec (1.3), Makefile.osf (1.3),
+	Makefile.superux (1.2): Makefile.superux: add CVS Id Makefile.dec
+	Makefile.osf: briefly comment on the os versions they are supposed 
+	   to work with
+
+2001-06-08 08:14  amai
+
+	* source/help.c (1.38): help.c: update timestamp to "June, 2001"
+
+2001-06-07 19:52  amai
+
+	* ChangeLog (1.1): ChangeLog: finally add the output of "cvs2cl".  
+	 Needs to be updated regularly ...
+
+2001-06-06 19:24  tringali
+
+	* makefiles/Makefile.linux (1.4): 
+	Remove -DEDITRES, this causes link failure.
+
+2001-06-06 10:00  amai
+
+	* util/: DialogF.c (1.16), fontsel.c (1.8), getfiles.c (1.12),
+	misc.c (1.21), prefFile.c (1.8): *.c: add some explicit #include
+	<string.h>. Previously	it was done implicitly ...
+
+2001-06-05 12:52  amai
+
+	* makefiles/Makefile.linux (1.3): Makefile.linux: drop
+	-I/-L/usr/lesstif/* flags and add a suitable comment  instead
+
+2001-06-05 08:01  amai
+
+	* source/file.c (1.18): file.c: security fix for WriteBackupFile()
+
+2001-06-01 20:09  edel
+
+	* makefiles/: Makefile.solaris (1.3), Makefile.superux (1.1): From:
+	Ian Johnston" <Ian.Johnston@dlr.de>
+
+2001-05-31 08:49  amai
+
+	* source/nedit.h (1.17, REL-5-2): nedit.h: add 'extern' to variable
+	declaration in header	 (to avoid problem with multiple
+	definitions)
+
+2001-05-29 18:21  arnef
+
+	* source/menu.c (1.33): Add separator in Preferences/Default
+	Settings/Customize Menus
+
+2001-05-19 16:09  tringali
+
+	* util/misc.c (1.20): Fix bug in mnemonic building- don't build
+	mnemonics for XK_VoidSymbol.  Fixes various problems with XFree86
+	servers.
+
+2001-05-17 11:42  arnef
+
+	* source/: menu.c (1.32), nedit.h (1.16), preferences.c (1.26),
+	preferences.h (1.10), window.c (1.25): Adding path to windows menu
+	file entries
+
+2001-05-15 20:04  amai
+
+	* makefiles/Makefile.depend (1.1): Makefile.depend: Makefile used
+	to generate (internal) the dependency list.		      This
+	file does not build anything!
+
+2001-05-12 00:48  tringali
+
+	* ReleaseNotes (1.6), source/text.c (1.14): - Add support for mouse
+	wheel scrolling in the main text area.
+
+2001-05-11 19:56  amai
+
+	* util/fileUtils.c (1.12): fileUtils.c: really tiny patch for OS/2
+	only (drive letters ;-)
+
+2001-05-11 08:05  amai
+
+	* source/file.c (1.17): file.c: Corrected(!) version of SuSe
+	security patch for temporary	file security problem within
+	PrintString().	   Tested once for compile/runtime ...
+
+2001-05-05 18:01  arnef
+
+	* source/menu.c (1.31): Changing default for sortOpenPrevDefCB
+	should invalidate all open window's OpenPrev menu
+
+2001-05-04 18:33  arnef
+
+	* source/: nedit.h (1.15), search.c (1.29), search.h (1.10),
+	window.c (1.24): Make the buttons in Find and Replace dialogs
+	sensitive on the state of 'Search for' field.
+
+2001-05-03 09:42  amai
+
+	* source/help.c (1.37): help.c: update timestamp to "May, 2001"
+
+2001-04-25 21:37  edg
+
+	* util/DialogF.c (1.15): Added a fix to handle unexpected
+	destruction of dialogs gracefully.
+
+2001-04-25 19:03  amai
+
+	* nedit.doc (1.5): nedit.doc: fix some typos, convert some "nedit"
+	to "NEdit", drop some comment about pre 1.2 Motif
+
+2001-04-25 17:01  amai
+
+	* util/fileUtils.c (1.11): fileUtils.c: forgot one special case
+	where the "//" patch might to a crash. Next time I should probably
+	<think> first, <code> later
+
+2001-04-25 16:48  amai
+
+	* util/fileUtils.c (1.10): fileUtils.c: fix typo in my
+	"double-slash patch" from today
+
+2001-04-25 07:52  amai
+
+	* util/fileUtils.c (1.9): fileUtils.c: avoid double "//" in path
+	strings as this may not work out on		 non-un*x systems
+
+2001-04-24 21:10  tringali
+
+	* util/misc.c (1.19): Fix crash bug in OpenMotif, where asking for
+	the the Display/Window of a gadget produces a NULL pointer.
+
+2001-04-18 19:12  slobasso
+
+	* source/window.c (1.23): needed to save/restore horizontal and
+	vertical scroll positions when changing hw tab size.
+
+2001-04-18 19:08  slobasso
+
+	* util/DialogF.c (1.14): fixed use of int where Cardinal should be
+
+2001-04-18 17:10  slobasso
+
+	* source/: help.c (1.36), macro.c (1.24): new $server_name
+	variable.
+
+2001-04-18 17:02  slobasso
+
+	* source/: file.c (1.16), file.h (1.7, REL-5-2), help.c (1.35),
+	menu.c (1.30), window.c (1.22): added optional parameter to close()
+	action for save option.
+
+2001-04-18 16:51  slobasso
+
+	* util/DialogF.c (1.13): fixed a mistake I introduced while
+	debugging
+
+2001-04-18 16:12  slobasso
+
+	* util/DialogF.c (1.12): cleaned up createMnemonics in an effort to
+	fix a crash bug. Bug still not fixed.
+
+2001-04-17 23:40  slobasso
+
+	* source/help.c (1.34): cleaned up formatting and moved Windows
+	Menu items into correct area
+
+2001-04-17 20:13  slobasso
+
+	* source/window.c (1.21): save and restore insert positions when hw
+	tab sizes are changed
+
+2001-04-17 18:47  slobasso
+
+	* source/macro.c (1.23): cleaned up RedundantActions, adding some
+	missing items
+
+2001-04-16 23:49  slobasso
+
+	* source/: file.c (1.15), nedit.h (1.14): added bit to distinguish
+	between too much binary data and -read
+
+2001-04-16 23:20  slobasso
+
+	* source/: file.c (1.14), file.h (1.6), macro.c (1.22), menu.c
+	(1.29), nedit.h (1.13), search.c (1.28), selection.c (1.8),
+	window.c (1.20): readOnly vs lockWrite access fix, now handles the
+	many other locked possibilities
+
+2001-04-16 16:36  edg
+
+	* source/: help.c (1.33), window.c (1.19): Added workarounds for
+	openmotif bugs [SF bug 231876].
+
+2001-04-16 14:04  amai
+
+	* source/textBuf.c (1.8): texBuf.c: try to fix a bug introduced by
+	a "const" patch.	    Pointed out by <arne@forlie.com>
+
+2001-04-14 09:51  amai
+
+	* makefiles/Makefile.unicos (1.3), source/preferences.c (1.25),
+	source/text.c (1.13), source/userCmds.c (1.12): *: applied re-vised
+	version of patches for UNICOS from    Bill Matson
+	<wjm@sdc.cs.boeing.com>
+
+2001-04-13 22:58  slobasso
+
+	* util/DialogF.c (1.11): fix build problem introduced in previous
+	change UCHAR_MAX is in limits.h
+
+2001-04-13 17:50  tringali
+
+	* ReleaseNotes (1.5), source/file.c (1.13), source/help.c (1.32),
+	source/highlightData.c (1.13), source/macro.c (1.21),
+	source/preferences.c (1.24), source/search.c (1.27),
+	source/smartIndent.c (1.9), source/userCmds.c (1.11),
+	util/DialogF.c (1.10), util/fontsel.c (1.7), util/getfiles.c
+	(1.11), util/misc.c (1.18), util/misc.h (1.7), util/printUtils.c
+	(1.10): - Updated release notes - Added unmodified mnemonics to
+	confirmation dialogs.  - Fix bug in mnemonics where there could be
+	two of the same menmonics   on one dialog.
+
+2001-04-13 15:02  slobasso
+
+	* source/search.c (1.26): fixed regex search backwards bug if wrap
+	turned off.
+
+2001-04-12 22:02  edg
+
+	* source/: help.c (1.31), macro.c (1.20), menu.c (1.28), nedit.h
+	(1.12), preferences.c (1.23), search.c (1.25), window.c (1.18),
+	window.h (1.6): Extended the Show Matching (..) functionality: Off,
+	Delimiter, and Range.  Original patch was submitted by Thorsten
+	Haude.
+
+2001-04-12 15:09  amai
+
+	* source/menu.c (1.27): menu.c: allow to specify control codes in
+	hex/dec/oct format	   also improve checking of input
+
+2001-04-09 22:12  amai
+
+	* util/: misc.c (1.17), misc.h (1.6): misc.c misc.h: another
+	"const" patch
+
+2001-04-09 21:43  edg
+
+	* source/help.c (1.30): Added information about new search
+	extensions and related stuff.
+
+2001-04-09 21:38  edg
+
+	* source/: nedit.h (1.11), search.c (1.24): Minor fixes and
+	improvements in isearch + beep on search wrap combination.
+
+2001-04-09 18:46  edg
+
+	* util/misc.c (1.16): Typo fix in recent accelerator fix.
+
+2001-04-06 13:09  amai
+
+	* source/: preferences.c (1.22), preferences.h (1.9):
+	preferences.*: even more "const" additions
+
+2001-04-06 13:03  amai
+
+	* source/: interpret.c (1.13), interpret.h (1.6, REL-5-2):
+	interpret.*: another "const" patch
+
+2001-04-06 09:49  amai
+
+	* source/file.c (1.12), source/file.h (1.5), source/help.c (1.29),
+	source/highlightData.c (1.12), source/highlightData.h (1.4,
+	REL-5-2), source/preferences.c (1.21), source/preferences.h (1.8),
+	source/regularExp.c (1.7, REL-5-2), source/regularExp.h (1.5,
+	REL-5-2), source/search.c (1.23), source/search.h (1.9),
+	source/textBuf.c (1.7), source/textBuf.h (1.4, REL-5-2),
+	util/fileUtils.c (1.8), util/fileUtils.h (1.4), util/printUtils.c
+	(1.9), util/printUtils.h (1.4, REL-5-2): *.c *.h: big "const"
+	patch.		 Except in textBuf.c it's only a couple of const
+	additions.	     In textBuf.c I had to change a coupl of lines
+	to get this done -	     should be on the safe side of life ...
+
+2001-04-04 19:38  edg
+
+	* source/: preferences.c (1.20), search.c (1.22): Minor bug fixes
+	in search extensions related code.
+
+2001-04-03 22:59  edg
+
+	* source/: menu.c (1.26), nedit.h (1.10), preferences.c (1.19),
+	preferences.h (1.7), search.c (1.21), search.h (1.8): Added "smart"
+	replace scope behaviour to the replace dialog radio button
+	alternative, and made it configurable through a preference.
+
+2001-04-03 08:06  amai
+
+	* source/help.c (1.28): help.c: the "April" patch ...
+
+2001-04-03 01:42  tringali
+
+	* util/misc.c (1.15): Don't allow traversal to insensitive widgets.
+
+2001-04-02 20:52  edg
+
+	* source/: highlight.c (1.13), macro.c (1.19), menu.c (1.25),
+	nedit.h (1.9), preferences.c (1.18), preferences.h (1.6),
+	regularExp.c (1.6), regularExp.h (1.4), search.c (1.20), search.h
+	(1.7), window.c (1.17): Introduced additional search modes [Markus
+	Schwarzenberg].  Added beep on search wrap option [Markus
+	Schwarzenberg].  Added sticky case sensitivity search preference
+	[Markus Schwarzenberg].  Replace and find dialog and incremental
+	search bar layout changes (currently two layout alternatives for
+	replace dialog, for evaluation purposes).
+
+2001-03-30 17:54  slobasso
+
+	* source/highlightData.c (1.11): new global in nedit macro language
+	$empty_array
+
+2001-03-30 17:48  slobasso
+
+	* source/: help.c (1.27), macro.c (1.18): added a new empty array
+	global
+
+2001-03-27 23:00  slobasso
+
+	* source/help.c (1.26): minor formatting fix
+
+2001-03-27 15:37  tringali
+
+	* makefiles/Makefile.aix (1.4): Add FUNCPROTO=15 for the IBM X
+	headers, which require a bitmask in this #define in order to
+	control function prototypes.
+
+2001-03-26 15:46  slobasso
+
+	* source/: interpret.c (1.12), interpret.h (1.5), macro.c (1.17):
+	minor array code cleanup
+
+2001-03-25 08:42  arnef
+
+	* source/tags.c (1.11): Fixed bug #217022
+
+2001-03-23 23:11  slobasso
+
+	* source/highlightData.c (1.10): added missing variables to NEdit
+	macro highlighting data
+
+2001-03-23 14:41  slobasso
+
+	* source/undo.c (1.5): undo/redo sets the selection to the changed
+	text
+
+2001-03-21 21:25  edg
+
+	* source/search.c (1.19): Changed the initial default selection for
+	multi-file replacement dialog to all files instead of none. 
+	Multi-file replacement dialog now makes sure that at least the
+	first selected item is visible when displayed.	Removed the #ifdefs
+	for conditional multi-file replacement functionality.  Minor layout
+	change for the replace dialog.
+
+2001-03-21 21:20  edg
+
+	* source/window.c (1.16): Removed #ifdef for conditional multi-file
+	replacement functionality.
+
+2001-03-19 16:30  slobasso
+
+	* source/: highlight.c (1.12), regexConvert.c (1.3), regularExp.c
+	(1.5), search.c (1.18), text.c (1.12), textBuf.c (1.6), textDisp.c
+	(1.9): removing warnings for RH7 linux compiler
+
+2001-03-19 14:43  tringali
+
+	* source/: text.c (1.11), nedit.c (1.12): 
+	
+	Move toggle overstrike accelerator to Motif standard "Insert", free
+	up Ctrl+B for other uses.
+
+2001-03-17 06:44  arnef
+
+	* source/search.c (1.17): Fixed bug related to
+	XtGetSelectionValue() and variables going out of scope.  Added
+	mnemonic to Replace& Find Button.
+
+2001-03-16 22:24  slobasso
+
+	* source/menu.c (1.24): fixed menu argument to set_wrap_text
+
+2001-03-16 20:28  amai
+
+	* source/: nc.c (1.8), nedit.c (1.11): nc.c nedit.c: wildcard
+	expansion for non-sh shells on OS/2 (EMX)
+
+2001-03-13 16:48  slobasso
+
+	* source/help.c (1.25), source/macro.c (1.16), source/search.c
+	(1.16), source/selection.c (1.7), source/shell.c (1.9),
+	source/shift.c (1.7), source/textDisp.c (1.8), util/DialogF.c
+	(1.9), util/fontsel.c (1.6), util/printUtils.c (1.8): cleanup
+	warnings under linux compiler
+
+2001-03-12 15:24  slobasso
+
+	* source/help.c (1.24): fixed a few minor mistakes.
+
+2001-03-12 15:15  slobasso
+
+	* source/: help.c (1.23), macro.c (1.15), menu.c (1.23),
+	preferences.c (1.17), window.c (1.15), window.h (1.5): added final
+	window settable prefs through actions and verified all should be
+	macro recordable.
+
+2001-03-11 02:31  slobasso
+
+	* source/: help.c (1.22), menu.c (1.22), nedit.h (1.8): new macro
+	access to many window settings
+
+2001-03-10 15:36  arnef
+
+	* source/: help.c (1.21), menu.c (1.21), nedit.c (1.10), nedit.h
+	(1.7), preferences.c (1.16), preferences.h (1.5), search.c (1.15),
+	search.h (1.6): Implemented replace/find functionality, patch no
+	403934
+
+2001-03-09 22:30  slobasso
+
+	* source/help.c (1.20): changed delete() to delete_selection() in
+	docs
+
+2001-03-09 22:27  slobasso
+
+	* source/menu.c (1.20): changed Delete menu item to use
+	delete_selection action
+
+2001-03-09 22:21  slobasso
+
+	* source/parse.y (1.13): added lex hack for delete array[key] vs
+	delete() abiguity
+
+2001-03-09 16:58  slobasso
+
+	* source/: help.c (1.19), macro.c (1.14), menu.c (1.19), text.c
+	(1.10), text.h (1.4, REL-5-2), textDisp.c (1.7), textDisp.h (1.5,
+	REL-5-2), window.c (1.14), window.h (1.4): adding new variables for
+	font width and pane index and size and focus_pane action
+
+2001-03-06 19:49  slobasso
+
+	* source/: interpret.c (1.11), rbTree.c (1.2), rbTree.h (1.2,
+	BETA-5-3-RC1, REL-5-2): added comments, cleaned up a few minor bugs
+	and added cvs id's to new files
+
+2001-03-06 15:02  slobasso
+
+	* source/macro.c (1.13): add comments
+
+2001-03-06 01:00  slobasso
+
+	* source/: interpret.c (1.10), parse.y (1.12): code cleanup
+
+2001-03-05 21:39  slobasso
+
+	* source/highlightData.c (1.9): bring syntax hilighting up to
+	latest changes in nedit macro language
+
+2001-03-05 19:26  slobasso
+
+	* source/: interpret.c (1.9), macro.c (1.12), parse.y (1.11): fixed
+	a few warnings and made splitMS compatible with array sub-scripts
+	end cases, which is what is was designed for
+
+2001-03-05 16:20  amai
+
+	* source/: help.c (1.18), parse.y (1.10): help.c: It's "March" now
+	...  parse.y: add two yy*() prototypes to make compiler happy
+
+2001-03-05 15:00  slobasso
+
+	* source/: Makefile.common (1.6), Makefile.dependencies (1.4),
+	help.c (1.17), interpret.c (1.8), interpret.h (1.4), macro.c
+	(1.11), menu.c (1.18), nedit.c (1.9), parse.y (1.9), rbTree.c
+	(1.1), rbTree.h (1.1), shell.c (1.8), smartIndent.c (1.8),
+	userCmds.c (1.10): array macro feature
+
+2001-02-26 23:38  edg
+
+	* Makefile (1.5), README (1.6), ReleaseNotes (1.4), nc.man (1.3),
+	nedit.doc (1.4), nedit.man (1.3), makefiles/Makefile.aix (1.3),
+	makefiles/Makefile.bsdi (1.2), makefiles/Makefile.ccur (1.2),
+	makefiles/Makefile.convex (1.2), makefiles/Makefile.cygwin (1.3),
+	makefiles/Makefile.dcosx (1.2), makefiles/Makefile.dec (1.2),
+	makefiles/Makefile.freebsd (1.2), makefiles/Makefile.generic (1.2),
+	makefiles/Makefile.hpux (1.2), makefiles/Makefile.linux (1.2),
+	makefiles/Makefile.lynx (1.2), makefiles/Makefile.m88k.svr4 (1.2),
+	makefiles/Makefile.netbsd (1.2), makefiles/Makefile.os2 (1.2),
+	makefiles/Makefile.osf (1.2), makefiles/Makefile.reliant (1.2),
+	makefiles/Makefile.sco (1.2), makefiles/Makefile.sgi (1.2),
+	makefiles/Makefile.solaris (1.2), makefiles/Makefile.sunos (1.2),
+	makefiles/Makefile.uhc (1.2), makefiles/Makefile.ultrix (1.2),
+	makefiles/Makefile.unicos (1.2), makefiles/Makefile.unixware (1.2),
+	source/Makefile.common (1.5), source/Makefile.dependencies (1.3),
+	source/comnedit.com (1.4), source/file.c (1.11), source/file.h
+	(1.4), source/help.c (1.16), source/help.h (1.3),
+	source/highlight.c (1.11), source/highlight.h (1.3, REL-5-2),
+	source/highlightData.c (1.8), source/highlightData.h (1.3),
+	source/interpret.c (1.7), source/interpret.h (1.3),
+	source/lnknedit.com (1.3), source/macro.c (1.10), source/macro.h
+	(1.2, REL-5-2), source/menu.c (1.17), source/menu.h (1.5,
+	BETA-5-3-RC1, REL-5-2), source/n.bm (1.2, BETA-5-3-RC1, REL-5-2),
+	source/nc.c (1.7), source/nedit.bm (1.2, BETA-5-3-RC1, REL-5-2),
+	source/nedit.c (1.8), source/nedit.h (1.6),
+	source/nedit_options_file.opt (1.2, BETA-5-3-RC1, REL-5-2),
+	source/parse.c_noyacc (1.4), source/parse.h (1.2), source/parse.y
+	(1.8), source/preferences.c (1.15), source/preferences.h (1.4),
+	source/regexConvert.c (1.2), source/regexConvert.h (1.2, REL-5-2),
+	source/regularExp.c (1.4), source/regularExp.h (1.3),
+	source/search.c (1.14), source/search.h (1.5), source/selection.c
+	(1.6), source/selection.h (1.3, REL-5-2), source/server.c (1.7),
+	source/server.h (1.2, REL-5-2), source/shell.c (1.7),
+	source/shell.h (1.3, REL-5-2), source/shift.c (1.6), source/shift.h
+	(1.3, BETA-5-3-RC1, REL-5-2), source/smartIndent.c (1.7),
+	source/smartIndent.h (1.3), source/tags.c (1.10), source/tags.h
+	(1.3), source/text.c (1.9), source/text.h (1.3), source/textBuf.c
+	(1.5), source/textBuf.h (1.3), source/textDisp.c (1.6),
+	source/textDisp.h (1.4), source/textDrag.c (1.3), source/textDrag.h
+	(1.2, BETA-5-3-RC1, REL-5-2), source/textP.h (1.3, BETA-5-3-RC1,
+	REL-5-2), source/textSel.c (1.3), source/textSel.h (1.2,
+	BETA-5-3-RC1, REL-5-2), source/undo.c (1.4), source/undo.h (1.3,
+	REL-5-2), source/userCmds.c (1.9), source/userCmds.h (1.3),
+	source/window.c (1.13), source/window.h (1.3), util/DialogF.c
+	(1.8), util/DialogF.h (1.4, REL-5-2), util/Makefile.common (1.5,
+	REL-5-2), util/Makefile.dependencies (1.3), util/comutil.com (1.2),
+	util/fileUtils.c (1.7), util/fileUtils.h (1.3), util/fontsel.c
+	(1.5), util/fontsel.h (1.3), util/getfiles.c (1.10),
+	util/getfiles.h (1.3, BETA-5-3-RC1, REL-5-2), util/managedList.c
+	(1.4), util/managedList.h (1.3, BETA-5-3-RC1, REL-5-2), util/misc.c
+	(1.14), util/misc.h (1.5), util/prefFile.c (1.7), util/prefFile.h
+	(1.4, BETA-5-3-RC1, REL-5-2), util/printUtils.c (1.7),
+	util/printUtils.h (1.3), util/utils.c (1.3), util/utils.h (1.2,
+	REL-5-2), util/vmsParam.h (1.2, BETA-5-3-RC1, REL-5-2),
+	util/vmsUtils.c (1.3), util/vmsUtils.h (1.3, BETA-5-3-RC1,
+	REL-5-2): Added CVS Ids.
+
+2001-02-25 02:13  edel
+
+	* source/parse.y (1.7): Fix conflicts in yacc grammar!
+
+2001-02-22 20:27  edel
+
+	* source/highlight.c (1.10): My previous highlighting patch didn't
+	take in to account styles which fail lookup in the pass1pattern
+	list (like pass 2 patterns).
+
+2001-02-21 21:39  tringali
+
+	* source/highlight.c (1.9): [Patch #101473] Use nearest-color match
+	when colormap exhausted.
+
+2001-02-21 16:49  edel
+
+	* source/highlight.c (1.8): Abutting styles could fool incremental
+	highlighting into using an unparsable pattern with parseString.
+
+2001-02-20 23:54  slobasso
+
+	* source/: help.c (1.15), macro.c (1.9): new preference global
+	variables added
+
+2001-02-20 15:37  slobasso
+
+	* source/menu.c (1.16): fixed bug where forgot to deref nArgs
+	pointer
+
+2001-02-20 09:58  amai
+
+	* Makefile (1.4), README (1.5): README:   change a couple of
+	"nedit" to "NEdit" Makefile: slightly change comment text (fix
+	typo, etc.)
+
+2001-02-19 16:39  slobasso
+
+	* source/: help.c (1.14), macro.c (1.8), menu.c (1.15): added a new
+	macro command string_compare() and an action raise_window()
+
+2001-02-19 16:30  slobasso
+
+	* source/file.c (1.10): fix issue where reused untitled window is
+	not given focus when raised.
+
+2001-02-19 10:03  amai
+
+	* source/help.c (1.13): help.c: fix some typos and change a couple
+	of	   "nedit" to "NEdit". Actually it is not always	
+	straightforward to see whether a "nedit" refers to	   the
+	whole product called "NEdit" or to the "nedit" executable ...
+
+2001-02-19 02:02  slobasso
+
+	* source/text.c (1.8): fix warnings
+
+2001-02-17 14:03  amai
+
+	* source/Makefile.dependencies (1.2), util/Makefile.dependencies
+	(1.2): */Makefile.dependencies: update WRT new utils.*
+
+2001-02-17 13:59  amai
+
+	* source/file.c (1.9), util/utils.c (1.2): file.c utils.c: add
+	missing #includes
+
+2001-02-17 13:56  amai
+
+	* util/: utils.c (1.1), utils.h (1.1): utils.*: new sources for
+	general purpose, non-GUI stuff like	     GetHomeDir()
+
+2001-02-17 13:53  amai
+
+	* source/file.c (1.8), source/macro.c (1.7), source/menu.c (1.14),
+	source/nc.c (1.6), source/server.c (1.6), source/tags.c (1.9),
+	util/Makefile.common (1.4), util/fileUtils.c (1.6), util/prefFile.c
+	(1.6): nc.c server.c: move #include <sys/types.h> before other
+	<sys/*> Makefile.common: prepare for util/utils.c to be checked in
+	file.c macro.c menu.c tags.c fileUtils.c prefFile.c:	use new
+	GetCurDir(), GetHomeDir() calls
+
+2001-02-17 01:47  edel
+
+	* source/: highlight.c (1.7), parse.y (1.6): 
+	Empty code blocks are rejected by the macro language.
+
+2001-02-17 00:09  slobasso
+
+	* source/interpret.c (1.6): when strings are converted to numbers
+	and the conversion fails, use 0 rather than junk
+
+2001-02-16 14:58  amai
+
+	* ReleaseNotes (1.3), source/tags.c (1.8), util/fileUtils.c (1.5):
+	ReleaseNotes: add some bugs being addressed *.c: supply fallback if
+	getcwd() fails	    (in one case we used uninitialized memory
+	earlier!)
+
+2001-02-16 14:25  amai
+
+	* source/: Makefile.common (1.4), help.c (1.12): Makefile.common:
+	nc depends on libNUtil.a! help.c: switch to "February 2001" ...
+
+2001-02-15 16:08  tringali
+
+	* ReleaseNotes (1.2): 
+	Add info about 5.2 features and bugfixes.
+
+2001-02-15 16:07  tringali
+
+	* util/misc.c (1.13): 
+	Fix simulateButtonPress() so it works for gadgets.  (Needed for
+	DialogF mnemonics.)
+
+2001-02-15 16:06  tringali
+
+	* util/DialogF.h (1.3): 
+	Change dialog_type parameter to int to avoid warnings.
+
+2001-02-15 16:06  tringali
+
+	* util/DialogF.c (1.7): 
+	Automatically create mnemonics for dialog buttons.  Change
+	dialog_type parameter to int to avoid warnings (comparing unsingned
+	int for negative isn't exactly useful).
+
+2001-02-15 16:04  tringali
+
+	* source/preferences.c (1.14): Default syntax highlighting to on.
+
+2001-02-15 16:04  tringali
+
+	* source/nc.c (1.5): 
+	
+	- Remove warnings for 64-bit systems.  Extend strlen results to
+	long and use   %ld as a format specifier.  strlen returns a size_t
+	which is typically   an unsigned long on 64-bit systems.
+
+2001-02-14 00:34  slobasso
+
+	* source/: help.c (1.11), text.c (1.7), textDisp.c (1.5),
+	textDisp.h (1.3): added extra options to many of the macro actions
+
+2001-02-12 22:37  amai
+
+	* source/preferences.c (1.13): preferences.c: patch from Thorsten
+	Haude to issue a warning		if -import can not find the
+	specified file
+
+2001-02-12 21:08  slobasso
+
+	* source/: help.c (1.10), menu.c (1.13), nedit.h (1.5),
+	preferences.c (1.12), preferences.h (1.3), search.c (1.13),
+	search.h (1.4): Added a search wrap option to prefs and made some
+	more options available to macro actions.
+
+2001-02-09 22:35  tringali
+
+	* source/help.c (1.9): Remove obsolete reference to Caps-Lock bug.
+
+2001-02-09 22:34  slobasso
+
+	* source/: interpret.c (1.5), interpret.h (1.2), parse.c_noyacc
+	(1.3), parse.y (1.5): fixed a leak with static strings in the macro
+	interpreter.
+
+2001-02-09 22:19  slobasso
+
+	* source/: menu.c (1.12), text.c (1.6): fixed strCaseCmp() bug
+	where partial strings would match.
+
+2001-02-09 21:07  amai
+
+	* source/userCmds.c (1.8): userCmds.c: try to fix compiler warnings
+
+2001-02-09 09:08  amai
+
+	* source/: menu.c (1.11), menu.h (1.4): menu.*: fix a 'pointer vs.
+	integer constant' problem, by adding a	       cast to the
+	constants #definition
+
+2001-02-08 09:08  amai
+
+	* source/Makefile.common (1.3), source/Makefile.dependencies (1.1),
+	util/Makefile.common (1.3), util/Makefile.dependencies (1.1):
+	*/Makefile.common: include new */Makefile.dependencies: simple
+	files containing the dependencies for all     objects (i.e. *.o)
+
+2001-02-08 08:52  amai
+
+	* source/: menu.c (1.10), menu.h (1.3): menu.c menu.h: - correct my
+	previous patch: XmNuserData requires XtPointer* arg		  
+	- add some more 'const's
+
+2001-02-06 16:04  amai
+
+	* source/search.c (1.12), util/DialogF.c (1.6), util/getfiles.c
+	(1.9): search.c DialogF.c getfiles.c: Drop #ifdef MOTIF10 sections.
+
+2001-02-06 12:07  amai
+
+	* source/menu.c (1.9): menu.c: Fix a 'major' 64bit bug: we were
+	passing a pointer to int	 instead of pointer to pointer.
+	This fixes the crash with	  NEdit/LessTif on alpha when
+	selecting the Window menu item!!
+
+2001-02-06 10:19  amai
+
+	* source/preferences.c (1.11): preferences.c: drop unused #include
+	<errno.h>
+
+2001-02-06 10:03  amai
+
+	* source/interpret.c (1.4), util/prefFile.c (1.5), util/prefFile.h
+	(1.3): interpret.c prefFile.*: add 'const' to some more functions'
+	signature
+
+2001-02-06 10:02  amai
+
+	* source/: nc.c (1.4), server.c (1.5): server.c nc.c: add checks
+	whether some system calls succeed (e.g. uname())	       
+	changed signature of getHostName() and getUserName
+
+2001-02-05 19:45  amai
+
+	* util/: DialogF.c (1.5), misc.c (1.12), prefFile.c (1.4),
+	printUtils.c (1.6): DialogF.c misc.c prefFile.c printUtils.c: add
+	'const' to some     functions' signatures
+
+2001-02-05 17:13  amai
+
+	* source/: file.c (1.7), help.c (1.8), highlight.c (1.6),
+	highlightData.c (1.7): file.c help.c highlight.c highlightData.c:
+	Replace improper <0> as last argument	       in XtVa*() interface
+	calls by <NULL>
+
+2001-02-02 18:10  tringali
+
+	* source/highlight.c (1.5): Replace debugging code of divide by 0
+	with a more proper assert.  Dividing by zero generated warnings on
+	lots of compilers.
+
+2001-02-02 14:47  amai
+
+	* source/window.c (1.12): window.c: drop declaration of
+	_XEditResCheckMessages(); should be in		 according header  
+		Fix compiler warning about boolean expression
+
+2001-02-02 14:00  amai
+
+	* Makefile (1.3), README (1.4): Makefile: do not list CVS/ subdir
+	when running 'make' without argument README:   cosmetics
+	(re-formatting) 	  add pointer to makefiles/Makefile.generic
+	which explains	   our current -D compiler options
+
+2001-02-02 13:12  amai
+
+	* util/getfiles.c (1.8): getfiles.c: - add 'cont' add some places  
+		    (as I realized we are already using it, so we don't    
+		  discuss systems w/o here)		- drop */errno.h
+	#includes (I couldn't see any usage of it currently)
+
+2001-02-01 23:16  tringali
+
+	* makefiles/Makefile.aix (1.2): 
+	
+	Fix for bug 130164: force X headers to include full prototype
+	information.
+
+2001-01-26 22:42  amai
+
+	* source/: help.c (1.7), window.c (1.11): help.c: switch to
+	"January, 2001" window.c: ad cast; should fix SF [Bug #130164 ]
+	Compiler warning on AIX4.3.2 in 	       window.c
+
+2001-01-24 15:54  amai
+
+	* util/misc.c (1.11), source/highlightData.c (1.6), source/menu.c
+	(1.8), source/preferences.c (1.10), source/userCmds.c (1.7): *.c:
+	The XmNnumChildren resource if of type 'Cardinal', not 'int'
+
+2001-01-10 10:42  amai
+
+	* source/textBuf.c (1.4): textBuf.c: fix for SF [Bug #115195 ]
+	textBuf.c:862 warning: '/*' within comment
+
+2001-01-05 21:18  amai
+
+	* source/shell.c (1.6): shell.c: change some "Nedit" strings to
+	"NEdit".	   properly end an execl() parameter list by (char
+	*)0
+
+2000-12-20 14:05  amai
+
+	* source/help.c (1.6), source/nedit.c (1.7), source/search.c
+	(1.11), source/window.c (1.10), util/getfiles.c (1.7): Replace
+	"Lesstif" by "LessTif" ...  Update timestamp in version info to
+	"december, 2000"
+
+2000-12-20 13:56  amai
+
+	* README (1.3), source/.cvsignore (1.1), source/tags.c (1.7),
+	util/misc.c (1.10): Add two missing #includes Add a .cvsignore for
+	the two binaries beign built Update the docs WRT LessTif issues
+
+2000-12-19 21:08  tringali
+
+	* nedit.doc (1.3): 
+	
+	Removed obsolete references to fnal.gov FTP server.
+
+2000-12-19 21:06  edg
+
+	* source/selection.c (1.5): Added a fix for SF bug 126285: segfault
+	with goto line.
+
+2000-12-15 20:57  edg
+
+	* source/text.c (1.5): Fixed a selection highlighting bug (removed
+	an earlier bogus patch).
+
+2000-12-10 19:35  edg
+
+	* source/search.c (1.10): Fixed some (harmless) compiler warnings. 
+	Added an extra check in the multi-file replacement code to make
+	sure that the user didn't invalidate the replacement strings when
+	the dialog isn't modal (bug in several Lesstif versions).
+
+2000-11-30 21:33  edg
+
+	* util/getfiles.c (1.6): Implemented a workaround for a Motif 2.x
+	file selection box bug.
+
+2000-11-30 21:31  edg
+
+	* makefiles/Makefile.cygwin (1.2): Minor changes requested by
+	Christian Denat.
+
+2000-11-23 23:23  edg
+
+	* source/: search.c (1.9), search.h (1.3), window.c (1.9): Fixed a
+	critical bug in the multi-file replace functionality.  Closing
+	windows while a multi-file replace dialog was up could result in a
+	crash. The lists are now updated when a window closes.
+
+2000-11-22 23:08  edg
+
+	* source/: nedit.h (1.4), search.c (1.8), window.c (1.8): Added
+	multi-file replace-all functionality.
+
+2000-11-22 21:50  edg
+
+	* source/: preferences.c (1.9), search.c (1.7): Added a missing
+	#include <stdio.h>.
+
+2000-11-07 14:03  edel
+
+	* util/misc.c (1.9): Fix glitches in Caps/Num Lock patch
+
+2000-11-06 21:52  edel
+
+	* source/: macro.c (1.6), preferences.c (1.8), shift.c (1.5),
+	text.c (1.4), userCmds.c (1.6), window.c (1.7): Patch for Caps/Num
+	Lock bug + a few other minor fixes
+
+2000-11-06 21:50  edel
+
+	* util/: misc.c (1.8), misc.h (1.4): Patch for Caps/Num Lock Motif
+	bug
+
+2000-10-06 21:23  edel
+
+	* util/misc.c (1.7): Bug fix: BG menu not working with new best
+	visual code
+
+2000-10-04 03:09  edel
+
+	* util/: DialogF.c (1.4), fontsel.c (1.4), getfiles.c (1.5),
+	managedList.c (1.3), misc.c (1.6), printUtils.c (1.5): For IA-64,
+	XtVa argument lists must be terminated with NULL rather than 0
+
+2000-10-04 03:07  edel
+
+	* source/: macro.c (1.5), menu.c (1.7), preferences.c (1.7),
+	search.c (1.6), selection.c (1.4), shell.c (1.5), shift.c (1.4),
+	smartIndent.c (1.6), tags.c (1.6), textDisp.c (1.4), userCmds.c
+	(1.5), window.c (1.6): For IA-64, XtVa calls must be terminated
+	w/NULL, rather than 0
+
+2000-09-29 15:48  edel
+
+	* util/: fileUtils.c (1.4), misc.c (1.5): Support ClearCase version
+	extended pathnames (and fix some compiler warns)
+
+2000-09-29 15:38  edel
+
+	* source/: file.c (1.6), file.h (1.3), menu.c (1.6), nedit.c (1.6),
+	preferences.c (1.6), server.c (1.4), shell.c (1.4): Updates from
+	Max (via Arne), and Arne Førlie: ClearCase version extended paths,
+	Untitled windows inherit parent path, and avoid reuse of Untitled
+	windows which are currently running a macro.
+
+2000-09-26 20:28  edel
+
+	* source/: file.c (1.5), help.c (1.5), highlightData.c (1.5),
+	macro.c (1.4), menu.c (1.5), nedit.c (1.5), preferences.c (1.5),
+	search.c (1.5), smartIndent.c (1.5), tags.c (1.5), userCmds.c
+	(1.4), window.c (1.5): Allow nedit to use non-default visuals
+
+2000-09-26 20:25  edel
+
+	* util/: DialogF.c (1.3), fontsel.c (1.3), getfiles.c (1.4), misc.c
+	(1.4), misc.h (1.3), printUtils.c (1.4): Allow NEdit to use
+	non-default visual
+
+2000-09-22 19:41  edel
+
+	* util/: fileUtils.c (1.3), getfiles.c (1.3), misc.c (1.3),
+	prefFile.c (1.3), printUtils.c (1.3): Changes since last posted
+	development release
+
+2000-09-22 19:34  edel
+
+	* source/: file.c (1.4), help.c (1.4), highlight.c (1.4),
+	highlightData.c (1.4), interpret.c (1.3), macro.c (1.3), menu.c
+	(1.4), nc.c (1.3), nedit.c (1.4), parse.y (1.4), preferences.c
+	(1.4), regularExp.c (1.3), search.c (1.4), selection.c (1.3),
+	server.c (1.3), shell.c (1.3), shift.c (1.3), smartIndent.c (1.4),
+	tags.c (1.4), text.c (1.3), textBuf.c (1.3), undo.c (1.3),
+	userCmds.c (1.3), window.c (1.4): Changes since last posted
+	development release
+
+2000-09-10 18:15  tringali
+
+	* makefiles/: Makefile.aix (1.1), Makefile.bsdi (1.1),
+	Makefile.ccur (1.1), Makefile.convex (1.1), Makefile.cygwin (1.1),
+	Makefile.dcosx (1.1), Makefile.dec (1.1), Makefile.freebsd (1.1),
+	Makefile.generic (1.1), Makefile.hpux (1.1), Makefile.linux (1.1),
+	Makefile.lynx (1.1), Makefile.m88k.svr4 (1.1), Makefile.netbsd
+	(1.1), Makefile.os2 (1.1), Makefile.osf (1.1), Makefile.reliant
+	(1.1), Makefile.sco (1.1), Makefile.sgi (1.1), Makefile.solaris
+	(1.1), Makefile.sunos (1.1), Makefile.uhc (1.1), Makefile.ultrix
+	(1.1), Makefile.unicos (1.1), Makefile.unixware (1.1) (utags:
+	REL-5-1-1): 5.1.1 baseline
+
+2000-09-09 22:22  tringali
+
+	* source/: comnedit.com (1.3), file.c (1.3), help.c (1.3),
+	highlight.c (1.3), highlightData.c (1.3), menu.c (1.3), nedit.c
+	(1.3), nedit.h (1.3), parse.c_noyacc (1.2), parse.y (1.3),
+	preferences.c (1.3), search.c (1.3), smartIndent.c (1.3), tags.c
+	(1.3), textDisp.c (1.3), window.c (1.3): 5.2 Development snapshot
+	as of 5/29/2000
+
+2000-09-09 22:18  tringali
+
+	* Makefile (1.2, REL-5-1-1), README (1.2, REL-5-1-1), ReleaseNotes
+	(1.1, REL-5-1-1), nc.man (1.2, REL-5-1-1), nedit.doc (1.2,
+	REL-5-1-1), nedit.man (1.2, REL-5-1-1), source/Makefile.common
+	(1.2, REL-5-1-1), source/Makefile.dec (1.2), source/Makefile.hp
+	(1.2), source/Makefile.ibm (1.2), source/Makefile.linux (1.2),
+	source/Makefile.osf (1.2), source/Makefile.sgi (1.2),
+	source/Makefile.solaris (1.2), source/Makefile.sunos (1.2),
+	source/Makefile.ultrix (1.2), source/comnedit.com (1.2, REL-5-1-1),
+	source/file.c (1.2, REL-5-1-1), source/file.h (1.2, REL-5-1-1),
+	source/help.c (1.2, REL-5-1-1), source/help.h (1.2, REL-5-1-1),
+	source/highlight.c (1.2, REL-5-1-1), source/highlight.h (1.2,
+	REL-5-1-1), source/highlightData.c (1.2, REL-5-1-1),
+	source/highlightData.h (1.2, REL-5-1-1), source/interpret.c (1.2,
+	REL-5-1-1), source/lnknedit.com (1.2, REL-5-1-1), source/macro.c
+	(1.2, REL-5-1-1), source/menu.c (1.2, REL-5-1-1), source/menu.h
+	(1.2, REL-5-1-1), source/nc.c (1.2, REL-5-1-1), source/nedit.c
+	(1.2, REL-5-1-1), source/nedit.h (1.2, REL-5-1-1), source/parse.y
+	(1.2, REL-5-1-1), source/preferences.c (1.2, REL-5-1-1),
+	source/preferences.h (1.2, REL-5-1-1), source/regexConvert.c (1.1,
+	REL-5-1-1), source/regexConvert.h (1.1, REL-5-1-1),
+	source/regularExp.c (1.2, REL-5-1-1), source/regularExp.h (1.2,
+	REL-5-1-1), source/search.c (1.2, REL-5-1-1), source/search.h (1.2,
+	REL-5-1-1), source/selection.c (1.2, REL-5-1-1), source/selection.h
+	(1.2, REL-5-1-1), source/server.c (1.2, REL-5-1-1), source/shell.c
+	(1.2, REL-5-1-1), source/shell.h (1.2, REL-5-1-1), source/shift.c
+	(1.2, REL-5-1-1), source/shift.h (1.2, REL-5-1-1),
+	source/smartIndent.c (1.2, REL-5-1-1), source/smartIndent.h (1.2,
+	REL-5-1-1), source/tags.c (1.2, REL-5-1-1), source/tags.h (1.2,
+	REL-5-1-1), source/text.c (1.2, REL-5-1-1), source/text.h (1.2,
+	REL-5-1-1), source/textBuf.c (1.2, REL-5-1-1), source/textBuf.h
+	(1.2, REL-5-1-1), source/textDisp.c (1.2, REL-5-1-1),
+	source/textDisp.h (1.2, REL-5-1-1), source/textDrag.c (1.2,
+	REL-5-1-1), source/textP.h (1.2, REL-5-1-1), source/textSel.c (1.2,
+	REL-5-1-1), source/undo.c (1.2, REL-5-1-1), source/undo.h (1.2,
+	REL-5-1-1), source/userCmds.c (1.2, REL-5-1-1), source/userCmds.h
+	(1.2, REL-5-1-1), source/window.c (1.2, REL-5-1-1), source/window.h
+	(1.2, REL-5-1-1), util/DialogF.c (1.2, REL-5-1-1), util/DialogF.h
+	(1.2, REL-5-1-1), util/Makefile.common (1.2, REL-5-1-1),
+	util/Makefile.dec (1.2), util/Makefile.hp (1.2), util/Makefile.ibm
+	(1.2), util/Makefile.linux (1.2), util/Makefile.sgi (1.2),
+	util/Makefile.solaris (1.2), util/Makefile.sunos (1.2),
+	util/Makefile.ultrix (1.2), util/fileUtils.c (1.2, REL-5-1-1),
+	util/fileUtils.h (1.2, REL-5-1-1), util/fontsel.c (1.2, REL-5-1-1),
+	util/fontsel.h (1.2, REL-5-1-1), util/getfiles.c (1.2, REL-5-1-1),
+	util/getfiles.h (1.2, REL-5-1-1), util/managedList.c (1.2,
+	REL-5-1-1), util/managedList.h (1.2, REL-5-1-1), util/misc.c (1.2,
+	REL-5-1-1), util/misc.h (1.2, REL-5-1-1), util/prefFile.c (1.2,
+	REL-5-1-1), util/prefFile.h (1.2, REL-5-1-1), util/printUtils.c
+	(1.2, REL-5-1-1), util/printUtils.h (1.2, REL-5-1-1),
+	util/vmsUtils.c (1.2, REL-5-1-1), util/vmsUtils.h (1.2, REL-5-1-1):
+	5.1.1 baseline
+
+2000-09-09 22:12  tringali
+
+	* Makefile (1.1), README (1.1), nc.man (1.1), nedit.doc (1.1),
+	nedit.man (1.1), source/Makefile.common (1.1), source/Makefile.dec
+	(1.1), source/Makefile.hp (1.1), source/Makefile.ibm (1.1),
+	source/Makefile.linux (1.1), source/Makefile.osf (1.1),
+	source/Makefile.sgi (1.1), source/Makefile.solaris (1.1),
+	source/Makefile.sunos (1.1), source/Makefile.ultrix (1.1),
+	source/comnedit.com (1.1), source/file.c (1.1), source/file.h
+	(1.1), source/help.c (1.1), source/help.h (1.1), source/highlight.c
+	(1.1), source/highlight.h (1.1), source/highlightData.c (1.1),
+	source/highlightData.h (1.1), source/interpret.c (1.1),
+	source/interpret.h (1.1, REL-5-1-1), source/lnknedit.com (1.1),
+	source/macro.c (1.1), source/macro.h (1.1, REL-5-1-1),
+	source/menu.c (1.1), source/menu.h (1.1), source/n.bm (1.1,
+	REL-5-1-1), source/nc.c (1.1), source/nedit.bm (1.1, REL-5-1-1),
+	source/nedit.c (1.1), source/nedit.h (1.1),
+	source/nedit_options_file.opt (1.1, REL-5-1-1),
+	source/parse.c_noyacc (1.1, REL-5-1-1), source/parse.h (1.1,
+	REL-5-1-1), source/parse.y (1.1), source/preferences.c (1.1),
+	source/preferences.h (1.1), source/regularExp.c (1.1),
+	source/regularExp.h (1.1), source/search.c (1.1), source/search.h
+	(1.1), source/selection.c (1.1), source/selection.h (1.1),
+	source/server.c (1.1), source/server.h (1.1, REL-5-1-1),
+	source/shell.c (1.1), source/shell.h (1.1), source/shift.c (1.1),
+	source/shift.h (1.1), source/smartIndent.c (1.1),
+	source/smartIndent.h (1.1), source/tags.c (1.1), source/tags.h
+	(1.1), source/text.c (1.1), source/text.h (1.1), source/textBuf.c
+	(1.1), source/textBuf.h (1.1), source/textDisp.c (1.1),
+	source/textDisp.h (1.1), source/textDrag.c (1.1), source/textDrag.h
+	(1.1, REL-5-1-1), source/textP.h (1.1), source/textSel.c (1.1),
+	source/textSel.h (1.1, REL-5-1-1), source/undo.c (1.1),
+	source/undo.h (1.1), source/userCmds.c (1.1), source/userCmds.h
+	(1.1), source/window.c (1.1), source/window.h (1.1), util/DialogF.c
+	(1.1), util/DialogF.h (1.1), util/Makefile.common (1.1),
+	util/Makefile.dec (1.1), util/Makefile.hp (1.1), util/Makefile.ibm
+	(1.1), util/Makefile.linux (1.1), util/Makefile.sgi (1.1),
+	util/Makefile.solaris (1.1), util/Makefile.sunos (1.1),
+	util/Makefile.ultrix (1.1), util/comutil.com (1.1, REL-5-1-1),
+	util/fileUtils.c (1.1), util/fileUtils.h (1.1), util/fontsel.c
+	(1.1), util/fontsel.h (1.1), util/getfiles.c (1.1), util/getfiles.h
+	(1.1), util/managedList.c (1.1), util/managedList.h (1.1),
+	util/misc.c (1.1), util/misc.h (1.1), util/prefFile.c (1.1),
+	util/prefFile.h (1.1), util/printUtils.c (1.1), util/printUtils.h
+	(1.1), util/vmsParam.h (1.1, REL-5-1-1), util/vmsUtils.c (1.1),
+	util/vmsUtils.h (1.1) (utags: REL-5-0-2): 5.0.2 baseline
+
