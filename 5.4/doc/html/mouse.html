@@ -1,0 +1,223 @@
+<HTML>
+<HEAD>
+<TITLE> Basic Operation </TITLE>
+</HEAD>
+<BODY>
+<A NAME="Using_the_Mouse"></A>
+<H2> Using the Mouse </H2>
+<P>
+Mouse-based editing is what NEdit is all about, and learning to use the more
+advanced features like secondary selections and primary selection dragging
+will be well worth your while.
+</P><P>
+If you don't have time to learn everything, you can get by adequately with
+just the left mouse button:  Clicking the left button moves the cursor. 
+Dragging with the left button makes a selection.  Holding the shift key while
+clicking extends the existing selection, or begins a selection between the
+cursor and the mouse.  Double or triple clicking selects a whole word or a
+whole line.
+</P><P>
+This section will make more sense if you also read the section called,
+"<A HREF="select.html#Selecting_Text">Selecting Text</A>", which explains the terminology of selections, that is,
+what is meant by primary, secondary, rectangular, etc.
+</P><P>
+<H3>Button and Modifier Key Summary</H3>
+</P><P>
+General meaning of mouse buttons and modifier keys:
+</P><P>
+<H4>  Buttons</H4>
+</P><P>
+<PRE>
+      Button 1 (left)    Cursor position and primary selection
+</PRE>
+</P><P>
+<PRE>
+      Button 2 (middle)  Secondary selections, and dragging and
+                         copying the primary selection
+</PRE>
+</P><P>
+<PRE>
+      Button 3 (right)   Quick-access programmable menu and pan
+                         scrolling
+</PRE>
+</P><P>
+<H4>  Modifier keys</H4>
+</P><P>
+<PRE>
+      Shift   On primary selections, (left mouse button):
+                 Extends selection to the mouse pointer
+              On secondary and copy operations, (middle):
+                 Toggles between move and copy
+</PRE>
+</P><P>
+<PRE>
+      Ctrl    Makes selection rectangular or insertion
+              columnar
+</PRE>
+</P><P>
+<PRE>
+      Alt*    (on release) Exchange primary and secondary
+              selections.
+</PRE>
+</P><P>
+<H3>Left Mouse Button</H3>
+</P><P>
+The left mouse button is used to position the cursor and to make primary
+selections.
+</P><P>
+<PRE>
+    Click         Moves the cursor
+</PRE>
+</P><P>
+<PRE>
+    Double Click  Selects a whole word
+</PRE>
+</P><P>
+<PRE>
+    Triple Click  Selects a whole line
+</PRE>
+</P><P>
+<PRE>
+    Quad Click    Selects the whole file
+</PRE>
+</P><P>
+<PRE>
+    Shift Click   Adjusts (extends or shrinks) the
+                  selection, or if there is no existing
+                  selection, begins a new selection
+                  between the cursor and the mouse.
+</PRE>
+</P><P>
+<PRE>
+    Ctrl+Shift+   Adjusts (extends or shrinks) the
+    Click         selection rectangularly.
+</PRE>
+</P><P>
+<PRE>
+    Drag          Selects text between where the mouse
+                  was pressed and where it was released.
+</PRE>
+</P><P>
+<PRE>
+    Ctrl+Drag     Selects rectangle between where the
+                  mouse was pressed and where it was
+                  released.
+</PRE>
+</P><P>
+<H3>Right Mouse Button</H3>
+</P><P>
+The right mouse button posts a programmable menu for frequently used commands.
+</P><P>
+<PRE>
+    Click/Drag    Pops up the background menu (programmed
+                  from Preferences -&#62; Default Settings -&#62;
+                  Customize Menus -&#62; Window Background).
+</PRE>
+</P><P>
+<PRE>
+    Ctrl+Drag     Pan scrolling.  Scrolls the window
+                  both vertically and horizontally, as if
+                  you had grabbed it with your mouse.
+</PRE>
+</P><P>
+<H3>Middle Mouse Button</H3>
+</P><P>
+The middle mouse button is for making secondary selections, and copying and
+dragging the primary selection.
+</P><P>
+<PRE>
+    Click         Copies the primary selection to the
+                  clicked position.
+</PRE>
+</P><P>
+<PRE>
+    Shift+Click   Moves the primary selection to the
+                  clicked position, deleting it from its
+                  original position.
+</PRE>
+</P><P>
+<PRE>
+    Drag          1) Outside of the primary selection:
+                      Begins a secondary selection.
+                  2) Inside of the primary selection:
+                      Moves the selection by dragging.
+</PRE>
+</P><P>
+<PRE>
+    Ctrl+Drag     1) Outside of the primary selection:
+                      Begins a rectangular secondary
+                      selection.
+                  2) Inside of the primary selection:
+                      Drags the selection in overlay
+                      mode (see below).
+</PRE>
+</P><P>
+When the mouse button is released after creating a secondary selection:
+</P><P>
+<PRE>
+    No Modifiers  If there is a primary selection,
+                  replaces it with the secondary
+                  selection.  Otherwise, inserts the
+                  secondary selection at the cursor
+                  position.
+</PRE>
+</P><P>
+<PRE>
+    Shift         Move the secondary selection, deleting
+                  it from its original position.  If
+                  there is a primary selection, the move
+                  will replace the primary selection
+                  with the secondary selection.
+                  Otherwise, moves the secondary
+                  selection to to the cursor position.
+</PRE>
+</P><P>
+<PRE>
+    Alt*          Exchange the primary and secondary
+                  selections.
+</PRE>
+</P><P>
+While moving the primary selection by dragging with the middle mouse button:
+</P><P>
+<PRE>
+    Shift         Leaves a copy of the original
+                  selection in place rather than
+                  removing it or blanking the area.
+</PRE>
+</P><P>
+<PRE>
+    Ctrl          Changes from insert mode to overlay
+                  mode (see below).
+</PRE>
+</P><P>
+<PRE>
+    Escape        Cancels drag in progress.
+</PRE>
+</P><P>
+Overlay Mode: Normally, dragging moves text by removing it from the selected
+position at the start of the drag, and inserting it at a new position
+relative to to the mouse. When you drag a block of text over existing
+characters, the existing characters are displaced to the end of the
+selection.  In overlay mode, characters which are occluded by blocks of text
+being dragged are simply removed.  When dragging non-rectangular selections,
+overlay mode also converts the selection to rectangular form, allowing it to
+be dragged outside of the bounds of the existing text.
+</P><P>
+Mouse buttons 4 and 5 are usually represented by a mouse wheel nowadays. 
+They are used to scroll up or down in the text window.
+</P><P>
+* The Alt key may be labeled Meta or Compose-Character on some keyboards. 
+Some window managers, including default configurations of mwm, bind
+combinations of the Alt key and mouse buttons to window manager operations. 
+In NEdit, Alt is only used on button release, so regardless of the window
+manager bindings for Alt-modified mouse buttons, you can still do the
+corresponding NEdit operation by using the Alt key AFTER the initial mouse
+press, so that Alt is held while you release the mouse button.  If you find
+this difficult or annoying, you can re-configure most window managers to skip
+this binding, or you can re-configure NEdit to use a different key
+combination.
+<P><HR>
+</P><P>
+</P>
+</BODY>
+</HTML>

@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+<TITLE> Features for Programming </TITLE>
+</HEAD>
+<BODY>
+<A NAME="Features_for_Programming"></A>
+<H1> Features for Programming </H1>
+<A NAME="Programming_with_NEdit"></A>
+<H2> Programming with NEdit </H2>
+<P>
+Though general in appearance, NEdit has many features intended specifically
+for programmers.  Major programming-related topics are listed in separate
+sections under the heading: "Features for Programming": <A HREF="syntax.html#Syntax_Highlighting">Syntax Highlighting</A>,
+<A HREF="tabs.html#Tabs/Emulated_Tabs">Tabs/Emulated Tabs</A>, <A HREF="tags.html#Finding_Declarations_(ctags)">Finding Declarations (ctags)</A>, <A HREF="calltips.html#Calltips">Calltips</A>, and 
+<A HREF="indent.html#Auto/Smart_Indent">Auto/Smart Indent</A>.  Minor topics related to programming are discussed below:
+</P><P>
+<H3>Language Modes</H3>
+</P><P>
+When NEdit initially reads a file, it attempts to determine whether the file
+is in one of the computer languages that it knows about.  Knowing what language
+a file is written in allows NEdit to assign highlight patterns and smart indent
+macros, and to set language specific preferences like word delimiters, tab
+emulation, and auto-indent.  Language mode can be recognized from both the file
+name and from the first 200 characters of content.  Language mode recognition
+and language-specific preferences are configured in: Preferences -&#62; Default
+Settings -&#62; Language Modes....
+</P><P>
+You can set the language mode manually for a window, by selecting it from the
+menu: Preferences -&#62; Language Modes.
+</P><P>
+<H3>Backlighting [EXPERIMENTAL]</H3>
+</P><P>
+NEdit can be made to set the background color of particular classes of
+characters to allow easy identification of those characters. This is
+particularly useful if you need to be able to distiguish between tabs
+and spaces in a file where the difference is important. The colors used
+for backlighting are specified by a resource, "nedit*backlightCharTypes". 
+You can turn backlighting on and off through the
+Preferences -&#62; Apply Backlighting menu entry.
+</P><P>
+If you prefer to have backlighting turned on for all new windows, use
+the Preferences -&#62; Default Settings -&#62; Apply Backlighting menu entry. 
+This settings can be saved along with other preferences using 
+Preferences -&#62; Save Defaults.
+</P><P>
+<B>Important:</B> In future versions of NEdit, the backlighting feature will be
+extended and reworked such that it becomes easier to configure. The current
+way of controlling it through a resource is generally considered to be below
+NEdit's usability standards. These future changes are likely to be
+incompatible with the current format of the "nedit*backlightCharTypes"
+resource, though. Therefore, it is expected that there will be no automatic
+migration path for users who customize the resource.
+</P><P>
+<H3>Line Numbers</H3>
+</P><P>
+To find a particular line in a source file by line number, choose Goto Line
+#... from the Search menu.  You can also directly select the line number text
+in the compiler message in the terminal emulator window (xterm, decterm,
+winterm, etc.) where you ran the compiler, and choose Goto Selected from the
+Search menu.
+</P><P>
+To find out the line number of a particular line in your file, turn on
+Statistics Line in the Preferences menu and position the insertion point
+anywhere on the line.  The statistics line continuously updates the line number
+of the line containing the cursor.
+</P><P>
+To go to a specific column on a given line, choose Goto Line #... from the
+Search menu and enter a line number and a column number separated by a 
+comma.  (e.g. Enter "100,12" for line 100 column 12.)  If you want to go to
+a column on the current line just leave out the line number.  (e.g. Enter
+",45" to go the column 45 on the current line.)
+</P><P>
+<H3>Matching Parentheses</H3>
+</P><P>
+To help you inspect nested parentheses, brackets, braces, quotes, and other
+characters, NEdit has both an automatic parenthesis matching mode, and a Goto
+Matching command.  Automatic parenthesis matching is activated when you type,
+or move the insertion cursor after a parenthesis, bracket, or brace.  It
+momentarily highlights either the opposite character ('Delimiter') or the
+entire expression ('Range') when the opposite character is visible in the
+window. To find a matching character anywhere in the file, select it or
+position the cursor after it, and choose Goto Matching from the Search menu. 
+If the character matches itself, such as a quote or slash, select the first
+character of the pair.  NEdit will match {, (, [, &#60;, ", ', `, /, and \.
+Holding the Shift key while typing the accelerator key (Shift+Ctrl+M, by
+default), will select all of the text between the matching characters.
+</P><P>
+When syntax highlighting is enabled, the matching routines can optionally
+make use of the syntax information for improved accuracy. In that case,
+a brace inside a highlighted string will not match a brace inside a comment,
+for instance.
+</P><P>
+<H3>Opening Included Files</H3>
+</P><P>
+The Open Selected command in the File menu understands the C preprocessor's
+#include syntax, so selecting an #include line and invoking Open Selected will
+generally find the file referred to, unless doing so depends on the settings of
+compiler switches or other information not available to NEdit.
+</P><P>
+<H3>Interface to Programming Tools</H3>
+</P><P>
+Integrated software development environments such as SGI's CaseVision and
+Centerline Software's Code Center, can be interfaced directly with NEdit via
+the client server interface.  These tools allow you to click directly on
+compiler and runtime error messages and request NEdit to open files, and select
+lines of interest.  The easiest method is usually to use the tool's interface
+for character-based editors like vi, to invoke nc, but programmatic interfaces
+can also be derived using the source code for nc.
+</P><P>
+There are also some simple compile/review, grep, ctree, and ctags browsers
+available in the NEdit contrib directory on ftp.nedit.org.
+<P><HR>
+</P><P>
+</P>
+</BODY>
+</HTML>

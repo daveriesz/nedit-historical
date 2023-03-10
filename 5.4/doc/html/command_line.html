@@ -1,0 +1,184 @@
+<HTML>
+<HEAD>
+<TITLE> NEdit Command Line </TITLE>
+</HEAD>
+<BODY>
+<A NAME="NEdit_Command_Line"></A>
+<H2> NEdit Command Line </H2>
+<P>
+<PRE>
+   <B>nedit</B> [-<B>read</B>] [-<B>create</B>] [-<B>line</B> n | +n] [-<B>server</B>]
+      [-<B>do</B> command] [-<B>tags</B> file] [-<B>tabs</B> n] [-<B>wrap</B>]
+      [-<B>nowrap</B>] [-<B>autowrap</B>] [-<B>autoindent</B>] [-<B>noautoindent</B>]
+      [-<B>autosave</B>] [-<B>noautosave</B>] [-<B>rows</B> n] [-<B>columns</B> n]
+      [-<B>font</B> font] [-<B>lm</B> languagemode] [-<B>geometry</B> geometry]
+      [-<B>iconic</B>] [-<B>noiconic</B>] [-<B>display</B> [host]:server[.screen]
+      [-<B>xrm</B> resourcestring] [-<B>svrname</B> name] [-<B>import</B> file]
+      [-<B>background</B> color] [-<B>foreground</B> color] [-<B>V</B>|-<B>version</B>]
+      [--] [file...]
+</PRE>
+</P><P>
+<PRE>
+<B>-read</B>
+</PRE>
+Open the file Read Only regardless of the actual file protection.
+</P><P>
+<PRE>
+<B>-create</B>
+</PRE>
+Don't warn about file creation when a file doesn't exist.
+</P><P>
+<PRE>
+<B>-line n (or +n)</B>
+</PRE>
+Go to line number n
+</P><P>
+<PRE>
+<B>-server</B>
+</PRE>
+Designate this session as an NEdit server, for processing commands from the
+nc program.  nc can be used to interface NEdit to code development
+environments, mailers, etc., or just as a quick way to open files from the
+shell command line without starting a new NEdit session.
+</P><P>
+<PRE>
+<B>-do command</B>
+</PRE>
+Execute an NEdit macro or action. On each file following the -do argument on
+the command line.  -do is particularly useful from the nc program, where nc
+-do can remotely execute commands in an NEdit -server session.
+</P><P>
+<PRE>
+<B>-tags file</B>
+</PRE>
+Load a file of directions for finding definitions of program subroutines and
+data objects.  The file must be of the format gen- erated by Exuberant Ctags,
+or the standard Unix ctags command.
+</P><P>
+<PRE>
+<B>-tabs n</B>
+</PRE>
+Set tab stops every n characters.
+</P><P>
+<PRE>
+<B>-wrap, -nowrap</B>
+</PRE>
+Wrap long lines at the right edge of the window rather than continuing them
+past it.  (Continuous Wrap mode)
+</P><P>
+<PRE>
+<B>-autowrap, -noautowrap</B>
+</PRE>
+Wrap long lines when the cursor reaches the right edge of the window by
+inserting newlines at word boundaries.  (Auto Newline Wrap mode)
+</P><P>
+<PRE>
+<B>-autoindent, -noautoindent</B>
+</PRE>
+Maintain a running indent.
+</P><P>
+<PRE>
+<B>-autosave, -noautosave</B>
+</PRE>
+Maintain a backup copy of the file being edited under the name '~filename'. 
+</P><P>
+<PRE>
+<B>-rows n</B>
+</PRE>
+Default height in characters for an editing window.
+</P><P>
+<PRE>
+<B>-columns n</B>
+</PRE>
+Default width in characters for an editing window.
+</P><P>
+<PRE>
+<B>-font font (or -fn font)</B>
+</PRE>
+Font for text being edited (Font for menus and dialogs can be set with -xrm
+"*fontList:font").
+</P><P>
+<PRE>
+<B>-lm languagemode</B>
+</PRE>
+Initial language mode used for editing succeeding files.
+</P><P>
+<PRE>
+<B>-geometry geometry (or -g geometry)</B>
+</PRE>
+The initial size and/or location of editor windows.  The argument geometry
+has the form:
+</P><P>
+<PRE>
+   [&#60;width&#62;x&#60;height&#62;][+|-][&#60;xoffset&#62;[+|-]&#60;yoffset&#62;]
+</PRE>
+</P><P>
+where &#60;width&#62; and &#60;height&#62; are the desired width and height of the window,
+and &#60;xoffset&#62; and &#60;yoffset&#62; are the distance from the edge of the screen to
+the window, + for top or left, - for bottom or right.  -geometry can be
+specified for individual files on the command line.
+</P><P>
+<PRE>
+<B>-iconic, -noiconic</B>
+</PRE>
+Initial window state for succeeding files.
+</P><P>
+<PRE>
+<B>-display [host]:server[.screen]</B>
+</PRE>
+The name of the X server to use.  host specifies the machine, server
+specifies the display server number, and screen specifies the screen number. 
+host or screen can be omitted and default to the local machine, and screen 0.
+</P><P>
+<PRE>
+<B>-background color (or -bg color)</B>
+</PRE>
+User interface background color. (Background color for text can be set
+separately with -xrm "nedit.textBgColor: color" or using the Preferences -&#62;
+Colors dialog).
+</P><P>
+<PRE>
+<B>-foreground color (or -fg color)</B>
+</PRE>
+User interface foreground color. (Foreground color for text can be set
+separately with -xrm "nedit.textFgColor: color" or using the Preferences
+-&#62; Colors dialog).
+</P><P>
+<PRE>
+<B>-xrm resourcestring</B> 
+</PRE>
+Set the value of an X resource to override a default
+value (see "<A HREF="customize.html#Customizing_NEdit">Customizing NEdit</A>").
+</P><P>
+<PRE>
+<B>-svrname name</B>
+</PRE>
+When starting NEdit in server mode, name the server, such that it responds to
+requests only when nc is given a corresponding -svrname argument.  By naming
+servers, you can run several simultaneously, and direct files and commands
+specifically to any one.
+</P><P>
+<PRE>
+<B>-import file</B>
+</PRE>
+Loads an additional preferences file on top of the existing defaults saved in
+your preferences file.  To incorporate macros, language modes, and highlight
+patterns and styles written by other users, run NEdit with -import &#60;file&#62;,
+then re-save your preference file with Preferences -&#62; Save Defaults.
+</P><P>
+<PRE>
+<B>-version</B>
+</PRE>
+Prints out the NEdit version information. The -V option is synonymous.
+</P><P>
+<PRE>
+<B>--</B>
+</PRE>
+Treats all subsequent arguments as file names, even if they start with a
+dash. This is so NEdit can access files that begin with the dash character.
+</P><P>
+<P><HR>
+</P><P>
+</P>
+</BODY>
+</HTML>

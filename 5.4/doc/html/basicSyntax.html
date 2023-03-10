@@ -1,0 +1,170 @@
+<HTML>
+<HEAD>
+<TITLE> Regular Expressions </TITLE>
+</HEAD>
+<BODY>
+<A NAME="Regular_Expressions"></A>
+<H1> Regular Expressions </H1>
+<A NAME="Basic_Regular_Expression_Syntax"></A>
+<H2> Basic Regular Expression Syntax </H2>
+<P>
+Regular expressions (regex's) are useful as a way to match inexact sequences
+of characters.  They can be used in the `Find...' and `Replace...' search
+dialogs and are at the core of Color Syntax Highlighting patterns.  To specify
+a regular expression in a search dialog, simply click on the `Regular
+Expression' radio button in the dialog.
+</P><P>
+A regex is a specification of a pattern to be matched in the searched text. 
+This pattern consists of a sequence of tokens, each being able to match a
+single character or a sequence of characters in the text, or assert that a
+specific position within the text has been reached (the latter is called an
+anchor.)  Tokens (also called atoms) can be modified by adding one of a number
+of special quantifier tokens immediately after the token.  A quantifier token
+specifies how many times the previous token must be matched (see below.)
+</P><P>
+Tokens can be grouped together using one of a number of grouping constructs,
+the most common being plain parentheses.  Tokens that are grouped in this way
+are also collectively considered to be a regex atom, since this new larger
+atom may also be modified by a quantifier.
+</P><P>
+A regex can also be organized into a list of alternatives by separating each
+alternative with pipe characters, `|'.  This is called alternation.  A match
+will be attempted for each alternative listed, in the order specified, until a
+match results or the list of alternatives is exhausted (see <A HREF="#alternation">Alternation</A>
+section below.)
+</P><P>
+<H3>The 'Any' Character</H3>
+</P><P>
+If a dot (`.') appears in a regex, it means to match any character exactly
+once.  By default, dot will not match a newline character, but this behavior
+can be changed (see help topic <A HREF="parenConstructs.html#Parenthetical_Constructs">Parenthetical Constructs</A>, under the
+heading, Matching Newlines).
+</P><P>
+<H3>Character Classes</H3>
+</P><P>
+A character class, or range, matches exactly one character of text, but the
+candidates for matching are limited to those specified by the class.  Classes
+come in two flavors as described below:
+</P><P>
+<PRE>
+     [...]   Regular class, match only characters listed.
+     [^...]  Negated class, match only characters NOT listed.
+</PRE>
+</P><P>
+As with the dot token, by default negated character classes do not match
+newline, but can be made to do so.
+</P><P>
+The characters that are considered special within a class specification are
+different than the rest of regex syntax as follows. If the first character in
+a class is the `]' character (second character if the first character is `^')
+it is a literal character and part of the class character set.  This also
+applies if the first or last character is `-'.  Outside of these rules, two
+characters separated by `-' form a character range which includes all the
+characters between the two characters as well.  For example, `[^f-j]' is the
+same as `[^fghij]' and means to match any character that is not `f', `g',
+`h', `i', or `j'.
+</P><P>
+<H3>Anchors</H3>
+</P><P>
+Anchors are assertions that you are at a very specific position within the
+search text.  NEdit regular expressions support the following anchor tokens:
+</P><P>
+<PRE>
+     ^    Beginning of line
+     $    End of line
+     &#60;    Left word boundary
+     &#62;    Right word boundary
+     \B   Not a word boundary
+</PRE>
+</P><P>
+Note that the \B token ensures that the left and right characters are both
+delimiter characters, or that both left and right characters are
+non-delimiter characters.  Currently word anchors check only one character,
+e.g. the left word anchor `&#60;' only asserts that the left character is a word
+delimiter character.  Similarly the right word anchor checks the right
+character.
+</P><P>
+<H3>Quantifiers</H3>
+</P><P>
+Quantifiers specify how many times the previous regular expression atom may
+be matched in the search text.  Some quantifiers can produce a large
+performance penalty, and can in some instances completely lock up NEdit.  To
+prevent this, avoid nested quantifiers, especially those of the maximal
+matching type (see below.)
+</P><P>
+The following quantifiers are maximal matching, or "greedy", in that they
+match as much text as possible.
+</P><P>
+<PRE>
+     *   Match zero or more
+     +   Match one  or more
+     ?   Match zero or one
+</PRE>
+</P><P>
+The following quantifiers are minimal matching, or "lazy", in that they match
+as little text as possible.
+</P><P>
+<PRE>
+     *?   Match zero or more
+     +?   Match one  or more
+     ??   Match zero or one
+</PRE>
+</P><P>
+One final quantifier is the counting quantifier, or brace quantifier. It
+takes the following basic form:
+</P><P>
+<PRE>
+     {min,max}  Match from `min' to `max' times the
+                previous regular expression atom.
+</PRE>
+</P><P>
+If `min' is omitted, it is assumed to be zero.  If `max' is omitted, it is
+assumed to be infinity.  Whether specified or assumed, `min' must be less
+than or equal to `max'.  Note that both `min' and `max' are limited to
+65535.  If both are omitted, then the construct is the same as `*'.   Note
+that `{,}' and `{}' are both valid brace constructs.  A single number
+appearing without a comma, e.g. `{3}' is short for the `{min,min}' construct,
+or to match exactly `min' number of times.
+</P><P>
+The quantifiers `{1}' and `{1,1}' are accepted by the syntax, but are
+optimized away since they mean to match exactly once, which is redundant
+information.  Also, for efficiency, certain combinations of `min' and `max'
+are converted to either `*', `+', or `?' as follows:
+</P><P>
+<PRE>
+     {} {,} {0,}    *
+     {1,}           +
+     {,1} {0,1}     ?
+</PRE>
+</P><P>
+Note that {0} and {0,0} are meaningless and will generate an error message at
+regular expression compile time.
+</P><P>
+Brace quantifiers can also be "lazy".  For example {2,5}? would try to match
+2 times if possible, and will only match 3, 4, or 5 times if that is what is
+necessary to achieve an overall match.
+</P><P>
+<H3>Alternation</H3>
+</P><P>
+A series of alternative patterns to match can be specified by separating them
+<A NAME="alternation"></A>
+with vertical pipes, `|'.  An example of alternation would be `a|be|sea'. 
+This will match `a', or `be', or `sea'. Each alternative can be an
+arbitrarily complex regular expression. The alternatives are attempted in
+the order specified.  An empty alternative can be specified if desired, e.g.
+`a|b|'.  Since an empty alternative can match nothingness (the empty string),
+this guarantees that the expression will match.
+</P><P>
+<H3>Comments</H3>
+</P><P>
+Comments are of the form `(?#&#60;comment text&#62;)' and can be inserted anywhere
+and have no effect on the execution of the regular expression.  They can be
+handy for documenting very complex regular expressions.  Note that a comment
+begins with `(?#' and ends at the first occurrence of an ending parenthesis,
+or the end of the regular expression... period.  Comments do not recognize
+any escape sequences.
+<P><HR>
+</P><P>
+</P>
+</BODY>
+</HTML>

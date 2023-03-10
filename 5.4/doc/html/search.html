@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<TITLE> Basic Operation </TITLE>
+</HEAD>
+<BODY>
+<A NAME="Finding_and_Replacing_Text"></A>
+<H2> Finding and Replacing Text </H2>
+<P>
+The Search menu contains a number of commands for finding and replacing text.
+</P><P>
+The Find... and Replace... commands present dialogs for entering text for
+searching and replacing.  These dialogs also allow you to choose whether you
+want the search to be sensitive to upper and lower case, or whether to use
+the standard Unix pattern matching characters (regular expressions). 
+Searches begin at the current text insertion position.
+</P><P>
+Find Again and Replace Again repeat the last find or replace command without
+prompting for search strings.  To selectively replace text, use the two
+commands in combination: Find Again, then Replace Again if the highlighted
+string should be replaced, or Find Again again to go to the next string.
+</P><P>
+Find Selection searches for the text contained in the current primary
+selection (see <A HREF="select.html#Selecting_Text">Selecting Text</A>).  The selected text does not have to be in the
+current editor window, it may even be in another program.  For example, if
+the word dog appears somewhere in a window on your screen, and you want to
+find it in the file you are editing, select the word dog by dragging the
+mouse across it, switch to your NEdit window and choose Find Selection from
+the Search menu.
+</P><P>
+Find Incremental is yet another variation on searching, where every character
+typed triggers a new search.  Incremental searching is generally the quickest
+way to find something in a file, because it gives you the immediate feedback
+of seeing how your search is progressing, so you never need to type more than
+the minimally sufficient search string to reach your target.
+</P><P>
+<H3>Searching Backwards</H3>
+</P><P>
+Holding down the shift key while choosing any of the search or replace
+commands from the menu (or using the keyboard shortcut), will search in the
+reverse direction.  Users who have set the search direction using the buttons
+in the search dialog, may find it a bit confusing that Find Again and Replace
+Again don't continue in the same direction as the original search (for
+experienced users, consistency of the direction implied by the shift key is
+more important).
+</P><P>
+<H3>Selective Replacement</H3>
+</P><P>
+To replace only some occurrences of a string within a file, choose Replace...
+from the Search menu, enter the string to search for and the string to
+substitute, and finish by pressing the Find button.  When the first
+occurrence is highlighted, use either Replace Again (^T) to replace it, or
+Find Again (^G) to move to the next occurrence without replacing it, and
+continue in such a manner through all occurrences of interest.
+</P><P>
+To replace all occurrences of a string within some range of text, select the
+range (see <A HREF="select.html#Selecting_Text">Selecting Text</A>), choose Replace... from the Search menu, type the
+string to search for and the string to substitute, and press the "R. in
+Selection" button in the dialog.  Note that selecting text in the Replace...
+dialog will unselect the text in the window.
+<P><HR>
+</P><P>
+</P>
+</BODY>
+</HTML>
