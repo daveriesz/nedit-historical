@@ -1,0 +1,51 @@
+NEdit Version 3.0
+
+NEdit is a GUI style plain text editor for workstations with X Windows and
+Motif.  It supports a thorough set of features for programming and general
+purpose text editing.
+
+Features:
+
+   - 100% GUI from the ground up
+      - True multi-window, fully graphical design
+      - Pull down menus w/character accelerators
+      - Mouse based editing, select and move text by clicking and dragging
+      - Multi-level undo
+      - Cut and Paste with other X Windows/Motif programs, full support
+        for all Motif selection modes
+   - Efficient, proven command set
+      - Thorough consistency with Motif, MS Windows, and Macintosh conventions
+      - Streamlined dialog interaction, keyboard shortcuts for all operations
+      - Full featured search and replace using selections or dialogs
+      - Large, rapidly growing user base
+   - Easy to learn
+      - Just point and type
+      - Capabilities are presented clearly in top level menus
+      - On-line help
+      - No special knowledge of X Windows required, all important options
+        can be set from within the program
+   - Features for programmers
+      - Auto-indent
+      - Block indentation adjustment
+      - Parenthesis Matching
+      - Find lines directly from compiler error output
+      - Unix ctags support
+   - Easy installation
+      - Self contained single executable file
+      - Pre-built, tested executables available for Silicon Graphics, Sun
+        (Solaris & SunOS), HP, OSF/1, DEC Ultrix, IBM AIX, and VMS systems
+
+Pre-built NEdit executables are available by anonymous ftp from fnpspb.fnal.gov
+in the /pub/nedit directory.
+
+Send problems, questions, and comments to Mark Edel (edel@fnal.gov) at
+Fermi National Accelerator Laboratory:
+
+	Mark Edel, m/s 234
+	Fermi National Accelerator Laboratory
+	P.O. Box 500
+	Batavia, IL 60148
+	(708)840-2496
+
+Before reporting a problem, please check the Problems/Bugs section of the
+online help to make sure the problem is not already known.

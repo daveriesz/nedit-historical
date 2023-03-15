@@ -1,0 +1,93 @@
+From: Mark Edel
+Date: Jan 19, 1996, 12:00:00 AM
+Subject: NEdit 4.0 Beta Release
+
+The Beta Test version of NEdit 4.0 is now available from ftp.fnal.gov in the
+/pub/nedit/v4.0_BETA directory. This is a major new revision of the popular
+GUI style text editor for Unix and VMS systems.
+1) If you take a copy, please don't re-distribute it without making extremely
+clear that it is beta-test software. Be sure to replace your copy when the
+final version is available.
+
+2) Please take some time to give us your feedback. Report ANY problems, no
+matter how trivial. We hope to have the final release ready very soon, by
+the end of January if possible, so please get your comments in quickly.
+
+3) Be warned that, while we've been using it safely for the last couple of
+months, this is still test software, and NEdit has undergone major internal
+changes since the last release.
+
+Send your comments and bug reports to nedit_...@fnal.gov.
+
+
+New Features
+------------
+
+- Rectangular Selection -- Full support of rectangular selections in all
+editing operations, including special rectangular modes for shifting
+and filling.
+- Interactive Selection Dragging -- Position selected text by dragging
+with the mouse.
+- Learn/Replay -- The ability to record keystrokes and menu choices for
+later replay. Learned key sequences can also be saved as macros.
+- Client/Server mode -- For connecting NEdit to code development
+environments, mailers, etc., or to control NEdit sessions from the
+shell or command line.
+- Limited macro capability
+- Emulated tabs
+- Bookmarks
+- Preserve Last Version (.bck) files option
+- Exchange primary/secondary command
+- Search dialogs optionally work in stay-up mode
+- Settable Read-Only mode
+- -read, -create, -do, and -line command line options
+- Better control character representation.
+- Settable wrap margin
+- Ability to bind menu commands in translations
+- Better directory defaulting
+- No-tabs mode
+- Improved overstrike mode
+- Option for Motif standard Open dialog
+- Optional thick cursor
+- Output-replaces-input option for shell commands
+- Faster redraw under dialogs and menus
+- Faster background-window redraw
+- Better horizontal auto-scrolling
+- More on-line documentation
+
+
+Bug Fixes
+---------
+
+- Crash in Font dialog on HP and Linux
+- Newly raised windows (from icons or window menu) receive input focus
+- Sequences of up and down arrows maintain column tracking beyond
+short and blank lines
+- Replace in Selection undoes as a unit
+- Search result and line number selections are centered better on screen
+- Bell volume not overridden
+- Crash in shift for tab distance > 8 characters
+- Window close box behavior follows MS Windows standard
+- Fixed print dialog job name stickiness
+- Split-window mode problems
+- No special font required for control characters
+- Secondary operations between windows work properly again
+Other Differences
+-----------------
+
+Secondary selections are back on the middle mouse button (in 3.0 and 3.1 they
+were on the right button). For this release, both right and middle mouse
+buttons can be used interchangeably, though in the future, the right button
+will be re-claimed again for something like quick menus or pan scrolling.
+
+Support for Motif-style drag and drop is missing from this release (the ability
+to grab selections and drag them between windows, the least used of all of the
+interchange methods) to meet our release deadline. It will probably be
+supported in future releases, particularly if we hear complaints.
+
+Mark Edel, m/s 234
+Fermi National Accelerator Laboratory
+P.O. Box 500
+Batavia, IL 60148
+(708)840-2496
+ed...@fnal.gov

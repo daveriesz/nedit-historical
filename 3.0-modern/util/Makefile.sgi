@@ -1,0 +1,12 @@
+CC=cc
+AR=ar
+CFLAGS=-O -DSGI
+#
+# For Irix 5.0 an later, use:
+#
+#	CFLAGS=-O -DSGI -DMOTIF12
+#
+BIGGER_STRINGS= -Wf,-XNl8096
+LIBS= -lm -lXm -lXt -lX11 -lPW
+
+include Makefile.common

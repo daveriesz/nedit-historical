@@ -1,0 +1,45 @@
+# Preferences file for NEdit
+#
+# This file is overwritten by the "Save Preferences..." command in NEdit 
+# and serves only the interactively setable options presented in the NEdit
+# "Preferences" menu.  To modify other options, such as background colors
+# and key bindings, use the .Xdefaults file in your home directory (or
+# the X resource specification method appropriate to your system).  The
+# contents of this file can be moved into an X resource file, but since
+# resources in this file override their corresponding X resources, either
+# this file should be deleted or individual resource lines in the file
+# should be deleted for the moved lines to take effect.
+
+nedit.shellCommands: \
+	Del Extra Spaces:::E:\n\
+	sed 's/[        ][      ]*/ /g'\n\
+	Double Space:::E:\n\
+	sed G\n\
+	Del blank lines::L:E:\n\
+	sed  '/^[       ]*$/d'\n\
+	TeX:Ctrl+X::DS:\n\
+	tex %\n\
+	spell:Alt+B:s:ED:\n\
+	(cat;echo "") | ispell -a\n\
+	sort::o:I:\n\
+	sort\n\
+	number lines::n:AW:\n\
+	nl -ba\n\
+	make:Alt+M:m:W:\n\
+	make\n\
+	expand::p:I:\n\
+	expand\n\
+	unexpand::u:I:\n\
+	unexpand\n
+nedit.autoWrap: True
+nedit.autoIndent: True
+nedit.autoSave: True
+nedit.showMatching: True
+nedit.searchDialogs: True
+nedit.repositionDialogs: True
+nedit.statisticsLine: True
+nedit.searchMethod: Literal
+nedit.textRows: 24
+nedit.textCols: 80
+nedit.tabDistance: 8
+nedit.textFont: -adobe-courier-bold-r-normal--14-140-75-75-m-90-iso8859-1

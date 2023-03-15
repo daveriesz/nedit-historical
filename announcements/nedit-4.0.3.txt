@@ -1,0 +1,54 @@
+From: Mark Edel
+Date: Jan 17, 1997, 12:00:00 AM
+Subject: NEdit 4.0.3 High Quality GUI Text Editor
+
+NEdit 4.0.3 is now available from ftp://ftp.fnal.gov/pub/nedit/v4_0_3/.
+NEdit is a free Motif-based text editor for Unix and VMS systems. NEdit
+combines high reliability, GUI standard behavior, thorough functionality,
+and excellent performance, with the best mouse-interactivity of any Unix
+text editor. For more information, visit:
+
+http://www-pat.fnal.gov/nirvana/nedit.html
+
+Version 4.0.3 is a minor bug fix release, probably the last before the
+major 5.0 release tentatively scheduled for this summer. The users who
+will benefit most from this release are those running Linux 2.0 where
+NEdit can crash in the Split Window command.
+
+Supported systems are Silicon Graphics, Sun (Solaris & SunOS), HP,
+Digital Unix, DEC Ultrix, IBM AIX, Linux, and VMS, with contributed
+executables and Makefiles available for many more.
+
+
+Bugs Fixed in 4.0.3
+
+- Crash in Split Window command (Linux 2.0 systems)
+
+- Crash in Revert to Saved on files which become empty outside of NEdit
+
+- Message: "internal consistency check failed: tl1", and/or trouble
+scrolling to the first line of a file, and/or appearance of "<nl>"
+character in place of newline near the beginning of the file (rare)
+
+- Sequence, <modify file> -> Save -> Undo -> Save -> Redo, leaves
+file marked as unmodified.
+
+- In SGI mode (special Motif appearance features available on Silicon
+Graphics workstations), crash when split panes < 1 line high
+
+- Can't do middle mouse paste after selected line in no-auto-wrap mode
+
+- Dragging a single line in rectangular drag mode drags just the first
+character of the line
+
+- Regular expressions over 256 characters long fail and report various
+errors
+
+
+Send Questions and comments to: nedit_...@fnal.gov
+
+Mark Edel
+Fermi National Accelerator Laboratory
+Batavia, IL
+ed...@fnal.gov
+
