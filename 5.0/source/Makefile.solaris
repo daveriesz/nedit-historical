@@ -1,0 +1,15 @@
+#CC=/opt/SUNWspro/bin/cc
+#CC=gcc
+CC=cc -Xc
+AR=ar
+# For editres, add -DEDITRES to CFLAGS and -lXmu to LIBS
+# -DUSE_MOTIF_GLOB may be removed for Solaris 2.5 and beyond
+CFLAGS=-O -I/usr/openwin/include -I/usr/dt/include -DUSE_DIRENT \
+        -DROWCOLPATCH -DUSE_MOTIF_GLOB
+LIBS= -L/usr/openwin/lib -L/usr/dt/lib -lm -lXm -lXt -lX11 -lsocket -lnsl \
+        -R /usr/openwin/lib -R /usr/dt/lib
+#CFLAGS=-O -I/usr/openwin/include -I/opt/SUNWmotif/include -DUSE_DIRENT
+#LIBS= -L/usr/openwin/lib -L/opt/SUNWmotif/lib -lm -lXm \
+#	-lXt -lX11 -lgen -R /usr/openwin/lib
+
+include Makefile.common
