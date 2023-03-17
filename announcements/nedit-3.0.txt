@@ -1,0 +1,56 @@
+From: Mark Edel
+Date: Apr 4, 1994, 3:36:36 PM
+Subject: High Quality Motif Text Editor
+
+Announcing NEdit V3.0, a high-quality plain-text editor for X/Motif systems:
+- 100% GUI from the ground up
+- True multi-window, fully graphical design
+- Pull down menus w/character accelerators
+- Mouse based editing, select and move text by clicking and dragging
+- Multi-level undo
+- Cut and Paste with other X Windows/Motif programs, full support
+for all Motif selection modes
+- Efficient, proven command set
+- Thorough consistency with Motif, MS Windows, and Macintosh conventions
+- Streamlined dialog interaction, keyboard shortcuts for all operations
+- Full featured search and replace using selections or dialogs
+- Large, rapidly growing user base
+- Easy to learn
+- Just point and type
+- Capabilities are presented clearly in top level menus
+- On-line help
+- No special knowledge of X Windows required, all important options
+can be set from within the program
+- Features for programmers
+- Auto-indent
+- Block indentation adjustment
+- Parenthesis Matching
+- Find lines directly from compiler error output
+- Unix ctags support
+- Easy installation
+- Self contained single executable file, just copy it and run it
+- Pre-built, tested executables available for Silicon Graphics, Sun
+(Solaris & SunOS), HP, OSF/1, DEC Ultrix, IBM AIX, and VMS systems
+
+New in version 3.0
+
+- Compatibility with Motif 1.2
+- Multi-level undo
+- Regular expression matching/substitution available on all platforms
+- Shell commands as filters/extensions
+- Programmable accelerator keys
+- Tab distance is setable
+- New commands: Fill Text, Capitalize, Include File, Open Selected,
+Shift by Tab Stop
+- Drag and Drop
+
+NEdit is public domain software, available in both source and executable forms
+by anonymous ftp to fnpspb.fnal.gov. Sources are also available from
+ftp.x.org in the /contrib directory. Send questions or comments to
+ed...@fnal.gov.
+
+Mark Edel
+Fermi National Accelerator Laboratory
+P.O. Box 500
+Batavia, IL 60510
+(708)840-2496

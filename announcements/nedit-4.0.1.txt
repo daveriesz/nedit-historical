@@ -1,0 +1,100 @@
+From: Mark Edel
+Date: Apr 1, 1996, 12:00:00 AM
+Subject: ANNOUNCING: NEdit 4.0.1 High Quality GUI Text Editor for Unix
+
+NEdit 4.0.1 is now available. Sources and executables for the new version
+can be found on ftp.fnal.gov in the /pub/nedit/v4_0_1 directory.
+While NEdit is not all that well known, those who do know about it generally
+regard it as the best GUI-style plain-text editor available on Unix or VMS
+systems. And it's free!
+
+Version 4.0.1 is a bug fix and compatibility release. For users who still
+have 3.x versions, NEdit 4.0 is definitely worth the effort to upgrade. Major
+additions include rectangular selection, learn/replay, and client/server
+mode. 4.0.1, offers the following improvements over 4.0:
+
+Bug Fixes:
+
+- (Motif 2.0) Vestigial scroll bar shadow in main window
+- (Motif 2.0) Typing file names in file dialog lists didn't work
+- Paste with middle mouse button after rectangular secondary operations
+could incorrectly behave as if rectangular
+- Problems displaying VERY long lines
+- Undo could improperly remove "(modified)" marker
+- Text display could be messed up after certain text replacement operations
+(also known as the <nl> problem)
+- highlightBackground resource improperly named in nedit.c and app-defaults
+- Deleting a rectangular selection in no-tabs mode would remove more text
+than just the rectangle
+
+Feature Changes:
+
+- Filling of rectangular selections no longer requires that the filled text
+fit within the selection rectangle
+- Linux is now an officially supported platform
+
+NEdit, it is a GUI (Graphical User Interface) style plain-text editor for
+X/Motif systems. It is very easy to use, especially for those familiar with
+the Macintosh or MS Windows style of interface, combining full use of the
+mouse and window manager, with keystroke efficiency and a full complement of
+powerful editing commands.
+
+NEdit Features:
+
+- Efficient, proven command set
+- Very complete functionality. NEdit is the primary editor for
+thousands of Unix and VMS programmers
+- Thorough consistency with Motif, MS Windows, and Macintosh
+conventions
+- Designed for intensive use: fast response time, menu and dialog
+shortcuts, streamlined interaction
+- Multi-level undo
+- Learn/replay
+- 100% GUI from the ground up
+- True multi-window, fully graphical design
+- Mouse based editing
+- Cut and Paste with other X/Motif programs, full compatibility
+with all X and Motif selection and text interchange styles
+- Secondary, quick-action, selections
+- Rectangular selection mode
+- Easy to learn
+- Just point and type
+- Capabilities are presented clearly in top level menus
+- Comprehensive on-line help
+- No special knowledge of X required, all important options
+can be set from within the program
+- Features for programmers
+- Auto-indent
+- Block indentation adjustment
+- Parenthesis flashing and matching
+- Find lines directly from compiler error output
+- Emulated tabs
+- Unix ctags support
+- Client/Server mode for integration with software development tools
+- Easy installation
+- Self contained single executable file
+- Pre-built, tested executables available for Silicon Graphics, Sun
+(Solaris & SunOS), HP, OSF/1, DEC Ultrix, IBM AIX, Linux, and VMS
+systems
+
+NEdit is available for free, in both source and executable form for most
+popular Unix and VMS workstations: SGI, DEC (DEC Unix, Ultrix, VMS, AXP), IBM,
+HP, Sun (SunOS and Solaris) and Linux. Porting to other systems has generally
+been easy, but you must have Motif libraries to build from sources. (execut-
+ables for systems for which Motif is optional are statically linked with
+Motif).
+
+Sources and executables are available via anonymous ftp.fnal.gov in the
+/pub/nedit/v4_0_1 directory. There is also a web page for NEdit at:
+http://fnpspa.fnal.gov/nirvana/nedit.html, or find out more about Fermilab:
+http://www.fnal.gov, or other Fermilab software: http://www.fnal.gov/fermitools.
+
+Send questions or comments to nedit_support@fnal.
+
+
+Mark Edel
+Fermi National Accelerator Laboratory
+P.O. Box 500
+Batavia, IL 60510
+(708)840-2496
+ed...@fnal.gov

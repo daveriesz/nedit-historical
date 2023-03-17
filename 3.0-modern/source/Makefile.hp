@@ -1,0 +1,7 @@
+CC=cc
+AR=ar
+CFLAGS=-O -Aa -I/usr/include/X11R5 -I/usr/include/Motif1.2 \
+	-D_HPUX_SOURCE -DMOTIF12 
+LIBS=-L /usr/lib/X11R5 -L /usr/lib/Motif1.2 -lm -lXm -lXt -lX11
+
+include Makefile.common

@@ -1,0 +1,86 @@
+From: Mark Edel
+Date: Oct 22, 1996, 12:00:00 AM
+Subject: Announcing NEdit 4.0.2
+
+NEdit 4.0.2 is now available from ftp://ftp.fnal.gov/pub/nedit/v4_0_2/.
+NEdit is a free GUI-style text editor for Unix and VMS systems. Now one
+of the most popular editors for Unix, NEdit combines high reliability,
+GUI standard behavior, thorough functionality, excellent performance,
+and the best mouse-interactivity around. For more information, visit:
+http://www-pat.fnal.gov/nirvana/nedit.html. Version 4.0.2 is mostly a
+bug fix release, but does contain a few new features (listed below).
+
+Supported systems are Silicon Graphics, Sun (Solaris & SunOS), HP,
+Digital Unix, DEC Ultrix, IBM AIX, Linux, and VMS, with contributed
+executables and Makefiles available for many more.
+
+
+Bugs Fixed in 4.0.2
+-------------------
+
+* Backup-word could cause hang on first word in file
+
+* Crash in Shell commands and Macro Commands dialog was possible when
+deleting the first item in the menu item list
+
+* In split-window mode some text could be drawn or refreshed improperly
+
+* Rectangular dragging was confused by non-standard tab distance
+
+* Rectangular dragging ignored setting of use-tab-characters
+
+* Paren flashing did not cross split-window boundaries
+
+* Paren flashing could mess up path of vertical cursor motion by arrow
+keys
+
+* Exchange could leave secondary selection drawn if there was no
+primary selection to exchange with
+
+* Backup file was not removed in Undo back to unmodified state followed
+by Exit
+
+* Some preferences set in split window mode affected only top pane
+
+* Changing tab spacing inappropriately marked files as modified
+
+* Backspace over emulated tab did not recognize tab when there was not
+a whole tab stop worth of characters to remove
+
+* Escape key activated wrong button in Close dialog
+
+* Use of window manager close-box on several dialogs could disable
+server mode
+
+* Statistics line sometimes remained blank on a new window until the
+window received keyboard focus
+
+* Accented characters now work on more (but not all) systems
+New Features
+------------
+
+* Proportional auto-scroll
+
+* Open Previous command remembers file names of previously opened files
+
+* Pasted text is auto-wrapped
+
+* Alphabetized window menu
+
+* Reinstated Motif standard Quadruple-click for select-all
+
+* -svrname option for use with ClearCase
+
+* Find Definition works with selections outside of requesting window
+
+* Allow % to be escaped in shell commands
+
+* Open Selected now ignores whitespace
+
+
+Send Questions and comments to: nedit_...@fnal.gov
+
+Mark Edel
+Fermi National Accelerator Laboratory
+Batavia, IL
+ed...@fnal.gov

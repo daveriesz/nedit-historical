@@ -1,0 +1,6 @@
+CC=/usr/lang/acc
+AR=/usr/5bin/ar
+CFLAGS=-O -DSUN -DMOTIF12
+LIBS= -Bstatic -lXm -lXt -lX11
+
+include Makefile.common

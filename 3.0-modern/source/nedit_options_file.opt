@@ -1,0 +1,5 @@
+! SCCSID: @(#)nedit_options_file.opt	1.1     8/20/93
+SYS$SHARE:VAXCRTL.EXE/SHARE
+sys$share:decw$dxmlibshr/share
+sys$share:decw$xmlibshr/share
+sys$share:decw$xlibshr/share

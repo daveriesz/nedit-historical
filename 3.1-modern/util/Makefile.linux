@@ -1,0 +1,9 @@
+# Makefile Linux
+#
+# Thanks to Richard Moore
+CC=gcc
+AR=ar
+CFLAGS=-O2 -m486 -Dlinux
+LIBS= -L/usr/lib/X11 -lXm -lXt -lX11 -lbsd
+
+include Makefile.common

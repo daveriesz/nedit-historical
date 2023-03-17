@@ -1,0 +1,43 @@
+From: Mark Edel
+Date: Nov 11, 1993, 11:10:17 PM
+Subject: Announcing NEdit Version 2.0
+
+Announcing NEdit V2.0, a commercial-quality text editor for X/Motif systems:
+- 100% GUI from the ground up
+- True multi-window design with graphical scroll bars
+- Pull down menus w/character accelerators
+- Mouse based editing, select and move text by clicking and dragging
+- Undo
+- Cut and Paste with other X Windows/Motif programs, full support
+for all Motif selection modes
+- Efficient, proven command set
+- Streamlined dialog interaction, keyboard shortcuts for all operations
+- Full featured search and replace using selections or dialogs
+- Thorough consistency with interface conventions
+- Easy to learn
+- Just point and type
+- Capabilities are presented clearly in top level menus
+- On-line help
+- No special knowlege of X Windows required, all important options
+can be set from within the program
+- Features for programmers
+- Auto-indent
+- Block indentation adjustment
+- Parenthesis Matching
+- Find lines directly from compiler error output
+- Unix ctags support
+- Easy installation
+- Self contained single executable file, just copy it and run it
+- Available in executable form for Silicon Graphics, Sun, DEC Ultrix,
+IBM AIX, and VMS systems
+
+NEdit is public domain software, available in both source and executable forms
+by anonymous ftp to fnpspb.fnal.gov. Sources are also available from
+export.lcs.mit.edu in the /contrib directory. Send questions or comments
+to ed...@fnal.gov.
+
+Mark Edel
+Fermi National Accelerator Laboratory
+P.O. Box 500
+Batavia, IL 60510
+(708)840-2496

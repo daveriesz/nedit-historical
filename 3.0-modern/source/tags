@@ -1,0 +1,316 @@
+AddMenuItem	../util/misc.c	?^Widget AddMenuItem(Widget parent, char *name, char?
+AddMenuSeparator	../util/misc.c	?^Widget AddMenuSeparator(Widget parent, char *name)?
+AddMenuToggle	../util/misc.c	?^Widget AddMenuToggle(Widget parent, char *name, ch?
+AddMotifCloseCallback	../util/misc.c	?^void AddMotifCloseCallback(Widget shell, XtCallbac?
+AddSubMenu	../util/misc.c	?^Widget AddSubMenu(Widget parent, char *name, char ?
+CloseAllFilesAndWindows	file.c	?^int CloseAllFilesAndWindows()$?
+CloseFileAndWindow	file.c	?^int CloseFileAndWindow(WindowInfo *window)$?
+ClosePane	window.c	?^void ClosePane(WindowInfo *window)$?
+CloseWindow	window.c	?^void CloseWindow(WindowInfo *window)$?
+CopyToClipboard	clipboard.c	?^void CopyToClipboard(WindowInfo *window, Time time?
+CreateMenuBar	menu.c	?^Widget CreateMenuBar(Widget parent, WindowInfo *wi?
+CreateNEditPrefDB	preferences.c	?^XrmDatabase CreateNEditPrefDB(unsigned int *argcIn?
+CreatePreferencesDatabase	../util/prefFile.c	?^XrmDatabase CreatePreferencesDatabase(char *fileNa?
+CreateWindow	window.c	?^WindowInfo *CreateWindow(char *title, int rows, in?
+CutToClipboard	clipboard.c	?^void CutToClipboard(WindowInfo *window, Time time)?
+DeletePrimarySelection	window.c	?^void DeletePrimarySelection(Widget w)$?
+DialogF	../util/DialogF.c	?^unsigned DialogF (unsigned dialog_type, Widget par?
+DoFindDlog	search.c	?^void DoFindDlog(WindowInfo *window, int direction)?
+DoReplaceDlog	search.c	?^void DoReplaceDlog(WindowInfo *window, int directi?
+EditExistingFile	file.c	?^void EditExistingFile(WindowInfo *inWindow, char *?
+EditNewFile	file.c	?^void EditNewFile()$?
+FindBigFont	../util/fontsel.c	?^static void	FindBigFont(xfselControlBlkType *ctrlB?
+FindDefinition	tags.c	?^int FindDefinition(WindowInfo *window, Time time)$?
+FindMatchingChar	search.c	?^static int FindMatchingChar(char *string, int char?
+FindSelectedLines	shift.c	?^int FindSelectedLines(Widget widget, int *startPos?
+FindWindowWithFile	window.c	?^WindowInfo *FindWindowWithFile(char *name, char *p?
+FontSel	../util/fontsel.c	?^char 	*FontSel(Widget parent, int showPropFonts, c?
+FreeStringTable	../util/misc.c	?^void FreeStringTable(XmString *table)$?
+GET_ONE_RSRC	nedit.h	?^#define GET_ONE_RSRC(widget, name, valueAddr) \\$?
+GetExistingFilename	../util/getfiles.c	?^int GetExistingFilename (Widget parent, char *prom?
+GetFloatText	../util/misc.c	?^int GetFloatText(Widget text, double *value)$?
+GetFloatTextWarn	../util/misc.c	?^int GetFloatTextWarn(Widget text, double *value, c?
+GetInsertPosition	window.c	?^int GetInsertPosition(WindowInfo *window)$?
+GetIntText	../util/misc.c	?^int GetIntText(Widget text, int *value)$?
+GetIntTextWarn	../util/misc.c	?^int GetIntTextWarn(Widget text, int *value, char *?
+GetNewFilename	../util/getfiles.c	?^int GetNewFilename (Widget parent, char *promptStr?
+GetPrefAutoIndent	preferences.c	?^int GetPrefAutoIndent()$?
+GetPrefAutoSave	preferences.c	?^int GetPrefAutoSave()$?
+GetPrefCols	preferences.c	?^int GetPrefCols()$?
+GetPrefFontName	preferences.c	?^char *GetPrefFontName()$?
+GetPrefMapDelete	preferences.c	?^int GetPrefMapDelete()$?
+GetPrefRows	preferences.c	?^int GetPrefRows()$?
+GetPrefSearch	preferences.c	?^int GetPrefSearch()$?
+GetPrefSearchDlogs	preferences.c	?^int GetPrefSearchDlogs()$?
+GetPrefTagFile	preferences.c	?^char *GetPrefTagFile()$?
+GetPrefWrap	preferences.c	?^int GetPrefWrap()$?
+GetSelection	window.c	?^int GetSelection(Widget widget, int *left, int *ri?
+GetTextRange	window.c	?^char *GetTextRange(Widget widget, int left, int ri?
+GotoLineNumber	clipboard.c	?^void GotoLineNumber(WindowInfo *window, Time time)?
+GotoSelectedLineNumber	clipboard.c	?^void GotoSelectedLineNumber(WindowInfo *window, Ti?
+HandleCustomExistFileSB	../util/getfiles.c	?^int HandleCustomExistFileSB(Widget existFileSB, ch?
+Help	help.c	?^void Help(WindowInfo *window, enum HelpTopic topic?
+InvalidateWindowMenus	menu.c	?^void InvalidateWindowMenus()$?
+LoadPrintPreferences	../util/printUtils.c	?^void LoadPrintPreferences(XrmDatabase prefDB, char?
+LoadTagsFile	tags.c	?^int LoadTagsFile(char *filename)$?
+LookupTag	tags.c	?^int LookupTag(char *name, char **file, char **sear?
+MKSTRING	nedit.h	?^#define MKSTRING(string) \\$?
+MatchSelectedCharacter	search.c	?^void MatchSelectedCharacter(WindowInfo *window, Ti?
+Mnedit	nedit.c	?^int main (unsigned int argc, char **argv)$?
+NWindows	window.c	?^int NWindows()$?
+ParseFilename	../util/fileUtils.c	?^int ParseFilename(char *fullname, char *filename, ?
+PasswordText	../util/misc.c	?^void PasswordText(Widget w, char *passTxt)$?
+PasteFromClipboard	clipboard.c	?^void PasteFromClipboard(WindowInfo *window, Time t?
+PopDownBugPatch	../util/misc.c	?^void PopDownBugPatch(Widget w)$?
+PrintFile	../util/printUtils.c	?^void PrintFile(Widget parent, char *printFile, cha?
+PrintWindow	file.c	?^int PrintWindow(WindowInfo *window)$?
+RemapDeleteKey	../util/misc.c	?^void RemapDeleteKey(Widget w)$?
+ReplaceAll	search.c	?^int ReplaceAll(WindowInfo *window)$?
+ReplaceInSelection	search.c	?^int ReplaceInSelection(WindowInfo *window)$?
+RestoreDefaultPreferences	../util/prefFile.c	?^void RestoreDefaultPreferences(PrefDescripRec *rsr?
+RestoreNEditPrefs	preferences.c	?^void RestoreNEditPrefs(XrmDatabase prefDB, XrmData?
+RestorePreferences	../util/prefFile.c	?^void RestorePreferences(XrmDatabase prefDB, XrmDat?
+RevertToSaved	file.c	?^void RevertToSaved(WindowInfo *window)$?
+RowColumnPrefDialog	preferences.c	?^void RowColumnPrefDialog(Widget parent)$?
+SET_ONE_RSRC	nedit.h	?^#define SET_ONE_RSRC(widget, name, newValue) \\$?
+SaveNEditPrefs	preferences.c	?^void SaveNEditPrefs(Widget parent)$?
+SavePreferences	../util/prefFile.c	?^int SavePreferences(Display *display, char *fileNa?
+SaveUndoInformation	undo.c	?^void SaveUndoInformation(WindowInfo *window, XmTex?
+SaveWindow	file.c	?^int SaveWindow(WindowInfo *window)$?
+SaveWindowAs	file.c	?^int SaveWindowAs(WindowInfo *window)$?
+SearchAndReplace	search.c	?^int SearchAndReplace(WindowInfo *window, int direc?
+SearchAndSelect	search.c	?^int SearchAndSelect(WindowInfo *window, int direct?
+SearchForSelected	search.c	?^void SearchForSelected(WindowInfo *window, int dir?
+SearchString	search.c	?^int SearchString(char *string, char *searchString,?
+SearchWindow	search.c	?^int SearchWindow(WindowInfo *window, int direction?
+SelectNumberedLine	clipboard.c	?^void SelectNumberedLine(WindowInfo *window, int li?
+SetAndShowInsertPosition	window.c	?^void SetAndShowInsertPosition(WindowInfo *window, ?
+SetAutoIndent	window.c	?^void SetAutoIndent(WindowInfo *window, int state)$?
+SetDeleteRemap	../util/misc.c	?^void SetDeleteRemap(int state)$?
+SetFloatLabel	../util/misc.c	?^void SetFloatLabel(Widget label, double value)$?
+SetFloatText	../util/misc.c	?^void SetFloatText(Widget text, double value)$?
+SetFont	window.c	?^void SetFont(WindowInfo *window, char *fontName)$?
+SetIntLabel	../util/misc.c	?^void SetIntLabel(Widget label, int value)$?
+SetIntText	../util/misc.c	?^void SetIntText(Widget text, int value)$?
+SetPrefAutoIndent	preferences.c	?^void SetPrefAutoIndent(int state)$?
+SetPrefAutoSave	preferences.c	?^void SetPrefAutoSave(int state)$?
+SetPrefCols	preferences.c	?^void SetPrefCols(int nCols)$?
+SetPrefFont	preferences.c	?^void SetPrefFont(char *fontName)$?
+SetPrefMapDelete	preferences.c	?^void SetPrefMapDelete(int state)$?
+SetPrefRows	preferences.c	?^void SetPrefRows(int nRows)$?
+SetPrefSearch	preferences.c	?^void SetPrefSearch(int searchType)$?
+SetPrefSearchDlogs	preferences.c	?^void SetPrefSearchDlogs(int state)$?
+SetPrefTagFile	preferences.c	?^void SetPrefTagFile(char *tagFileName)$?
+SetPrefWrap	preferences.c	?^void SetPrefWrap(int state)$?
+SetWindowModified	window.c	?^void SetWindowModified(WindowInfo *window, int mod?
+SetWindowTitle	window.c	?^void SetWindowTitle(WindowInfo *window, char *titl?
+SetWrap	window.c	?^void SetWrap(WindowInfo *window, int wrap)$?
+ShiftSelection	shift.c	?^void ShiftSelection(WindowInfo *window, int direct?
+ShowStatsLine	window.c	?^void ShowStatsLine(WindowInfo *window, int state)$?
+SimulateButtonPress	../util/misc.c	?^void SimulateButtonPress(Widget widget)$?
+SplitWindow	window.c	?^void SplitWindow(WindowInfo *window)$?
+StringTable	../util/misc.c	?^XmString* StringTable(int count, ... )$?
+SuppressPassiveGrabWarnings	../util/misc.c	?^void SuppressPassiveGrabWarnings(void)$?
+TagsFileLoaded	tags.c	?^int TagsFileLoaded()$?
+TextLength	window.c	?^int TextLength(Widget widget)$?
+Undo	undo.c	?^void Undo(WindowInfo *window)$?
+UpdateWindowTitle	window.c	?^void UpdateWindowTitle(WindowInfo *window)$?
+WriteBackupFile	file.c	?^int WriteBackupFile(WindowInfo *window)$?
+addItemToList	../util/fontsel.c	?^static void	addItemToList(char **buf, char *item, ?
+addToWindowList	window.c	?^static void addToWindowList(WindowInfo *window) $?
+allowOnlyNumInput	../util/printUtils.c	?^static void allowOnlyNumInput(Widget widget, caddr?
+appendDeletedText	undo.c	?^static void appendDeletedText(WindowInfo *window, ?
+apply_callback	../util/DialogF.c	?^static void apply_callback (Widget w, struct dfcal?
+atTabStop	shift.c	?^static int atTabStop(int pos)$?
+autoIndentCB	menu.c	?^static void autoIndentCB(Widget w, WindowInfo *win?
+autoIndentDefCB	menu.c	?^static void autoIndentDefCB(Widget w, WindowInfo *?
+autoSaveCB	menu.c	?^static void autoSaveCB(Widget w, WindowInfo *windo?
+autoSaveDefCB	menu.c	?^static void autoSaveDefCB(Widget w, WindowInfo *wi?
+backwardRegexSearch	search.c	?^static int backwardRegexSearch(char *string, char ?
+cancelAction	../util/fontsel.c	?^static void	cancelAction(Widget widget, xfselContr?
+cancelButtonCB	../util/printUtils.c	?^static void cancelButtonCB(Widget widget, caddr_t ?
+cancel_callback	../util/DialogF.c	?^static void cancel_callback (Widget w, struct dfca?
+caseCB	search.c	?^static void caseCB(Widget w, WindowInfo *window, c?
+changeAutoIndent	window.c	?^static void changeAutoIndent(Widget text, int stat?
+changeWordDelimiters	window.c	?^static void changeWordDelimiters(Widget text)$?
+checkCloseDim	menu.c	?^static void checkCloseDim(void)$?
+checkLock	clipboard.c	?^static int checkLock(WindowInfo *window, int clipS?
+choiceMade	../util/fontsel.c	?^static void	choiceMade(xfselControlBlkType *ctrlBl?
+clearCB	menu.c	?^static void clearCB(Widget w, WindowInfo *window, ?
+closeCB	menu.c	?^static void closeCB(Widget w, WindowInfo *window, ?
+closePaneCB	menu.c	?^static void closePaneCB(Widget w, WindowInfo *wind?
+compareThruSlash	../util/fileUtils.c	?^static int compareThruSlash(char *string1, char *s?
+compressPathname	../util/fileUtils.c	?^static int compressPathname(char *pathname)$?
+copyCB	menu.c	?^static void copyCB(Widget w, WindowInfo *window,Xm?
+copyThruSlash	../util/fileUtils.c	?^static void copyThruSlash(char **toString, char **?
+countLines	shift.c	?^static int countLines(char *text)$?
+createErrorDialog	../util/getfiles.c	?^static void createErrorDialog(Widget parent)$?
+createFindDlog	search.c	?^static void createFindDlog(Widget parent, WindowIn?
+createForm	../util/printUtils.c	?^static Widget createForm(Widget parent)$?
+createHelpPanel	help.c	?^static Widget createHelpPanel(WindowInfo *window, ?
+createPanelHelp	../util/getfiles.c	?^static Widget createPanelHelp(Widget parent, char ?
+createReplaceDlog	search.c	?^static void createReplaceDlog(Widget parent, Windo?
+createTextArea	window.c	?^static Widget createTextArea(Widget parent, Window?
+createYesNoDialog	../util/getfiles.c	?^static void createYesNoDialog(Widget parent)$?
+cutCB	menu.c	?^static void cutCB(Widget w, WindowInfo *window, Xm?
+determineUndoType	undo.c	?^static int determineUndoType(XmTextVerifyPtr mod)$?
+dismissCB	help.c	?^static void dismissCB(Widget w, int topic, caddr_t?
+dispSample	../util/fontsel.c	?^static void	dispSample(xfselControlBlkType *ctrlBl?
+doClose	window.c	?^static void doClose(WindowInfo *window)$?
+doErrorDialog	../util/getfiles.c	?^static void doErrorDialog(char *errorString, char ?
+doOpen	file.c	?^static int doOpen(WindowInfo *window, char *name, ?
+doSave	file.c	?^static int doSave(WindowInfo *window)$?
+doYesNoDialog	../util/getfiles.c	?^static int doYesNoDialog(char *filename)$?
+downCaseString	search.c	?^static void downCaseString(char *outString, char *?
+errorOKCB	../util/getfiles.c	?^static void errorOKCB(Widget w, caddr_t client_dat?
+errorString	file.c	?^static char *errorString(void)$?
+existCancelCB	../util/getfiles.c	?^static void existCancelCB(Widget w, Boolean * clie?
+existHelpCB	../util/getfiles.c	?^static void existHelpCB(Widget w, Widget helpPanel?
+existOkCB	../util/getfiles.c	?^static void existOkCB(Widget w, Boolean * client_d?
+exitCB	menu.c	?^static void exitCB(Widget w, WindowInfo *window, c?
+fCancelCB	search.c	?^static void fCancelCB(Widget w, WindowInfo *window?
+fFocusCB	search.c	?^static void fFocusCB(Widget w, WindowInfo *window,?
+fakeRegExSearch	tags.c	?^static int fakeRegExSearch(WindowInfo *window, cha?
+fileInDir	../util/printUtils.c	?^static int fileInDir(char *filename, char *dirpath?
+fileInPath	../util/printUtils.c	?^static int fileInPath(char *filename,unsigned shor?
+findCB	menu.c	?^static void findCB(Widget w, WindowInfo *window,Xm?
+findDefCB	menu.c	?^static void findDefCB(Widget w, WindowInfo *window?
+findMatchingCB	menu.c	?^static void findMatchingCB(Widget w, WindowInfo *w?
+findSameCB	menu.c	?^static void findSameCB(Widget w, WindowInfo *windo?
+findSelCB	menu.c	?^static void findSelCB(Widget w, WindowInfo *window?
+flprPresent	../util/printUtils.c	?^static int flprPresent()$?
+focusCB	window.c	?^static void focusCB(Widget w, WindowInfo *window, ?
+followSymLinks	file.c	?^static int followSymLinks(char *filename)$?
+fontAction	../util/fontsel.c	?^static void	fontAction(Widget widget, xfselControl?
+fontCB	menu.c	?^static void fontCB(Widget w, WindowInfo *window, c?
+fontDefCB	menu.c	?^static void fontDefCB(Widget w, WindowInfo *window?
+fontMatch	../util/fontsel.c	?^static int	fontMatch(xfselControlBlkType ctrlBlk, ?
+forwardRegexSearch	search.c	?^static int forwardRegexSearch(char *string, char *?
+foundEnv	../util/printUtils.c	?^static int foundEnv(char *EnvVarName,char *result)?
+foundTag	../util/printUtils.c	?^static int foundTag(char *tagfilename,char *tagnam?
+freeTagList	tags.c	?^static void freeTagList(tag *tags)$?
+getFlprHostDefault	../util/printUtils.c	?^static void getFlprHostDefault(char *defhost)$?
+getFlprQueueDefault	../util/printUtils.c	?^static void getFlprQueueDefault(char *defqueue)$?
+getFontPart	../util/fontsel.c	?^static void	getFontPart(char *font, char *buff1)$?
+getLpQueueDefault	../util/printUtils.c	?^static void getLpQueueDefault(char *defqueue)$?
+getLprQueueDefault	../util/printUtils.c	?^static void getLprQueueDefault(char *defqueue)$?
+getSizePart	../util/fontsel.c	?^static void	getSizePart(char *font, char *buff1, i?
+getStringComponent	../util/fontsel.c	?^static void	getStringComponent(char *inStr, int po?
+getStylePart	../util/fontsel.c	?^static void	getStylePart(char *font, char *buff1)$?
+getVmsQueueDefault	../util/printUtils.c	?^static void getVmsQueueDefault(char *defqueue)$?
+gotoCB	menu.c	?^static void gotoCB(Widget w, WindowInfo *window,$?
+gotoSelectedCB	menu.c	?^static void gotoSelectedCB(Widget w, WindowInfo *w?
+helpBugsCB	menu.c	?^static void helpBugsCB(Widget w, WindowInfo *windo?
+helpClipCB	menu.c	?^static void helpClipCB(Widget w, WindowInfo *windo?
+helpCmdLineCB	menu.c	?^static void helpCmdLineCB(Widget w, WindowInfo *wi?
+helpCustCB	menu.c	?^static void helpCustCB(Widget w, WindowInfo *windo?
+helpDismissCB	../util/getfiles.c	?^static void helpDismissCB(Widget w, Widget helpPan?
+helpNavCB	menu.c	?^static void helpNavCB(Widget w, WindowInfo *window?
+helpPrefCB	menu.c	?^static void helpPrefCB(Widget w, WindowInfo *windo?
+helpProgCB	menu.c	?^static void helpProgCB(Widget w, WindowInfo *windo?
+helpRecoveryCB	menu.c	?^static void helpRecoveryCB(Widget w, WindowInfo *w?
+helpSearchCB	menu.c	?^static void helpSearchCB(Widget w, WindowInfo *win?
+helpSelectCB	menu.c	?^static void helpSelectCB(Widget w, WindowInfo *win?
+helpStartCB	menu.c	?^static void helpStartCB(Widget w, WindowInfo *wind?
+helpVerCB	menu.c	?^static void helpVerCB(Widget w, WindowInfo *window?
+help_callback	../util/DialogF.c	?^static void help_callback (Widget w, struct dfcall?
+isDelimeter	window.c	?^static int isDelimeter(char c)$?
+listCharCB	../util/getfiles.c	?^static void listCharCB(Widget w, XEvent *event, St?
+literalCB	search.c	?^static void literalCB(Widget w, WindowInfo *window?
+loadTagsCB	menu.c	?^static void loadTagsCB(Widget w, WindowInfo *windo?
+makeListTypeable	../util/getfiles.c	?^static void makeListTypeable(Widget listW)$?
+modifiedCB	window.c	?^static void modifiedCB(Widget w, WindowInfo *windo?
+movedCB	window.c	?^static void movedCB(Widget w, WindowInfo *window, ?
+newCB	menu.c	?^static void newCB(Widget w, WindowInfo *window, ca?
+newFileCancelCB	../util/getfiles.c	?^static void newFileCancelCB(Widget w, Boolean *cli?
+newFileOKCB	../util/getfiles.c	?^static void newFileOKCB(Widget	w, Boolean *client_?
+newHelpCB	../util/getfiles.c	?^static void newHelpCB(Widget w, Widget helpPanel, ?
+nextSlash	../util/fileUtils.c	?^static char *nextSlash(char *ptr)$?
+nextTab	shift.c	?^static int nextTab(int pos)$?
+noSpaceOrPunct	../util/printUtils.c	?^static void noSpaceOrPunct(Widget widget, caddr_t ?
+normalizePathname	../util/fileUtils.c	?^static int normalizePathname(char *pathname)$?
+notPropFont	../util/fontsel.c	?^static int	notPropFont(char *font)$?
+okAction	../util/fontsel.c	?^static void	okAction(Widget widget, xfselControlBl?
+ok_callback	../util/DialogF.c	?^static void ok_callback (Widget w, struct dfcallba?
+openCB	menu.c	?^static void openCB(Widget w, WindowInfo *window, c?
+passwdCB	../util/misc.c	?^static void passwdCB(Widget w, char * passTxt, XmT?
+pasteCB	menu.c	?^static void pasteCB(Widget w,WindowInfo *window,Xm?
+patchScrollBarBug	window.c	?^static void patchScrollBarBug(Widget text)$?
+prevSlash	../util/fileUtils.c	?^static char *prevSlash(char *ptr)$?
+printButtonCB	../util/printUtils.c	?^static void printButtonCB(Widget widget, caddr_t c?
+printCB	menu.c	?^static void printCB(Widget w, WindowInfo *window, ?
+propFontToggleAction	../util/fontsel.c	?^static void	propFontToggleAction(Widget widget, $?
+rCancelCB	search.c	?^static void rCancelCB(Widget w, WindowInfo *window?
+rFindCB	search.c	?^static void rFindCB(Widget w, WindowInfo *window,X?
+rFocusCB	search.c	?^static void rFocusCB(Widget w, WindowInfo *window,?
+rInSelCB	search.c	?^static void rInSelCB(Widget w, WindowInfo *window,?
+raiseCB	menu.c	?^static void raiseCB(Widget w, WindowInfo *window, ?
+recreateWindow	window.c	?^void recreateWindow(WindowInfo *window, char *font?
+regExpCB	search.c	?^static void regExpCB(Widget w, WindowInfo *window,?
+removeBackupFile	file.c	?^static int removeBackupFile(WindowInfo *window)$?
+removeFromWindowList	window.c	?^static void removeFromWindowList(WindowInfo *windo?
+removeWhiteSpace	../util/prefFile.c	?^static char *removeWhiteSpace(char *string)$?
+replaceAllCB	search.c	?^static void replaceAllCB(Widget w, WindowInfo *win?
+replaceCB	menu.c	?^static void replaceCB(Widget w, WindowInfo *window?
+replaceSameCB	menu.c	?^static void replaceSameCB(Widget w, WindowInfo *wi?
+replacementCountProc	window.c	?^static int replacementCountProc(XmTextSource sourc?
+replacementScanProc	window.c	?^static XmTextPosition replacementScanProc(XmTextSo?
+resetFindTabGroup	search.c	?^static void resetFindTabGroup(WindowInfo *window)$?
+resetReplaceTabGroup	search.c	?^static void resetReplaceTabGroup(WindowInfo *windo?
+revertCB	menu.c	?^static void revertCB(Widget w, WindowInfo *window,?
+saveAsCB	menu.c	?^static void saveAsCB(Widget w, WindowInfo *window,?
+saveCB	menu.c	?^static void saveCB(Widget w, WindowInfo *window, c?
+savePrefCB	menu.c	?^static void savePrefCB(Widget w, WindowInfo *windo?
+searchCaseSenseCB	menu.c	?^static void searchCaseSenseCB(Widget w, WindowInfo?
+searchDlogsDefCB	menu.c	?^static void searchDlogsDefCB(Widget w, WindowInfo ?
+searchLiteral	search.c	?^static int searchLiteral(char *string, char *searc?
+searchLiteralCB	menu.c	?^static void searchLiteralCB(Widget w, WindowInfo *?
+searchMatchesSelection	search.c	?^static int searchMatchesSelection(WindowInfo *wind?
+searchRegex	search.c	?^static int searchRegex(char *string, char *searchS?
+searchRegexCB	menu.c	?^static void searchRegexCB(Widget w, WindowInfo *wi?
+selectedSearchCB	search.c	?^static void selectedSearchCB(Widget w, WindowInfo ?
+setFocus	../util/fontsel.c	?^static void 	setFocus(Widget w, xfselControlBlkTyp?
+setHostLabelText	../util/printUtils.c	?^static void setHostLabelText()$?
+setPaneDesiredHeight	window.c	?^static void setPaneDesiredHeight(Widget w, int hei?
+setQueueLabelText	../util/printUtils.c	?^static void setQueueLabelText()$?
+setTag	tags.c	?^static void setTag(tag *t, char *name, char *file,?
+setWindowSizeDefault	menu.c	?^static void setWindowSizeDefault(int rows, int col?
+setupScrollLists	../util/fontsel.c	?^static void	setupScrollLists(int dontChange, xfsel?
+shiftLeftCB	menu.c	?^static void shiftLeftCB(Widget w, WindowInfo *wind?
+shiftLineLeft	shift.c	?^static void shiftLineLeft(char *line)$?
+shiftLineRight	shift.c	?^static void shiftLineRight(char *line, int tabsAll?
+shiftRightCB	menu.c	?^static void shiftRightCB (Widget w, WindowInfo *wi?
+shiftText	shift.c	?^static char *shiftText(char *text, int direction, ?
+size24x80CB	menu.c	?^static void size24x80CB(Widget w, WindowInfo *wind?
+size40x80CB	menu.c	?^static void size40x80CB(Widget w, WindowInfo *wind?
+size60x80CB	menu.c	?^static void size60x80CB(Widget w, WindowInfo *wind?
+size80x80CB	menu.c	?^static void size80x80CB(Widget w, WindowInfo *wind?
+sizeAction	../util/fontsel.c	?^static void	sizeAction(Widget widget, xfselControl?
+sizeCancelCB	preferences.c	?^static void sizeCancelCB(Widget w, caddr_t client_?
+sizeCustomCB	menu.c	?^static void sizeCustomCB(Widget w, WindowInfo *win?
+sizeMatch	../util/fontsel.c	?^static int	sizeMatch(xfselControlBlkType ctrlBlk, ?
+sizeOKCB	preferences.c	?^static void sizeOKCB(Widget w, caddr_t client_data?
+sizeToggleAction	../util/fontsel.c	?^static void	sizeToggleAction(Widget widget,$?
+splitWindowCB	menu.c	?^static void splitWindowCB(Widget w, WindowInfo *wi?
+startupFont	../util/fontsel.c	?^static void	startupFont(xfselControlBlkType *ctrlB?
+statsCB	menu.c	?^static void statsCB(Widget w, WindowInfo *window, ?
+storeReplaceStrings	search.c	?^static void storeReplaceStrings(WindowInfo *window?
+stringToPref	../util/prefFile.c	?^static int stringToPref(char *string, PrefDescripR?
+styleAction	../util/fontsel.c	?^static void	styleAction(Widget widget, xfselContro?
+styleMatch	../util/fontsel.c	?^static int	styleMatch(xfselControlBlkType ctrlBlk,?
+tag	tags.c	28
+textPosToLineNum	window.c	?^static int textPosToLineNum(Widget text, int pos)$?
+undoCB	menu.c	?^static void undoCB(Widget w, WindowInfo *window, c?
+upCaseString	search.c	?^static void upCaseString(char *outString, char *in?
+updatePrintCmd	../util/printUtils.c	?^static void updatePrintCmd(Widget w, caddr_t clien?
+updateStatsLine	window.c	?^static void updateStatsLine(WindowInfo *window, in?
+updateWindowMenu	menu.c	?^static void updateWindowMenu(WindowInfo *window)$?
+updateWindowSizeMenu	menu.c	?^static void updateWindowSizeMenu(WindowInfo *win)$?
+updateWindowSizeMenus	menu.c	?^static void updateWindowSizeMenus()$?
+warnHandlerCB	../util/misc.c	?^static void warnHandlerCB(String message)$?
+windowMenuCB	menu.c	?^static void windowMenuCB(Widget w, WindowInfo *win?
+wrapCB	menu.c	?^static void wrapCB(Widget w, WindowInfo *window, c?
+wrapDefCB	menu.c	?^static void wrapDefCB(Widget w, WindowInfo *window?
+xfselControlBlkType	../util/fontsel.c	79
+yesNoCancelCB	../util/getfiles.c	?^static void yesNoCancelCB(Widget w, caddr_t client?
+yesNoOKCB	../util/getfiles.c	?^static void yesNoOKCB(Widget w, caddr_t client_dat?

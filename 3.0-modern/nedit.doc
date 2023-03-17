@@ -1,0 +1,930 @@
+                                    NEDIT
+
+NEdit is a robust GUI (Graphical User Interface) style plain text editor for
+workstations with X Windows and Motif.  It is written to maximize usability
+for people who do intensive and continuous editing, but at the same time is
+easy to learn and to use casually.  For programmers, NEdit provides automatic
+indent, block indentation adjustment, parenthesis matching, and Unix ctags
+processing.
+
+NEdit is public domain software, available in binary form for Silicon
+Graphics, HP, DEC, IBM, and Sun workstations running Unix, as well as for VMS.
+Sources are also available and porting to other Motif platforms should be
+easy.
+
+
+INSTALLING NEDIT
+
+NEdit is a single stand-alone executable file which can be installed by simply
+copying the appropriate executable "nedit" for their system.  Fermilab users
+can obtain NEdit via UPS/UPD, and should type:
+
+    setup nedit
+
+to gain access to it.
+
+
+GETTING STARTED
+
+If you are new to X windows, you may need some help setting up your X
+environment or using X across a network.  If you have used other Motif
+programs before, you can probably use NEdit without much instruction.  Editor
+commands are available from the pull-down menus (File, Edit, Search, etc.).
+If you make a mistake, select Undo from the Edit menu.
+
+Start NEdit by typing nedit.  You can specify a file or several files to edit
+on the command line, but you can also open them from inside NEdit.  If you
+don't specify a file name to edit, NEdit will open a window titled "Untitled".
+You can create a new file by typing into this window and choosing Save or
+Save As... from the File menu.  There is no "main window" in NEdit, all
+editor windows are equivalent, and NEdit remains running as long as at least
+one window is open.
+
+Most editor commands are available from the pulldown menus (File, Edit,
+Search).  If you make a mistake, any editing operation can be undone by
+selecting Undo from the Edit menu.  Online help is also available through the
+Help menu on the right hand side of the menu bar
+
+To open an existing file once nedit is running, choose Open... from the File
+menu.   Select the file that you want to open in the pop-up dialog that
+appears, and click on OK.  You may open any number of files at the same time.
+Each file will appear in its own editor window.  Using Open... rather than
+re-typing the nedit command and running additional copies of NEdit, will give
+you quick access to all of the files you have open via the Windows menu, and
+ensure that you don't accidentally open the same file twice.
+
+
+SHORTCUTS
+
+As you become more familiar with NEdit, you can substitute the control and
+function keys shown on the right side of the menus for pulling down menus with
+the mouse.
+
+Dialogs are also streamlined so you can enter information quickly and without
+using the mouse (Users who have set their keyboard focus mode to "pointer"
+must still move the mouse into the dialog before they begin typing).  To move
+the keyboard focus around a dialog, use the tab and arrow keys.  One of the
+buttons in a dialog is usually drawn with a thick, indented, outline.  This
+button can be activated by pressing return or enter.  For example, to replace
+the string "thing" with "things" type:
+
+    <ctrl-r>thing<tab>things<return>
+
+To open a file named "whole_earth.c", type:
+
+    <ctrl-o>who<return>
+
+(how much of the filename you need to type depends on the other files in the
+directory).
+
+
+FINDING AND REPLACING TEXT
+
+The Search menu contains a number of commands for finding and replacing text.
+
+The Find... and Replace... items present dialogs for entering text for
+searching and replacing.  The dialogs also allow you to choose whether you
+want the search to be sensitive to upper and lower case, or whether to use the
+standard Unix pattern matching characters (regular expressions).  Searches
+begin at the current text insertion position and wrap around to the beginning
+of the file.
+
+Find Same and Replace Same repeat the last find or replace command without
+prompting for search strings.  To selectively replace text, use these two
+commands in combination.  Choose Find Same followed by Replace Same if the
+highlighted string should be replaced, or Find Same again to move on to the
+next string.
+
+Find Selection searches for the text contained in the current primary
+selection (see Selecting Text below).  The selected text does not have to be
+in the current editor window.  It may even be in another program.  For
+example, if the word dog appears somewhere in a window on your screen, and you
+want to find it in the file that you are editing, select the word dog by
+dragging the mouse across it, switch to your editor window and choose Find
+Selection from the Search menu.
+
+Searching Backwards
+
+Holding down the shift key while choosing any of the search or replace
+commands from the menu (or using the keyboard shortcut), will search in the
+reverse direction.  Note that engaging the caps lock key does not substitute
+for holding down the shift key.
+
+Regular Expressions
+
+Regular expressions are available in the Find... and Replace... dialogs as a
+way to match inexact sequences of characters.  Regular expression substitution
+can also be used to program automatic editing operations.  For example, the
+following are search and replace strings to find occurences of the subroutine
+get_x, reverse the first and second parameters, add a third parameter of NULL,
+and change the name to new_get_x":
+
+	Search string:  get_x\(([^ ,]*), ([^\)]*)\)
+	Replace string: new_get_x(\2, \1, NULL)
+
+To use regular expressions, click on the Regular Expression button in the
+Find... or Replace... dialogs before doing a search or replacement.
+
+Regular Expression Syntax
+
+The components of a regular expression are: branches, pieces, atoms, and
+ranges. A regular expression consists of zero or more branches, separated by
+`|'.  It matches anything that matches one of the branches.
+
+A branch is zero or more pieces, concatenated.  It matches a match for the
+first, followed by a match for the second, etc.
+
+A piece is an atom possibly followed by `*', `+', or `?'.  An atom followed by
+`*' matches a sequence of 0 or more matches of the atom.  An atom followed by
+`+' matches a sequence of 1 or more matches of the atom.  An atom followed by
+`?' matches a match of the atom, or the null string.
+
+An atom is a regular expression in parentheses (matching a match for the
+regular expression), a range (see below), `.' (matching any single character),
+`^' (matching the null string at the beginning of a line string), `$' (matching
+the null string at the end of a line), a `\' followed by a single character
+(matching that character), or a single character with no other significance
+(matching that character). \t, \n, \b, \r, and \f represent the characters tab
+newline, backspace, carriage return, and form feed.
+
+A range is a sequence of characters enclosed in `[]'.  It normally matches any
+single character from the sequence.  If the sequence begins with `^', it
+matches any single character not from the rest of the sequence.  If two
+characters in the sequence are separated by `-', this is shorthand for the full
+list of ASCII characters between them (e.g. `[0-9]' matches any decimal
+digit).  To include a literal `]' in the sequence, make it the first character
+(following a possible `^').  To include a literal `-', make it the first or
+last character.  A backslash `\' followed by a single character includes that
+character, however backslashes are not necessary for most special characters,
+since inside a range, only the `]', `-', and '\' characters are treated
+specially.
+
+Substitution
+
+Wherever the substitution string contains the character `&', NEdit will
+substitute the the entire string that was matched in the Find operation.  Up to
+nine sub-expressions of the match string can also be inserted into the
+replacement string, using `\' followed by a digit. \1 through \9 represent the
+strings that matched parenthesized expressions within the regular expression,
+numbered left-to-right in order of their opening parentheses.  Preceding & or
+\1-9 with \U, \u, \L, or \l adjusts the case of the inserted text.  \u and \l
+change only the first character, while \U and \L change the entire string to
+upper or lower case.  \t, \n, \b, \r, and \f represent the characters tab
+newline, backspace, carriage return, and form feed in a substitution string
+represent the tab and newline characters as they do in match strings.
+
+Ambiguity
+
+If a regular expression could match two different parts of the text, it will
+match the one which begins earliest.  If both begin in the same place but match
+different lengths, or match the same length in different ways, life gets
+messier, as follows.
+
+In general, the possibilities in a list of branches are considered in
+left-to-right order, the possibilities for `*', `+', and `?' are considered
+longest-first, nested constructs are considered from the outermost in, and
+concatenated constructs are considered leftmost-first.  The match that will be
+chosen is the one that uses the earliest possibility in the first choice that
+has to be made.  If there is more than one choice, the next will be made in the
+same manner (earliest possibility) subject to the decision on the first
+choice.  And so forth.
+
+For example, `(ab|a)b*c' could match `abc' in one of two ways.  The first
+choice is between `ab' and `a'; since `ab' is earlier, and does lead to a
+successful overall match, it is chosen.  Since the `b' is already spoken for,
+the `b*' must match its last possibility-the empty string-since it must respect
+the earlier choice.
+
+In the particular case where no `|'s are present and there is only one `*',
+`+', or `?', the net effect is that the longest possible match will be chosen. 
+So `ab*', presented with `xabbbby', will match `abbbb'. Note that if `ab*' is
+tried against `xabyabbbz', it will match `ab' just after `x', due to the
+begins-earliest rule.  (In effect, the decision on where to start the match is
+the first choice to be made, hence subsequent choices must respect it even if
+this leads them to less-preferred alternatives.)
+
+
+SELECTING, CUTTING, and PASTING
+
+To select some text for copying, deleting, or replacing, press the left mouse
+button with the pointer at one end of the text you want to select, and drag it
+to the other end.  The text will become highlighted.  You can select a whole
+word by double clicking with the mouse, and a number of words by double
+clicking and then dragging the mouse.  Similarly, you can select a whole line
+or a number of lines by triple clicking or triple clicking and dragging.
+Clicking four times will select all of the text in the window.  After
+releasing the mouse button, you can still adjust a selection by holding down
+the shift key and dragging on either end of the selection.  To delete the
+selected text, press delete or backspace.  To replace it, begin typing.
+
+The easiest way to copy and move text around in your file or between windows,
+is to use the clipboard, an imaginary area that temporarily stores text and
+data.  The Cut command removes the selected text from your document and
+places it in the clipboard.  Once text is in the clipboard, the Paste command
+will copy it to the insert position in your document.  So, to move some text
+from one place to another, select it by dragging the mouse over it, choose
+Cut to remove it from your document, click the pointer to move the insert
+point where you want the text inserted, then choose Paste to insert it.
+Copy copies text to the clipboard without deleting it from your document.
+
+Text selected with the middle mouse button is called a secondary selection
+(the previous paragraphs dealt with the primary selection).  The secondary
+selection is highlighted by underlining.  When you release the mouse button
+after making a secondary selection, nedit immediately copies the selected text
+to the insert point (which can be in another window).  Secondary selections
+are most useful for copying text at the point where you are currently typing,
+and for substituting text for the primary selection.
+
+There are actually two text insertion points, the blinking I-beam, and the
+caret.  The caret is the insert point for copied and pasted text, while the I-
+beam is destination for keyboard input.  Mostly the caret and the I-beam are
+in the same place and shown by just the blinking I-beam, but they can be moved
+independently.
+
+
+FEATURES FOR PROGRAMMERS
+
+With Auto Indent turned on (the default), NEdit keeps a running indent.
+When you press the return key, space and tabs are inserted to line up the
+insert point under the start of the previous line.
+
+The Shift Left and Shift Right commands adjust the indentation for several
+lines at once.  To shift a block of text one character to the right, select the
+text, then choose Shift Right from the Edit menu.  Note that the accelerator
+keys for these menu items are Ctrl+9 and Ctrl+0, which correspond to  the right
+and left parenthesis on most keyboards.  Remember them as adjusting the text in
+the direction pointed to by the parenthesis character.  Holding the Shift key
+while selecting either Shift Left or Shift Right will shift the text by one
+full tab stop.
+
+To find a particular line in a source file by line number, choose Goto Line
+#... from the Search menu.  You can also directly select the line number text
+in a compiler message in the terminal emulator window (xterm, winterm,
+decterm, etc.) where you ran the compiler, and choose Goto Selected from
+the Search menu.  To find the line number of a particular line in your file,
+turn on Statistics Line in the Preferences menu, and position the insertion
+point anywhere on the line.  The statistics line continuously updates the line
+number of the location of the insertion cursor.
+
+To help you inspect nested parentheses, brackets, braces, quotes, and other
+characters, NEdit has the Find Matching command.  To find the corresponding
+left parenthesis to match a right parenthesis, select or position the cursor
+after one of the parenthesis characters and choose Find Matching from the
+Search menu.  If the character matches itself, such as a quote or slash,
+select the first character of the pair.  NEdit will match {, (, [, <, ", /,
+and \.
+
+NEdit can process tags files generated using the Unix ctags command.  Ctags
+creates index files correlating names of functions and declarations with their
+locations in C, Fortran, or Pascal source code files. (See the ctags manual
+page for more information).  Ctags produces a file called "tags" which can be
+loaded by NEdit.  Once loaded, the information in the tags file enables NEdit
+to go directly to the declaration of a highlighted function or data structure
+name with a single command.  To load a tags file, select "Load Tags File" from
+the File menu and choose a tags file to load, or specify the name of the tags
+file on the NEdit command line:
+
+    nedit -tags tags
+
+NEdit can also be set to load a tags file automatically when it starts up.
+Setting the X resource nedit.tagFile to the name of a tag file tells NEdit to
+look for that file at startup time (see Customizing NEdit).  The file name can
+be either a complete path name, in which case NEdit will always load the same
+tags file, or a file name without a path or with a relative path, in which
+case NEdit will load it starting from the current directory.  The second
+option allows you to have different tags files for different projects, each
+automatically loaded depending on the directory you're in when you start
+NEdit.  Setting the name to "tags" is an obvious choice since this is the name
+that ctags uses.
+
+To find the definition of a function or data structure once a tags file is
+loaded, select the name anywhere it appears in your program (see Selecting
+Text) and choose "Find Definition" from the Search menu.
+
+
+NAVIGATION FROM THE KEYBOARD
+
+In addition to using the mouse and scroll bars to navigate through a file, you
+can use arrow keys and labeled function keys such as page up and page down.
+
+Holding down the control key while pressing a named key extends the scope of
+the action that it performs.  For example, Home normally moves the insert
+cursor the beginning of a line.  Ctrl+Home moves it to the beginning of the
+file. Backspace deletes one character, Ctrl+Backspace deletes one word.
+
+Holding down the shift key while pressing a named key begins or extends a
+selection.  Combining the shift and control keys combines their actions.  For
+example, to select a word without using the mouse, position the cursor at the
+beginning of the word and press Ctrl+Shift+RightArrow
+
+Under X and Motif, there are several levels of translation between keyboard
+keys and the actions they perform in a program.  Keyboards vary from machine
+to machine, and so do standards for the meaning of some keys, such as
+backspace and delete.  NEdit uses the same mapping of keys to program actions
+as other Motif programs that include text fields and editable text.  On most
+machines, these text editing actions are carefully matched to the labeling of
+arrow keys and other named keys, such as Insert, Home, Page-Up, etc..  If you
+prefer different key bindings, see the section titled Customization.
+
+
+CRASH RECOVERY
+
+If a system crash, network failure, X server crash, or program error should
+happen while you are editing a file, you can easily recover most of your work.
+NEdit maintains a backup file which it updates periodically (every 8 editing
+operations or 30 characters typed under Unix, or 80 characters under VMS).
+This file is has the same name as the file that you are editing, but with the
+character "~" (tilde) prefixed to the name.  To recover a file after a crash,
+simply rename the file to remove the tilde character, replacing the older
+version of the file.  Because several of the Unix shells consider the tilde to
+be a special character, you may have to prefix the character with a "\"
+(backslash) when you move or delete an NEdit backup file.
+
+Example, to recover the file called "help.c" type the command:
+
+    mv \~help.c help.c
+
+
+PREFERENCES
+
+The Preferences menu allows you to set options for both the current editing
+window, and default values for newly created windows and future NEdit
+sessions.  The first group of options in the Preferences menu take effect
+immediately and refer to the current window only.  Options in the Default
+Settings sub-menu have no effect on the current window, but instead provide
+initial settings for future windows created using the New or Open commands.
+These settings can also be saved in a file that is automatically read by NEdit
+at startup time.
+
+    Auto Indent -- Maintain a running indent.  When you press return, the
+     insert point will line up with the indent level of the previous line.
+
+    Periodic Backup -- Maintain a backup copy of the file being edited
+     under the name ~filename (see Crash Recovery).
+
+    Text Font... -- Set the font for the text in this NEdit window.  To set
+     the font for all windows use the equivalent item in the Default Settings
+     sub-menu.  Note that since the font selection dialog narrows its lists of
+     font characteristics depending on those already selected, it is important
+     to know that you can unselect them by clicking on the selected items a
+     second time.
+
+    Wrap Text -- Wrap text at the right margin rather than allowing the text
+     to extend beyond it.
+
+    Statistics Line -- Show the full file name, line number, and length of
+     the file being edited.
+
+    Default Settings -- Sub-menu of initial settings for future windows.
+     These can be saved to be automatically loaded each time NEdit is started.
+
+    Save Defaults -- Save the default options as set under Default Settings
+     for future NEdit sessions.
+
+
+SHELL COMMANDS
+
+The Shell menu (Unix versions only) allows you to execute Unix shell commands
+from within NEdit.  You can add items to the menu to extend NEdit's command set
+or to incorporate custom automatic editing features using shell commands or
+editing languages like awk and sed.  To add items to the menu, use the Shell
+Commands... dialog in the preferences menu under Default Settings.  NEdit comes
+pre-configured with a few useful Unix commands like spell and sort, however,
+the primary purpose for the menu is custom extensions.
+
+Filter Selection... prompts you for a Unix command to use to process the
+currently selected text.  The output from this command replaces the contents of
+the selection.
+
+Execute Command... prompts you for a Unix command and replaces the current
+selection with the output of the command.  If there is no selection, it
+deposits the output at the current insertion point.
+
+Execute Command Line uses the position of the cursor in the window to indicate
+a line to execute as a shell command line.  The cursor may be positioned
+anywhere on the line.  This command allows you to use an NEdit window as an
+editable command window for saving output and saving commands for re-execution.
+
+The X resource called nedit.shell (See Customizing NEdit) determines which Unix
+shell is used to execute commands.  The default value for this resource is
+/bin/csh.
+
+THE NEDIT COMMAND LINE
+
+The syntax of the NEdit command line under Unix is:
+
+nedit [-tags file] [-tabs n] [-wrap] [-nowrap] [-autosave] [-noautosave]
+      [-autoindent] [-noautoindent] [-rows n] [-columns n] [-font font]
+      [-xrm resourcestring] [-display [host]:server[.screen]
+      [-geometry geometry] [file...]
+
+Under VMS, both VMS and Unix style command lines are acceptable:
+
+    nedit/rows=20/wrap file1.*, file2.c
+
+is equivalent to:
+
+    nedit -rows 20 -wrap file1.* file2.c
+
+NEdit command line options
+
+    -tags file -- Load a file of directions for finding definitions of program
+      subroutines and data objects.  The file must be of the format generated
+      by the Unix ctags command.
+
+    -tabs n -- Set tab stops every n characters.
+
+    -wrap, -nowrap  -- Wrap lines at the right edge of the window rather than
+      continuing them past it.
+
+    -autoindent, noautoindent -- Maintain a running indent.
+
+    -autosave, -noautosave -- Maintain a backup copy of the file being edited
+      under the name ~filename
+
+    -rows n -- Default width in characters for an editing window
+
+    -columns n -- Default height in characters for an editing window
+
+    -font font (or -fn font) -- Font for text being edited (Font for menus and
+      dialogs can be set with -xrn "*fontList:font")
+
+    -display [host]:server[.screen] -- The name of the X server to use.  host
+      specifies the machine; server specifies the display server number; and
+      screen specifies the screen number.  host or screen can be omitted and
+      default to the local machine, and screen 0.
+
+    -geometry geometry (or -g geometry) -- The initial size and location of
+      the application window.  The argument geometry has the form:
+
+      [<width>x<height>][+|-][<xoffset>[+|-]<yoffset>]
+
+      Where <width> and <height> are the desired width and height of the
+      window, and <xoffset> and <yoffset> are the distance from the edge of the
+      screen to the window, + for top or left, - for bottom or right.
+
+    -background color (or -bg color) -- Background color. (background color
+      for text can be set separately with -xrn "nedit*text:background color")
+
+    -foreground color (or -fg color) -- Foreground color. (foreground color
+      for text can be set separately with -xrn "nedit*text:foreground color")
+
+    -xrn resourcestring -- Set the value of an X resource to override a
+      default value (see Customizing NEdit)
+
+
+CUSTOMIZATION
+
+NEdit has some options which are not settable using the Preferences menu, but
+are instead set using X resources.  Like many other X programs, NEdit can be
+customized to vastly unnecessary proportions, from initial window positions
+down to the font and shadow colors of each individual button (A complete
+discussion of how to do this is left to books on the X Windows System).  Key
+binding (see below) is one of the most useful of these resource settable
+options.
+
+X resources are usually specified in a file called .Xdefaults in your home
+directory (on VMS this is SYS$LOGIN).  On some systems, this file is read and
+its information attached to the X server (your screen) when you start X.  On
+other systems, the .Xdefaults file is read each time you run an X program.
+When X defaults are attached to the server, you can use a program called xrdb
+to update them without restarting X.
+
+The .nedit File
+
+The .nedit (saved preferences) file is in the same format as an X resource
+file, and its contents can be moved into your X resource file.  One reason for
+doing so would be to attach server specific preferences, such as a default
+font to a particular X server.  Another reason for moving preferences into the
+X resource file would be to keep preferences menu options and resource
+settable options together in one place. Though the files are the same format,
+additional resources should not be added to the .nedit file, they will not be
+read, and NEdit modifies this file by overwriting it completely.  Note also
+that the contents of the .nedit file take precedence over the values of X
+resources.  Using Save Defaults after moving the contents of your .nedit file
+to your .Xdefaults file will re-create the .nedit file, interfering with the
+options that you have moved.
+
+Selected X Resource Names
+
+The following are selected NEdit resource names and their default values.  For
+NEdit options settable via the Preferences menu, see the section titled
+Preferences.  The resource names for preference resources can be found in your
+.nedit file.
+
+    nedit.tagFile: (not defined) -- The name of a file of the type produced by
+      the Unix ctags command which NEdit will load at startup time (see
+      Features for Programmers).  The tag file provides a database from which
+      NEdit can automatically open files containing the definition of a
+      particular subroutine or data type.
+
+   nedit.shell: /bin/csh -- (Unix systems only) The Unix shell (command
+      interpreter) to use for executing commands from the Shell menu
+
+   nedit.remapDeleteKey: True -- Setting this resource to False restores the
+      original Motif binding of the delete key to forward-delete.  This binding
+      causes problems when X servers with one delete/backspace configuration
+      are connected with X clients of the other.  Users with a backspace key in
+      the backspace/delete position who use only machines with such style of
+      keyboard can set this resource to False to get back the forward-delete
+      function of the delete key.
+
+    nedit.printCommand: (system specific) -- Command used by the print dialog
+      to print a file, i.e. lp, lpr, etc..
+
+    nedit.printCopiesOption: (system specific) -- Option name used to specify
+      multiple copies to the print command.  If the option should be separated
+      from its argument by a space, leave a trailing space. If blank, no
+      "Number of Copies" item will appear in the print dialog.
+
+    nedit.printQueueOption: (system specific) -- Option name used to specify a
+      print queue to the print command.  If the option should be separated from
+      its argument by a space, leave a trailing space. If blank, no "Queue"
+      item will appear in the print dialog.
+
+    nedit.printNameOption: (system specific) -- Option name used to specify a
+      job name to the print command.  If the option should be separated from
+      its argument by a space, leave a trailing space. If blank, no job or file
+      name will be attached to the print job or banner page.
+
+    nedit.printHostOption: (system specific) -- Option name used to specify a
+      host name to the print command.  If the option should be separated from
+      its argument by a space, leave a trailing space. If blank, no "Host" item
+      will appear in the print dialog.
+
+    nedit.printDefaultQueue: (system specific) -- The name of the default
+      print queue.  Used only to display in the print dialog, and has no effect
+      on printing.
+
+    nedit.printDefaultHost: (system specific) -- The node name of the default
+      print host.  Used only to display in the print dialog, and has no effect
+      on printing.
+
+    nedit*text.foreground: black -- Foreground color of the text editing area
+      of the NEdit window.
+
+    nedit*text.background: white -- Background color of the text editing area
+      of the NEdit window.
+
+    nedit*text.blinkRate: 600 -- Blink rate of the text insertion cursor in
+      milliseconds.  Set to zero to stop blinking.
+
+    nedit*text.Translations: -- Modifies key bindings (see below).
+
+Mapping Editor Commands to Keys
+
+One of the most useful customizations to NEdit is to change the bindings of
+editor actions to keys to fit a particular style of editing.  The appendix
+lists the actions available in NEdit. To bind actions to keys, add lines
+similar to the following to your X resource file:
+
+    NEdit*text.Translations: #override \
+	Ctrl<Key>v: insert-string("VEE!") process-up()\n\
+	<Key>osfDelete: delete-previous-character()\n
+
+You will need to refer to a book on the X window system for the exact syntax
+of translation tables.  Translation tables map key and mouse presses, window
+operations, and other kinds of events to actions.  The syntax (somewhat
+oversimplified) is a keyword; #override, #augment, or #replace; followed by
+lines (separated by newline characters) pairing events with actions.  Events
+begin with modifiers, like Ctrl, Shift, or Alt, followed by the event type in
+<>.  BtnDown, Btn1Down, Btn2Down, Btn1Up, Key, KeyUp are valid event types.
+For key presses, the event type is followed by the name of the key.  You can
+specify a combination of events, such as a sequence of key presses, by
+separating them with commas.  The other half of the event/action pair is a set
+of actions.  These are separated from the event specification by a colon and
+from each other by spaces.  Actions are names followed by parentheses,
+optionally containing a single parameter.
+
+Changing Menu Accelerator Keys
+
+The menu shortcut keys shown at the right of NEdit menu items can also be
+changed via X resources.  Each menu item has two accelerator key resources
+associated with it, accelerator, and acceleratorText.  accelerator sets the
+actual event that triggers the menu item, and is in the same form as the events
+for translation table entries discussed in the previous section. 
+acceleratorText contains the entry that will be displayed with the menu item. 
+To construct the complete resource name, use one of *fileMenu, *editMenu,
+*preferencesMenu, *windowsMenu, or *shellMenu, followed by `.' and the name of
+the menu item (lower case, run together with words separated by caps and with
+all punctuation removed), followed by .accelerator, or .acceleratorText.  For
+example, to change Cut to Ctrl+X, you would add the following to your
+.Xdefaults file:
+
+    nedit*editMenu.cut.accelerator: Ctrl<Key>x
+    nedit*editMenu.cut.acceleratorText: Ctrl+X
+
+Accelerator keys with optional shift key modifiers, like Find..., have an
+additional .accelerator resource with Shift appended to the name.  To change
+the accelerator key for the Find... command to Alt+F, you would use the
+following: 
+
+   nedit*searchMenu.find.acceleratorText: [Shift]Alt+F
+   nedit*searchMenu.find.accelerator: Alt<Key>f
+   nedit*searchMenu.findShift.accelerator: Shift Alt<Key>f
+
+
+
+                                Appendix
+
+This appendix is an excerpt from the Motif Programmer's Reference, listing
+editor functions that may be bound to keys.  These functions are valid for
+other Motif text editing windows and text fields as well as for NEdit.  The
+section titled "Customization" has instructions for binding these actions to
+key and mouse combinations.
+
+backward-character()
+Moves the insertion cursor one character to the left.
+
+backward-paragraph(extend)
+Moves the insertion cursor to the first non-whitespace character following
+the first previous blank line or beginning of the text.  If the insertion
+cursor is already at the beginning of a paragraph, moves the insertion cursor
+to the beginning of the previous paragraph.
+
+backward-word(extend)
+Moves the insertion cursor to the first non-whitespace character after the
+first whitespace character to the left or the beginning of the line.  If the
+insertion cursor is already at the beginning of a word, moves the insertion
+cursor to the beginning of the previous word.
+
+beep()
+Causes the terminal to beep.
+
+beginning-of-file(extend)
+moves the insertion cursor to the beginning of the text.
+
+beginning-of-line(extend)
+moves the insertion cursor to the beginning of the line.
+
+clear-selection()
+Clears the current selection by replacing each character except
+<Return> with a <space> character.
+
+copy-clipboard()
+Copies the current selection to the clipboard.
+
+copy-primary()
+Copies the primary selection to the insertion cursor.
+
+copy-to()
+If a secondary selection exists, copies the secondary selection to the
+insertion cursor.  If no secondary selection exists, copies the primary
+selection to the
+pointer location.
+
+cut-clipboard()
+Cuts the current selection to the clipboard.
+
+cut-primary()
+Cuts the primary selection to the insertion cursor.
+
+delete-next-character()
+If the cursor is inside the selection, deletes the entire selection;
+otherwise, deletes the character following the insertion cursor.
+
+delete-next-word()
+If the cursor is inside the selection, deletes the entire selection;
+otherwise, deletes the characters following the insertion cursor to the next
+space, tab or end of line character.
+
+delete-previous-character()
+If the cursor is inside the selection, deletes the entire selection;
+otherwise, deletes the character of text immediately preceding the insertion
+cursor.
+
+delete-previous-word()
+If the cursor is inside the selection, deletes the entire selection;
+otherwise, deletes the characters preceding the insertion cursor to the next
+space, tab or beginning of line character.
+
+delete-selection()
+Deletes the current selection.
+
+delete-to-end-of-line()
+Deletes the characters following the insertion cursor to the next end of line
+character.
+
+delete-to-start-of-line()
+Deletes the characters preceding the insertion cursor to the previous
+beginning of line character.
+
+deselect-all()
+Deselects the current selection.
+
+do-quick-action()
+Marks the end of a secondary selection.  Performs the quick action initiated
+by the quick-copy-set or quick-cut-set action.
+
+end-of-file(extend)
+moves the insertion cursor to the end of the text.
+
+end-of-line(extend)
+moves the insertion cursor to the end of the line.
+
+extend-adjust()
+Selects text from the anchor to the pointer position and deselects text
+outside that range.  Moving the pointer over several lines selects text from
+the anchor to the end of each line the pointer moves over and up to the
+pointer position on the current line.
+
+extend-end()
+Moves the insertion cursor to the position of the pointer.
+
+extend-start()
+Adjusts the anchor using the balance-beam method.  Selects text from the
+anchor to the pointer position and deselects text outside that range.
+
+forward-character()
+Moves the insertion cursor one character to the right.
+
+forward-paragraph(extend)
+moves the insertion cursor to the first non-whitespace character following the
+next blank line.  If the insertion cursor is already at the beginning of a
+paragraph, moves the insertion cursor to the beginning of the next paragraph.
+
+forward-word(extend)
+moves the insertion cursor to the first whitespace character or end of line
+following the next non-whitespace character.  If the insertion cursor is
+already at the end of a word, moves the insertion cursor to the end of the
+next word.
+
+grab-focus()
+This key binding performs the action defined in the  XmNselectionArray,
+depending on the number of multiple mouse clicks.  The default selection array
+ordering is one click to move the insertion cursor to the pointer position,
+two clicks to select a word, three clicks to select a line of text, and four
+clicks to select all text.  A single click also deselects any selected text
+and sets the anchor at the pointer position.
+
+insert-string(string)
+If the cursor is inside the selection, deletes the entire selection.  Inserts
+string at the insertion cursor.
+
+key-select(direction)
+If called with an argument of right, moves the insertion cursor one character
+to the right and extends the selection.  If called with an argument of left,
+moves the insertion cursor one character to the left and extends the
+selection. If called with no argument, extends the selection.
+
+kill-next-character()
+If  the cursor is inside the selection, deletes the entire selection.
+Otherwise, kills the character following the insertion cursor and stores the
+character in the cut buffer.
+
+kill-next-word()
+If  the cursor is inside the selection, deletes the entire selection.
+Otherwise, kills the characters following the insertion cursor to the cut
+buffer.
+
+kill-previous-character()
+If the cursor is inside the selection, deletes the entire selection.
+Otherwise, kills the character of text immediately preceding the insertion
+cursor and stores the character in the cut buffer.
+
+kill-previous-word()
+If the cursor is inside the selection, deletes the entire selection.
+Otherwise, kills the characters preceding the insertion cursor to the next
+space, tab or beginning of line character, and stores the characters in the
+cut buffer.
+
+kill-selection()
+Kills the currently selected text and stores the text in the cut buffer.
+
+kill-to-end-of-line()
+Kills the characters following the insertion cursor to the next end of line
+character and stores the characters in the cut buffer.
+
+kill-to-start-of-line()
+Kills the characters preceding the insertion cursor to the next beginning of
+line character and stores the characters in the cut buffer.
+
+move-destination()
+Moves the insertion cursor to the pointer position without changing any
+existing selection.  If no selection exists, also moves the destination cursor
+to the pointer position.
+
+move-to()
+If a secondary selection exists, cuts the secondary selection to the insertion
+cursor.  If no secondary selection exists, cuts the primary selection to the
+pointer location.
+
+newline()
+If the cursor is inside the selection, deletes the entire selection.  Inserts
+a newline at the insertion cursor.
+
+newline-and-backup()
+If the cursor is inside the selection, deletes the entire selection.  Inserts
+a newline and repositions the insertion cursor to the end of the line before
+the newline.
+
+newline-and-indent()
+If the cursor is inside the selection, deletes the entire selection.  Inserts
+a newline and then the same number of whitespace characters as at the
+beginning of the previous line.
+
+next-line()
+Moves the insertion cursor to the next line.
+
+next-page(extend)
+Moves the insertion cursor forward one page.
+
+page-left()
+Scrolls the viewing window left one page of text.
+
+page-right()
+Scrolls the viewing window right one page of text.
+
+paste-clipboard()
+Pastes the contents of the clipboard before the insertion cursor.
+
+previous-line()
+Moves the insertion cursor to the previous line.
+
+previous-page(extend)
+Moves the insertion cursor back one page.
+
+process-cancel()
+Cancels the current extend-adjust() or secondary-adjust() operation and leaves
+the selection state as it was before the operation.
+
+process-down()
+Moves the insertion cursor down one line.
+
+process-home()
+Moves the insertion cursor to the beginning of the line.
+
+process-return()
+Inserts a newline.
+
+process-shift-down()
+Moves the insertion cursor down one line.
+
+process-shift-up()
+Moves the insertion cursor up one line.
+
+process-tab()
+Inserts a tab.
+
+process-up()
+Moves the insertion cursor up one line.
+
+quick-copy-set()
+Marks the beginning of a secondary selection for use in quick copy.
+
+quick-cut-set()
+Marks the beginning of a secondary selection for use in quick cut.
+
+redraw-display()
+Redraws the contents of the text window.
+
+scroll-one-line-down()
+Scrolls the text area down one line.
+
+scroll-one-line-up()
+Scrolls the text area up one line.
+
+secondary-adjust()
+Extends the secondary selection to the pointer position.
+
+secondary-notify()
+Copies the secondary selection to the destination cursor.
+
+secondary-start()
+Marks the beginning of a secondary selection.
+
+select-adjust()
+Extends the selection.  The amount of text selected depends on the number of
+mouse clicks as specified by the XmNselectionArray resource
+
+select-all()
+Selects all text.
+
+select-end()
+Extends the selection.  The amount of text selected depends on the number of
+mouse clicks, as specified by the XmNselectionArray resource.
+
+select-start()
+Marks the beginning of a new selection region.
+
+self-insert()
+If the cursor is inside the selection, deletes the entire selection.  Inserts
+the character associated with the key pressed at the insertion cursor.
+
+set-anchor()
+Resets the anchor point for extended selections.  Resets the destination of
+secondary selection actions.
+
+set-insertion-point()
+Sets the insertion position.
+
+set-selection-hint()
+Sets the text source and location of the selection.
+
+toggle-add-mode()
+Toggles the state of Add Mode.
+
+unkill()
+Restores last killed text to the position of the insertion cursor.
+
+

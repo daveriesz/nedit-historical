@@ -1,0 +1,95 @@
+From: Mark Edel
+Date: Feb 9, 1996, 12:00:00 AM
+Subject: Announcing NEdit 4.0 -- GUI Unix Text Editor
+
+This is a major new release of NEdit, widely recognized as the best GUI-based
+text editor available for Unix and VMS systems, free or not.
+For those who have not heard of NEdit before, it is a GUI style plain-text
+editor for X/Motif systems. It is very easy to use, especially for those
+familiar with the Macintosh or MS Windows style of interface, combining full
+use of the mouse and window manager, with keystroke efficiency and a full
+complement of powerful editing commands.
+
+Features
+
+- Efficient, proven command set
+- Very complete functionality. NEdit is the primary editor for
+thousands of Unix and VMS programmers
+- Thorough consistency with Motif, MS Windows, and Macintosh
+conventions
+- Designed for intensive use: fast response time, menu and dialog
+shortcuts, streamlined interaction
+- 100% GUI from the ground up
+- True multi-window, fully graphical design
+- Mouse based editing
+- Multi-level undo
+- Cut and Paste with other X Windows/Motif programs, full support for
+all Motif selection modes
+- Easy to learn
+- Just point and type
+- Capabilities are presented clearly in top level menus
+- Comprehensive on-line help
+- No special knowledge of X Windows required, all important options
+can be set from within the program
+- Features for programmers
+- Auto-indent
+- Block indentation adjustment
+- Parenthesis flashing and matching
+- Find lines directly from compiler error output
+- Emulated tabs
+- Unix ctags support
+- Client/Server mode for integration with software development tools
+- Easy installation
+- Self contained single executable file
+- Pre-built, tested executables available for Silicon Graphics, Sun
+(Solaris & SunOS), HP, OSF/1, DEC Ultrix, IBM AIX, and VMS
+systems
+
+New in version 4.0
+
+- Rectangular Selection
+- Interactive Selection Dragging
+- Learn/Replay
+- Client/Server mode
+- Limited macro capability
+- Emulated tabs
+- Bookmarks
+- Preserve Last Version (.bck) files option
+- Exchange primary/secondary command
+- Search dialogs optionally work in stay-up mode
+- Settable Read-Only mode
+- -read, -create, -do, and -line command line options
+- Better control character representation.
+- Settable wrap margin
+- Ability to bind menu commands in translations
+- Better directory defaulting
+- No-tabs mode
+- Improved overstrike mode
+- Option for Motif standard Open dialog
+- Optional thick cursor
+- Output-replaces-input option for shell commands
+- Faster redraw under dialogs and menus
+- Faster background-window redraw
+- Better horizontal auto-scrolling
+- More on-line documentation
+
+
+NEdit is available for free, in source and executable form for most popular
+Unix and VMS workstations: SGI, DEC (DEC Unix, Ultrix, VMS, AXP), IBM, HP, Sun
+(SunOS and Solaris). A supported Linux version will be available in about a
+month. Porting to other systems has generally been easy, but you must have
+Motif.
+
+The contrib directory for 4.0 is still a blank slate. If you build a version
+for an unsupported system type, please consider sending us a copy, or at least
+a Makefile, so other users can benefit.
+
+Sources and executables are available via anonymous ftp.fnal.gov in the
+/pub/nedit/v4_0 directory. There is also a web page for NEdit at:
+http://fnpspa.fnal.gov/nirvana/nedit.html, or find out more about Fermilab:
+http://www.fnal.gov, or other Fermilab software: http://www.fnal.gov/fermitools.
+
+Send questions or comments to nedit_support@fnal
+
+
+-- Mark Edel
